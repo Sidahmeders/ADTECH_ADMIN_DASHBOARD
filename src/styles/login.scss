@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+@import './vars.scss';
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    font-family: 'Jost', sans-serif;
+    user-select: none;
+}
+
+.form {
+    width: $form-width;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15vh auto 0 auto;
+}
+
+.form_logo {
+    font-family: 'Lobster', cursive;
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+    span {
+        color: $primary-color;
+    }
+}
+
+.form_title {
+    font-weight: bold;
+    margin-bottom: 30px;
+    span {
+        color: $primary-color;
+    }
+}
+
+.form_items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form_inputs {
+    width: $form-width;
+    color: $secondary-color-tint;
+    margin: 1rem 0;
+    position: relative;
+    label {
+        font-size: 16px;
+        position: absolute;
+        top: 10px;
+        left: 0;
+        pointer-events: none;
+        transition: all 0.15s ease;
+    }
+    input {
+        width: 100%;
+        height: 36px;
+        background: inherit;
+        border: none;
+        border-bottom: 1px solid;
+        color: inherit;
+        font-size: 22px;
+        &:focus {
+            outline: none;
+            border-width: 2px;
+            margin-bottom: -1px;
+            border-color: $primary-color;
+            + {
+                label {
+                    transform: translateY(-20px);
+                    font-size: 70%;
+                    color: $primary-color;
+                }
+            }
+        }
+        &:valid {
+            outline: none;
+            border-width: 2px;
+            margin-bottom: -1px;
+            border-color: $primary-color;
+            + {
+                label {
+                    transform: translateY(-20px);
+                    font-size: 70%;
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+}
+
+.form_button {
+    font-size: 20px;
+    width: 100%;
+    height: 36px;
+    margin-top: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    background: $primary-color;
+    box-shadow: 2px 2px 2px $primary-color-dark;
+    &:focus {
+        outline: none;
+    }
+    &:active {
+        outline: none;
+        background: $primary-color-dark;
+    }
+}
+
+.form_other {
+    width: 100%;
+    margin-top: 8px;
+    display: flex;
+    justify-content: flex-end;
+    a {
+        color: $primary-color;
+        text-decoration: none;
+    }
+}
+
+.alert {
+    padding: 10px 0;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    min-width: $form-width;
+    text-align: center;
+
+    &.success {
+        border: 2px solid rgba(0, 128, 0, 0.4);
+        background: rgba(0, 128, 0, 0.15);
+        color: green;
+    }
+    &.error {
+        border: 2px solid rgba(255, 0, 0, 0.4);
+        background: rgba(255, 0, 0, 0.15);
+        color: red;
+    }
+}
