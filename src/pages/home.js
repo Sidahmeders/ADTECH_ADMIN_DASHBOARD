@@ -1,15 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import '../styles/home.scss'
-import SideBar from '../components/sidebar'
+
+// import BarChart from '../components/charts/BarChart'
+// import LineChart from '../components/charts/LineChart'
+// import PieChart from '../components/charts/PieChart'
 
 function Home() {
     return (
         <div className="home-page">
-            <header>
-                <SideBar />
-            </header>
-            <main></main>
+            <h1>Hello from the Home Page</h1>
         </div>
     )
 }
