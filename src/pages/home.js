@@ -6,7 +6,6 @@ import SideBar from '../components/sidebar'
 function Home() {
     return (
         <div className="home-page">
-            <div className="background-image"></div>
             <header>
                 <SideBar />
             </header>

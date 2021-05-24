@@ -1,9 +1,45 @@
 @import './vars.scss';
 
 .home-page .sidebar {
-    width: 300px;
+    width: 250px;
     height: 100vh;
     position: fixed;
     background: $secondary-color;
-    color: $primary-color;
+    color: $faint-color;
+
+    .logo {
+        font-family: 'Lobster', cursive;
+        font-size: 2.5rem;
+        text-align: center;
+        padding-right: 25px;
+        padding-top: 10px;
+
+        span {
+            color: $primary-color;
+        }
+    }
+
+    &-element {
+        display: flex;
+        padding: 15px 20px;
+        margin: 15px 0;
+
+        &:nth-child(1) {
+            margin-top: 30px;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+        &.selected {
+            background: $focus-color;
+            color: white;
+        }
+        .text {
+            margin-left: 15px;
+            text-transform: uppercase;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+    }
 }

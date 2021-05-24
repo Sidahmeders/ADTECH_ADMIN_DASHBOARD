@@ -67,49 +67,52 @@ function Login() {
     }
 
     return (
-        <div className="form">
-            <div className="form_logo">
-                AD<span>T</span>ECH
-            </div>
-            <div className="form_title">
-                ADM<span>I</span>N
-            </div>
-
-            {alertMessage.success ? (
-                <div className="alert success">{alertMessage.success}</div>
-            ) : alertMessage.error ? (
-                <div className="alert error">{alertMessage.error}</div>
-            ) : (
-                ''
-            )}
-
-            <form className="form_items">
-                <div className="form_inputs">
-                    <input
-                        onChange={handleOnChange}
-                        name="email"
-                        type="text"
-                        value={userInfo.email}
-                        required
-                    />
-                    <label>username or email</label>
+        <div className="login-container">
+            <div className="form">
+                <div className="form_logo">
+                    AD<span>T</span>ECH
                 </div>
-                <div className="form_inputs">
-                    <input
-                        onChange={handleOnChange}
-                        name="password"
-                        type="password"
-                        value={userInfo.password}
-                        required
-                    />
-                    <label>password</label>
+                <div className="form_title">
+                    ADM<span>I</span>N
                 </div>
-                <button onClick={handleLogin} className="form_button">
-                    Log In
-                </button>
-            </form>
-            <div className="form_other">
-                <Link to="/forgot-passowrd">forgot password?</Link>
+
+                {alertMessage.success ? (
+                    <div className="alert success">{alertMessage.success}</div>
+                ) : alertMessage.error ? (
+                    <div className="alert error">{alertMessage.error}</div>
+                ) : (
+                    ''
+                )}
+
+                <form autoComplete="off" className="form_items">
+                    <div className="form_inputs">
+                        <input
+                            onChange={handleOnChange}
+                            name="email"
+                            type="text"
+                            value={userInfo.email}
+                            required
+                        />
+                        <label>username or email</label>
+                    </div>
+                    <div className="form_inputs">
+                        <input
+                            onChange={handleOnChange}
+                            name="password"
+                            type="password"
+                            value={userInfo.password}
+                            autoComplete="fasle"
+                            required
+                        />
+                        <label>password</label>
+                    </div>
+                    <button onClick={handleLogin} className="form_button">
+                        Log In
+                    </button>
+                </form>
+                <div className="form_other">
+                    <Link to="/forgot-passowrd">forgot password?</Link>
+                </div>
             </div>
         </div>
     )
