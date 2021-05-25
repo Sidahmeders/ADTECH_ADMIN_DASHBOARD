@@ -1,0 +1,54 @@
+.dashboard .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 50px;
+
+    .right {
+        .card {
+            width: 380px;
+            height: 220px;
+            margin: 10px 0;
+            padding: 20px;
+            overflow: hidden;
+
+            &:nth-child(1) {
+                background: linear-gradient(rgb(66, 72, 78), rgb(197, 220, 243));
+            }
+            &:nth-child(2) {
+                background: linear-gradient(rgb(58, 58, 58), rgb(223, 223, 223));
+            }
+        }
+    }
+    .left {
+        .card {
+            width: 350px;
+            &:nth-child(1) {
+                background: linear-gradient(rgb(161, 204, 184), rgb(114, 150, 129));
+                height: 450px;
+                padding: 40px;
+            }
+        }
+    }
+}
+
+.dashboard .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    h1 {
+        color: white;
+        font-weight: 400;
+        padding: 10px 0;
+        text-transform: capitalize;
+    }
+    p {
+        padding: 10px;
+        color: white;
+        font-size: 30px;
+        letter-spacing: 2px;
+    }
+}

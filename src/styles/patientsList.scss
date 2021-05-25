@@ -1,0 +1,19 @@
+.patients-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.patients-list .pie-charts {
+    display: flex;
+}
+
+.patients-list .chart {
+    width: 30vw;
+    background: white;
+    padding: 20px;
+    padding-right: 50px;
+    margin: 20px;
+    border-radius: 15px;
+}
