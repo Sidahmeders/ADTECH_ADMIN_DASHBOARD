@@ -2,22 +2,26 @@ import React from 'react'
 import '../styles/dashboard.scss'
 
 import BarChart from '../components/charts/BarChart'
-import PieChart from '../components/charts/PieChart'
 import LineChart from '../components/charts/LineChart'
+import PieChart from '../components/charts/DoughChart'
 
 export default function DashBoard() {
     const chartData = {
-        labels: ['', '', '', '', '', ''],
+        labels: ['02', '23', '31', '13', '44', '16'],
         datasets: [
             {
                 label: 'active',
                 data: [54, 79, 59, 63, 39, 67],
-                backgroundColor: '#9ff8'
+                backgroundColor: '#dff',
+                borderWidth: 2,
+                borderColor: '#9007'
             },
             {
                 label: 'total',
                 data: [80, 92, 69, 73, 60, 85],
-                backgroundColor: '#9879'
+                backgroundColor: '#456',
+                borderWidth: 2,
+                borderColor: '#7f66'
             }
         ]
     }

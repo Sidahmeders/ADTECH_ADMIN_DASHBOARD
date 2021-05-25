@@ -38,7 +38,7 @@ function SideBar() {
 
     return (
         <div className="sidebar">
-            <Link to="/home" className="logo">
+            <Link onClick={() => handleRouteChange(null)} to="/home" className="logo">
                 AD<span>T</span>ECH
             </Link>
             {sideBarItems.map((item, index) => (
