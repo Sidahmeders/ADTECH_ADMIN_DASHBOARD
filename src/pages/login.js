@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Fetch from '../utils/fetchData'
 import '../styles/login.scss'
 
 function Login() {
@@ -26,17 +27,7 @@ function Login() {
 
     const handleLogin = async (event) => {
         event.preventDefault()
-
-        let response = await fetch('http://localhost:5000/admin/users/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userInfo)
-        })
-
-        const userData = await response.json()
-        console.log(userData)
+        let userData = await Fetch.POST('admin/users/login', 'POST', userInfo)
 
         if (userData.data) {
             setAlertMessage(() => {
@@ -45,7 +36,6 @@ function Login() {
                     success: 'you are logged In welcome.'
                 }
             })
-
             setTimeout(() => {
                 window.location.href = '/home'
             }, 1500)

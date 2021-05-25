@@ -46,5 +46,22 @@
             font-size: 15px;
             letter-spacing: 0.5px;
         }
+
+        &.notifications-btn {
+            position: relative;
+            span {
+                position: absolute;
+                text-align: center;
+                padding-right: 1.5px;
+                top: 1px;
+                left: 40px;
+                width: 22px;
+                height: 22px;
+                border-radius: 50%;
+                background: rgb(228, 60, 60);
+                color: aliceblue;
+                font-weight: 600;
+            }
+        }
     }
 }

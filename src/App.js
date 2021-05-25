@@ -7,6 +7,7 @@ import Login from './pages/login'
 import Home from './pages/home'
 import DashBoard from './pages/dashboard'
 import UsersList from './pages/usersList'
+import AddUsers from './pages/addUsers'
 import PatientsList from './pages/patientsList'
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
                         <Route exact path="/home" component={Home} />
                         <Route path="/home/dashboard" component={DashBoard} />
                         <Route path="/home/users-list" component={UsersList} />
+                        <Route path="/home/add-users" component={AddUsers} />
                         <Route path="/home/patients-list" component={PatientsList} />
                     </Layout>
                 </Switch>

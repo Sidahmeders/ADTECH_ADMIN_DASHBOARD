@@ -19,8 +19,8 @@ const sideBarItems = [
     { text: 'users list', icon: usersList },
     { text: 'add users', icon: addUser },
     { text: 'patients list', icon: patientsList },
-    { text: 'new users', icon: newUsers },
-    { text: 'notifications', icon: notification },
+    { text: 'manage users', icon: newUsers },
+    { text: 'notifications', icon: notification, notification: 13 },
     { text: 'logout', icon: logout }
 ]
 
@@ -47,6 +47,7 @@ function SideBar() {
                     key={index}
                     text={item.text}
                     icon={item.icon}
+                    notification={item.notification}
                     clickHandler={handleRouteChange}
                 />
             ))}

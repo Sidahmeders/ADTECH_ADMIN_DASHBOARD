@@ -1,15 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function SideBarElement({ clickHandler, id, text, icon }) {
+export default function SideBarElement({ clickHandler, id, text, icon, notification }) {
     const route = text.split(' ').join('-')
     return (
         <Link
             to={`/home/${route}`}
             onClick={() => clickHandler(id)}
             id={id}
-            className="sidebar-element">
+            className={`sidebar-element ${route}-btn`}>
             <img width="24px" src={icon} alt={text} />
+            {notification ? <span>{notification}</span> : ''}
             <div className="text">{text}</div>
         </Link>
     )

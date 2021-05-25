@@ -15,10 +15,10 @@
             overflow: hidden;
 
             &:nth-child(1) {
-                background: rgb(222, 234, 252);
+                background: linear-gradient(rgb(110, 122, 138), white);
             }
             &:nth-child(2) {
-                background: rgb(255, 241, 241);
+                background: linear-gradient(rgb(167, 134, 134), white);
             }
         }
     }
@@ -26,7 +26,7 @@
         .card {
             width: 350px;
             height: 500px;
-            background: rgb(210, 250, 230);
+            background: linear-gradient(rgb(99, 128, 113), white);
             padding: 40px;
         }
     }
