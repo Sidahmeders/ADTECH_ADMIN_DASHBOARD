@@ -1,0 +1,23 @@
+.date-input-element {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 20px;
+
+    label {
+        transform: translate(15px, 12px);
+        padding: 0 5px;
+        width: fit-content;
+        background: white;
+        text-transform: uppercase;
+    }
+
+    input[type='date'] {
+        width: 200px;
+        height: 35px;
+        padding: 5px 20px;
+        font-size: 18px;
+        letter-spacing: 1px;
+        border: 2px solid gray;
+        border-radius: 4px;
+    }
+}

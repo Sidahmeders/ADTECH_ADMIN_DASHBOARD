@@ -1,3 +1,5 @@
+import './style.scss'
+
 export default function FileInputElement({ label }) {
     return (
         <div className="file-input-element">

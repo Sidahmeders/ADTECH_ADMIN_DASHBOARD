@@ -1,21 +1,34 @@
 .radio-input-element {
-    .option {
-        display: inline-block;
-        margin: 20px;
+    width: fit-content;
+    padding: 5px 20px;
 
-        label {
-            padding: 5px 20px;
-            border: 2px solid rgb(212, 220, 228);
-            border-radius: 4px;
-        }
+    h3 {
+        margin: 5px 0;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
 
-        input[type='radio'] {
-            display: none;
-        }
-        input[type='radio']:checked + label {
-            color: aliceblue;
-            border-color: #222222;
-            background: #234;
+    .options {
+        display: flex;
+        justify-content: space-between;
+
+        .option {
+            margin: 5px;
+
+            label {
+                display: flex;
+                padding: 6px 30px;
+                border: 2px solid rgb(212, 220, 228);
+                border-radius: 4px;
+            }
+            input[type='radio'] {
+                display: none;
+            }
+            input[type='radio']:checked + label {
+                color: aliceblue;
+                background: #096e9c;
+                border-color: #096e9c;
+            }
         }
     }
 }

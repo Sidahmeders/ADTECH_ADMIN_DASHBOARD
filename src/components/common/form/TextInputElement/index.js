@@ -1,18 +1,34 @@
-// import { useState } from 'react'
+import { useState } from 'react'
 import './style.scss'
-import eyeOpen from '../../../../asset/icons/form/eye-open.svg'
-import eyeClose from '../../../../asset/icons/form/eye-close.svg'
+import openEye from '../../../../asset/icons/form/eye-open.svg'
+import closeEye from '../../../../asset/icons/form/eye-close.svg'
 
 export default function TextInputElement({ label, type }) {
-    // const [passwordVisibilty, setPasswordVisibilty] = useState(false)
-    const eye = eyeClose ? eyeClose : eyeOpen
+    const [passwordVisibilty, setPasswordVisibilty] = useState(true)
+    const [inputType, setInputType] = useState(type)
+    const eye = passwordVisibilty ? closeEye : openEye
+
+    const handlePasswordVisibility = () => {
+        setPasswordVisibilty(() => (passwordVisibilty ? false : true))
+        if (passwordVisibilty) {
+            setInputType(() => 'text')
+        } else {
+            setInputType(() => 'password')
+        }
+    }
 
     return (
         <div className="text-input-element">
             <label htmlFor={label}>{label}</label>
-            <input type={type ? type : 'text'} id={label} />
+            <input type={inputType ? inputType : 'text'} id={label} />
             {type === 'password' ? (
-                <img className="password-eye" width="20px" src={eye} alt="eye" />
+                <img
+                    className="password-eye"
+                    onClick={handlePasswordVisibility}
+                    width="20px"
+                    src={eye}
+                    alt="eye"
+                />
             ) : (
                 ''
             )}

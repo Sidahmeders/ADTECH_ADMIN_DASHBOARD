@@ -1,0 +1,13 @@
+.file-input-element {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 20px;
+
+    label {
+        text-transform: uppercase;
+    }
+
+    input[type='file'] {
+        font-size: 20px;
+    }
+}
