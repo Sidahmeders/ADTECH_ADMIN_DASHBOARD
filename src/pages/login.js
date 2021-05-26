@@ -27,7 +27,7 @@ function Login() {
 
     const handleLogin = async (event) => {
         event.preventDefault()
-        let userData = await Fetch.POST('admin/users/login', 'POST', userInfo)
+        let userData = await Fetch.POST('admin/users/login', userInfo)
 
         if (userData.data) {
             setAlertMessage(() => {

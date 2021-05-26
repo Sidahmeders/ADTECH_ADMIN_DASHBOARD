@@ -15,11 +15,11 @@ import { Link } from 'react-router-dom'
 
 const sideBarItems = [
     { text: 'dashboard', icon: dashBoard },
-    { text: 'user profile', icon: userProfile },
     { text: 'users list', icon: usersList },
     { text: 'add users', icon: addUser },
     { text: 'patients list', icon: patientsList },
     { text: 'manage users', icon: newUsers },
+    { text: 'admin profile', icon: userProfile },
     { text: 'notifications', icon: notification, notification: 13 },
     { text: 'logout', icon: logout }
 ]

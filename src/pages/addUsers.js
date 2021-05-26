@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import Fetch from '../utils/fetchData'
 import '../styles/addUsers.scss'
 
 const Row = (props, key) => {
@@ -14,22 +15,56 @@ const Row = (props, key) => {
     )
 }
 
+function getAge(dateString) {
+    var today = new Date()
+    var birthDate = new Date(dateString)
+    var age = today.getFullYear() - birthDate.getFullYear()
+    var m = today.getMonth() - birthDate.getMonth()
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--
+    }
+    return age > 1 ? age : 1
+}
+
+const formatUsersData = (users) => {
+    const filteredUsers = []
+
+    users.forEach((user) => {
+        let tempUser = {}
+        tempUser.name = user.first_name + ' ' + user.last_name
+        tempUser.age = getAge(user.birth_date)
+        tempUser.faculty = user.faculty
+        tempUser.role = user.role
+        tempUser.date = user.date_of_creation.split('T')[0]
+        filteredUsers.push(tempUser)
+    })
+
+    return filteredUsers
+}
+
 export default function AddUsers() {
-    const hardCodedUsers = [
-        { name: 'jhon Doe', age: 23, faculty: 'Oran', role: 'student', date: '12-06-2021' },
-        { name: 'jhon Doe', age: 23, faculty: 'Oran', role: 'student', date: '12-06-2021' },
-        { name: 'jhon Doe', age: 23, faculty: 'Oran', role: 'student', date: '12-06-2021' },
-        { name: 'jhon Doe', age: 23, faculty: 'Oran', role: 'student', date: '12-06-2021' }
-    ]
+    let [latestUsers, setLatestUsers] = useState([])
+
+    let getUsers = async () => {
+        const data = await Fetch.GET('admin/users', 12)
+        setLatestUsers(() => data.users)
+    }
+    useEffect(() => {
+        getUsers()
+    }, [])
+
+    const recentlyAddedUsers = formatUsersData(latestUsers)
 
     return (
         <div className="add-users">
-            <h1>Hello from Add Users</h1>
+            <div className="create-user">
+                <form></form>
+            </div>
 
             <div className="recent-users">
                 <h2>recently added users</h2>
                 <Row />
-                {hardCodedUsers.map((user, index) => Row(user, index))}
+                {recentlyAddedUsers.map((user, index) => Row(user, index))}
             </div>
         </div>
     )

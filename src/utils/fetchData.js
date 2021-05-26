@@ -1,11 +1,17 @@
+const url = 'http://localhost:5000'
+
 class Fetch {
-    async GET() {
-        return 'getting data....'
+    async GET(route, limit = 10) {
+        let response = await fetch(`${url}/${route}?limit=${limit}`)
+        response = await response.json()
+        response = response.data
+
+        return response
     }
 
-    async POST(url, method, body) {
-        let response = await fetch(`http://localhost:5000/${url}`, {
-            method: method,
+    async POST(route, body) {
+        let response = await fetch(`${url}/${route}`, {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
