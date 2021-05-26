@@ -1,4 +1,3 @@
-import React from 'react'
 import '../../styles/sidebar.scss'
 import SideBarElement from './SideBarElement'
 

@@ -1,21 +1,20 @@
-import React from 'react';
+import { createContext } from 'react'
 
-const Context = React.createContext();
-
+const Context = createContext()
 
 function ContextProvider(props) {
-
     const randomFunction = () => console.log('random context function')
 
     return (
-        <Context.Provider value={{
-            randomFunction
-        }}>
+        <Context.Provider
+            value={{
+                randomFunction
+            }}>
             {props.children}
         </Context.Provider>
-    );
+    )
 }
 
-const ContextConsumer = Context;
+const ContextConsumer = Context
 
 export { ContextProvider, ContextConsumer }

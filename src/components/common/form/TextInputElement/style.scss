@@ -1,0 +1,31 @@
+.text-input-element {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 20px;
+
+    label {
+        width: fit-content;
+        transform: translate(10px, 10px);
+        background: white;
+        padding: 0 10px;
+        text-transform: uppercase;
+    }
+    input {
+        outline: none;
+        padding: 5px 10px;
+        border: 2px solid #333;
+        border-radius: 3px;
+        font-size: 18px;
+        height: 30px;
+    }
+    input[type='text'] {
+        width: 400px;
+    }
+    input[type='email'] {
+        width: 600px;
+    }
+    input[type='password'] {
+        font: caption;
+        width: 500px;
+    }
+}

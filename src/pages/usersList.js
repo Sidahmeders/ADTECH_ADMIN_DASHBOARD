@@ -1,4 +1,3 @@
-import React from 'react'
 import '../styles/usersList.scss'
 
 import BarChart from '../components/charts/BarChart'

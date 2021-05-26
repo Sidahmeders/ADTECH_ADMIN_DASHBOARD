@@ -1,4 +1,3 @@
-import React from 'react'
 import '../styles/home.scss'
 
 // import BarChart from '../components/charts/BarChart'

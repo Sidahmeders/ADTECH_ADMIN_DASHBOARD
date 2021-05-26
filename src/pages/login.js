@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Fetch from '../utils/fetchData'
 import '../styles/login.scss'
