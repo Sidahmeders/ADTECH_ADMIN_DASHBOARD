@@ -1,3 +1,5 @@
+@import '../../../../styles/vars.scss';
+
 .text-input-element {
     display: flex;
     flex-direction: column;
@@ -6,6 +8,8 @@
     position: relative;
 
     label {
+        color: $label-color;
+        font-size: $label-size;
         width: fit-content;
         transform: translate(10px, 10px);
         background: white;
@@ -15,7 +19,7 @@
     input {
         outline: none;
         padding: 5px 10px;
-        border: 2px solid #333;
+        border: 2px solid $label-border-color !important;
         border-radius: 3px;
         font-size: 18px;
         height: 30px;
@@ -27,8 +31,9 @@
 
     .password-eye {
         position: absolute;
-        top: 55%;
-        right: 40px;
+        top: 36%;
+        right: 25px;
+        padding: 15px;
 
         &:hover {
             cursor: pointer;

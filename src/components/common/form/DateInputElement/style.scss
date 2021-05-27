@@ -1,23 +1,28 @@
+@import '../../../../styles/vars.scss';
+
 .date-input-element {
     display: flex;
     flex-direction: column;
     padding: 5px 20px;
 
     label {
+        color: $label-color;
+        font-size: $label-size;
+        background: white;
         transform: translate(15px, 12px);
         padding: 0 5px;
         width: fit-content;
-        background: white;
         text-transform: uppercase;
     }
 
     input[type='date'] {
+        outline: none;
         width: 200px;
         height: 35px;
         padding: 5px 20px;
         font-size: 18px;
         letter-spacing: 1px;
-        border: 2px solid gray;
+        border: 2px solid $label-border-color !important;
         border-radius: 4px;
     }
 }

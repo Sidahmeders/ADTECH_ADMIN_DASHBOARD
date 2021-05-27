@@ -1,19 +1,23 @@
+@import '../../../../styles/vars.scss';
+
 .file-input-element {
     display: flex;
     flex-direction: column;
     padding: 5px 20px;
 
     label {
+        color: $label-color;
+        font-size: $label-size;
         text-transform: uppercase;
     }
 
     .file-picker {
         display: inline-block;
-        width: 240px;
+        width: 300px;
         text-align: center;
         margin: 3px 20px;
         padding: 12px;
-        background: #096e9c;
+        background: $btn-color;
         color: aliceblue;
         border-radius: 3px;
         cursor: pointer;
@@ -22,11 +26,11 @@
     }
 
     .image-preview {
-        width: 240px;
-        height: 150px;
+        width: 300px;
+        height: 160px;
         margin: 3px 20px;
         padding: 10px;
-        border: 2px solid #096e9c;
+        border: 2px solid $label-border-color;
         border-radius: 3px;
         position: relative;
 
@@ -37,7 +41,8 @@
             height: 100%;
             top: 0;
             left: 0;
-            background: whitesmoke;
+            background: #2d2d33;
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;

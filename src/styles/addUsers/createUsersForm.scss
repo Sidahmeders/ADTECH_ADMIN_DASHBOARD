@@ -1,9 +1,39 @@
+@import '../vars.scss';
+
 .create-users-form {
-    background: white;
-    color: #222;
+    display: flex;
+    justify-content: center;
 }
 
 .create-users-form form {
     display: flex;
     flex-direction: column;
+    width: 90%;
+    padding: 20px 10px;
+    margin: 40px 0;
+    border-radius: 2px;
+
+    .row {
+        display: flex;
+        &.text {
+            margin: 10px 0;
+        }
+        &.files {
+            margin: 15px;
+            flex-wrap: wrap;
+        }
+    }
+
+    input,
+    input[type='date'] {
+        background: $primary-color-dark;
+        color: aliceblue;
+        border-color: aliceblue;
+    }
+    ::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+    }
+    label {
+        background: $primary-color-dark;
+    }
 }

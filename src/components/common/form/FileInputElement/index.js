@@ -7,7 +7,8 @@ export default function FileInputElement({ label }) {
 
     const [file, setFile] = useState('')
     const onFileChange = (event) => {
-        setFile(() => URL.createObjectURL(event.target.files[0]))
+        const imageFile = event.target.files[0]
+        setFile(() => URL.createObjectURL(imageFile))
     }
 
     return (

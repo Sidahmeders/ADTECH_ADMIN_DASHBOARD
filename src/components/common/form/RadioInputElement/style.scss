@@ -1,8 +1,12 @@
+@import '../../../../styles/vars.scss';
+
 .radio-input-element {
     width: fit-content;
     padding: 5px 20px;
 
     h3 {
+        color: $label-color;
+        font-size: $label-size;
         margin: 5px 0;
         font-weight: 300;
         text-transform: uppercase;
@@ -11,6 +15,7 @@
     .options {
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
 
         .option {
             margin: 5px;
@@ -18,7 +23,7 @@
             label {
                 display: flex;
                 padding: 6px 30px;
-                border: 2px solid rgb(212, 220, 228);
+                border: 2px solid $label-border-color;
                 border-radius: 4px;
             }
             input[type='radio'] {
@@ -26,8 +31,8 @@
             }
             input[type='radio']:checked + label {
                 color: aliceblue;
-                background: #096e9c;
-                border-color: #096e9c;
+                background: $btn-color;
+                border-color: $btn-color;
             }
         }
     }
