@@ -2,38 +2,55 @@
 
 .create-users-form {
     display: flex;
-    justify-content: center;
-}
-
-.create-users-form form {
-    display: flex;
     flex-direction: column;
-    width: 90%;
-    padding: 20px 10px;
-    margin: 40px 0;
-    border-radius: 2px;
+    align-items: center;
 
-    .row {
+    h1 {
+        width: 90%;
+        text-transform: uppercase;
+        font-weight: 100;
+        margin-top: 20px;
+    }
+
+    form {
         display: flex;
-        &.text {
-            margin: 10px 0;
-        }
-        &.files {
-            margin: 15px;
-            flex-wrap: wrap;
-        }
-    }
+        flex-direction: column;
+        width: 90%;
+        padding: 20px 10px;
+        border-radius: 2px;
 
-    input,
-    input[type='date'] {
-        background: $primary-color-dark;
-        color: aliceblue;
-        border-color: aliceblue;
-    }
-    ::-webkit-calendar-picker-indicator {
-        filter: invert(1);
-    }
-    label {
-        background: $primary-color-dark;
+        .row {
+            display: flex;
+            &.text {
+                margin: 10px 0;
+            }
+            &.files {
+                margin: 15px;
+                flex-wrap: wrap;
+            }
+        }
+
+        input,
+        input[type='date'] {
+            background: $primary-color-dark;
+            color: aliceblue;
+            border-color: aliceblue;
+        }
+        ::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
+        label {
+            background: $primary-color-dark;
+        }
+        input:-webkit-autofill {
+            box-shadow: 0 0 0 50px $primary-color-dark inset;
+            -webkit-box-shadow: 0 0 0 50px $primary-color-dark inset;
+            -webkit-text-fill-color: white;
+        }
+        input:-webkit-autofill:focus {
+            box-shadow: 0 0 0 50px $primary-color-dark inset;
+            -webkit-box-shadow: 0 0 0 50px $primary-color-dark inset;
+            -webkit-text-fill-color: white;
+        }
     }
 }

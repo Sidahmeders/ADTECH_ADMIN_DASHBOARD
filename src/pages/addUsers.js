@@ -9,7 +9,9 @@ export default function AddUsers() {
 
     let getUsers = async () => {
         const data = await Fetch.GET('admin/users', 12)
-        setLatestUsers(() => data.users)
+        if (data) {
+            setLatestUsers(() => data.users)
+        }
     }
     useEffect(() => {
         getUsers()

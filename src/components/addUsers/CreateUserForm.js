@@ -4,10 +4,12 @@ import TextInputElement from '../common/form/TextInputElement/index'
 import FileInputElement from '../common/form/FileInputElement/index'
 import DateInputElement from '../common/form/DateInputElement/index'
 import RadioInputElement from '../common/form/RadioInputElement/index'
+import ButtonElement from '../common/form/button/index'
 
 export default function CreateUserForm() {
     return (
         <div className="create-users-form">
+            <h1>create new users</h1>
             <form>
                 <div className="row text">
                     <TextInputElement label="first_name" />
@@ -35,6 +37,7 @@ export default function CreateUserForm() {
                 />
                 <TextInputElement label="email" type="email" />
                 <TextInputElement label="password" type="password" />
+                <ButtonElement label="submit user" />
             </form>
         </div>
     )
