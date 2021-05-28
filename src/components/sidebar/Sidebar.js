@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import '../../styles/sidebar.scss'
 import SideBarElement from './SideBarElement'
 
@@ -10,7 +11,6 @@ import patientsList from '../../asset/icons/dashboard/people.svg'
 import newUsers from '../../asset/icons/dashboard/new-users.svg'
 import notification from '../../asset/icons/dashboard/bell-solid.svg'
 import logout from '../../asset/icons/dashboard/logout.svg'
-import { Link } from 'react-router-dom'
 
 const sideBarItems = [
     { text: 'dashboard', icon: dashBoard },

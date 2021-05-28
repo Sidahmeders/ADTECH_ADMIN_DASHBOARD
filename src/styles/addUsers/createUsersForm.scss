@@ -15,7 +15,6 @@
     form {
         display: flex;
         flex-direction: column;
-        width: 90%;
         padding: 20px 10px;
         border-radius: 2px;
 
@@ -27,6 +26,9 @@
             &.files {
                 margin: 15px;
                 flex-wrap: wrap;
+            }
+            .text-input-element {
+                width: 100%;
             }
         }
 
@@ -52,5 +54,8 @@
             -webkit-box-shadow: 0 0 0 50px $primary-color-dark inset;
             -webkit-text-fill-color: white;
         }
+    }
+    button {
+        width: 100% !important;
     }
 }

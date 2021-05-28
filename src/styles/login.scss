@@ -103,28 +103,16 @@
     }
 }
 
-.form_button {
-    font-size: 20px;
-    width: 100%;
-    height: 36px;
-    margin-top: 16px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border: none;
-    border-radius: 2px;
-    color: white;
-    background: $primary-color;
-    &:focus {
-        outline: none;
-    }
-    &:active {
-        outline: none;
-    }
+button {
+    width: $form-width !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
 }
 
-.form_other {
+.forgot-password {
     width: 100%;
-    margin-top: 8px;
+    margin-top: -25px;
     display: flex;
     justify-content: flex-end;
     a {
@@ -134,19 +122,20 @@
 }
 
 .alert {
-    padding: 10px 0;
+    padding: 10px;
+    box-sizing: border-box;
     border-radius: 4px;
     margin-bottom: 20px;
     min-width: $form-width;
     text-align: center;
 
     &.success {
-        border: 2px solid rgba(0, 128, 0, 0.4);
-        background: rgba(0, 128, 0, 0.15);
-        color: green;
+        border: 2px solid rgba(0, 128, 0, 0.5);
+        background: rgba(0, 128, 0, 0.2);
+        color: rgb(0, 197, 0);
     }
     &.error {
-        border: 2px solid rgba(255, 0, 0, 0.4);
+        border: 2px solid rgba(255, 0, 0, 0.5);
         background: rgba(255, 0, 0, 0.15);
         color: red;
     }

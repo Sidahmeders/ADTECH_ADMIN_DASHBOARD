@@ -5,6 +5,7 @@
     height: 100vh;
     position: fixed;
     background: $secondary-color;
+    z-index: 99;
 
     .logo {
         display: block;

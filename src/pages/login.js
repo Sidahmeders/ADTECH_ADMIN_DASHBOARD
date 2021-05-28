@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import Fetch from '../utils/fetchData'
 import '../styles/login.scss'
 
+import ButtonElement from '../components/common/form/button/index'
+
 function Login() {
     const [userInfo, setUserInfo] = useState({
         email: '',
@@ -29,28 +31,30 @@ function Login() {
         event.preventDefault()
         let userData = await Fetch.POST('admin/users/login', userInfo)
 
-        if (userData.data) {
-            setAlertMessage(() => {
-                return {
-                    error: '',
-                    success: 'you are logged In welcome.'
-                }
-            })
-            setTimeout(() => {
-                window.location.href = '/home'
-            }, 1500)
-        } else if (userData.error) {
-            setAlertMessage(() => {
-                return {
-                    success: '',
-                    error: userData.error.message
-                }
-            })
+        if (userData) {
+            if (userData.data) {
+                setAlertMessage(() => {
+                    return {
+                        error: '',
+                        success: 'you are logged In welcome.'
+                    }
+                })
+                setTimeout(() => {
+                    window.location.href = '/home'
+                }, 1500)
+            } else if (userData.error) {
+                setAlertMessage(() => {
+                    return {
+                        success: '',
+                        error: userData.error.message
+                    }
+                })
+            }
         } else {
             setAlertMessage(() => {
                 return {
                     success: '',
-                    error: 'something unexpected happend, check the dev console'
+                    error: 'something unexpected happend, please check the dev console'
                 }
             })
         }
@@ -96,11 +100,9 @@ function Login() {
                         />
                         <label>password</label>
                     </div>
-                    <button onClick={handleLogin} className="form_button">
-                        Log In
-                    </button>
+                    <ButtonElement clickHandler={handleLogin} label="login" />
                 </form>
-                <div className="form_other">
+                <div className="forgot-password">
                     <Link to="/forgot-passowrd">forgot password?</Link>
                 </div>
             </div>

@@ -4,11 +4,10 @@
     display: flex;
     padding: 40px 20px;
     justify-content: center;
-    width: 85%;
 
     button {
-        width: 70%;
-        height: 40px;
+        width: 75%;
+        height: 45px;
         font-size: 22px;
         padding: 5px 20px;
         border: none;
@@ -16,9 +15,10 @@
         color: white;
         text-transform: uppercase;
         border-radius: 3px;
+        transition: $ease;
 
         &:hover {
-            cursor: pointer;
+            background: $btn-color-hover;
         }
     }
 }

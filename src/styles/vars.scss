@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
-$primary-color: #096e9c;
+$primary-color: #0e9ddf;
 $primary-color-dark: #262727;
 $focus-color: rgba(115, 191, 241, 0.3);
 $faint-color: rgba(195, 219, 235, 0.5);
 $secondary-color: #222;
-$form-width: 24rem;
+$form-width: 26rem;
 $label-color: #53ad7c;
 $label-size: 19px;
 $label-border-color: rgb(128, 128, 128);
 $btn-color: #076591;
+$btn-color-hover: #0e89c2;
+$ease: ease 0.5s;
 
 body {
     background: $primary-color-dark;
