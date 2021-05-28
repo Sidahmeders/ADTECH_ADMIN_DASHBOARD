@@ -9,7 +9,7 @@ export default function SideBarElement({ clickHandler, id, text, icon, notificat
             id={id}
             className={`sidebar-element ${route}-btn`}>
             <img width="24px" src={icon} alt={text} />
-            {notification ? <span>{notification}</span> : ''}
+            {notification ? <span className="circle">{notification}</span> : ''}
             <div className="text">{text}</div>
         </Link>
     )

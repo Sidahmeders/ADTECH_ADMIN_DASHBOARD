@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Fetch from '../../utils/fetchData'
 import '../../styles/addUsers/createUsersForm.scss'
 
 import TextInputElement from '../common/form/TextInputElement/index'
@@ -24,21 +25,39 @@ export default function CreateUserForm() {
     })
 
     const hadnleUserInfoChange = (event) => {
-        console.log(event.target.value)
+        const files = event.target.files
         const entry = event.target.name
-        const value = event.target.value
-        setUserInfo(() => {
-            return {
-                ...userInfo,
-                [entry]: value
-            }
-        })
+
+        if (files) {
+            const file = files[0]
+            setUserInfo(() => {
+                return {
+                    ...userInfo,
+                    [entry]: file
+                }
+            })
+        } else {
+            const value = event.target.value
+            setUserInfo(() => {
+                return {
+                    ...userInfo,
+                    [entry]: value
+                }
+            })
+        }
     }
 
-    const submitNewUser = (event) => {
+    const submitNewUser = async (event) => {
         event.preventDefault()
         console.log(userInfo)
+        const response = await Fetch.POST('admin/users', userInfo, {
+            'Content-Type': 'application/json'
+        })
+
+        console.log(response)
     }
+
+    console.log(userInfo.profile_image, userInfo.identity_card)
 
     return (
         <div className="create-users-form">
@@ -86,16 +105,8 @@ export default function CreateUserForm() {
                     />
                 </div>
                 <div className="row files">
-                    <FileInputElement
-                        label="profile_image"
-                        value={userInfo.profile_image}
-                        changeHandler={hadnleUserInfoChange}
-                    />
-                    <FileInputElement
-                        label="identity_card"
-                        value={userInfo.identity_card}
-                        changeHandler={hadnleUserInfoChange}
-                    />
+                    <FileInputElement label="profile_image" changeHandler={hadnleUserInfoChange} />
+                    <FileInputElement label="identity_card" changeHandler={hadnleUserInfoChange} />
                 </div>
                 <RadioInputElement
                     label="specialty"

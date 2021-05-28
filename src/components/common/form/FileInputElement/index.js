@@ -1,14 +1,14 @@
 import { useRef, useState } from 'react'
 import './style.scss'
 
-export default function FileInputElement({ label, value, changeHandler = () => {} }) {
+export default function FileInputElement({ label, changeHandler = () => {} }) {
     const FileInputRef = useRef()
     const focusInput = () => FileInputRef.current.click()
 
     const [file, setFile] = useState('')
     const onFileChange = (event) => {
-        const imageFile = event.target.files[0]
-        setFile(() => URL.createObjectURL(imageFile))
+        const previewImage = URL.createObjectURL(event.target.files[0])
+        setFile(() => previewImage)
     }
 
     return (
@@ -20,7 +20,6 @@ export default function FileInputElement({ label, value, changeHandler = () => {
                 id={label}
                 name={label}
                 ref={FileInputRef}
-                value={value}
                 onChange={(event) => {
                     onFileChange(event)
                     changeHandler(event)
