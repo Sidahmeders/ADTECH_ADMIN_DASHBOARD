@@ -11,7 +11,6 @@ export default function RadioInputElement({ label, options, changeHandler }) {
                             type="radio"
                             name={label}
                             id={option}
-                            name={label}
                             value={option}
                             onChange={changeHandler}
                         />
