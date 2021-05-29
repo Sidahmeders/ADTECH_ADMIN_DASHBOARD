@@ -13,12 +13,28 @@ class Fetch {
         }
     }
 
-    async POST(route, body, header) {
+    async POSTJson(route, body) {
         try {
             let response = await fetch(`${url}/${route}`, {
                 method: 'POST',
-                headers: header,
-                body: JSON.stringify(body)
+                body: JSON.stringify(body),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            response = await response.json()
+
+            return response
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+
+    async POSTMultiForm(route, body) {
+        try {
+            let response = await fetch(`${url}/${route}`, {
+                method: 'POST',
+                body: body
             })
             response = await response.json()
 

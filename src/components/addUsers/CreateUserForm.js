@@ -50,9 +50,13 @@ export default function CreateUserForm() {
     const submitNewUser = async (event) => {
         event.preventDefault()
         console.log(userInfo)
-        const response = await Fetch.POST('admin/users', userInfo, {
-            'Content-Type': 'application/json'
-        })
+
+        const body = new FormData()
+        for (let file in userInfo) {
+            body.append(file, userInfo[file])
+        }
+
+        const response = await Fetch.POSTMultiForm('admin/users', body)
 
         console.log(response)
     }
@@ -89,7 +93,7 @@ export default function CreateUserForm() {
                 </div>
                 <RadioInputElement
                     label="gender"
-                    options={['male', 'female', 'gay', 'lasbian', 'transgander', 'bisexual']}
+                    options={['male', 'female']}
                     changeHandler={hadnleUserInfoChange}
                 />
                 <div className="row text">

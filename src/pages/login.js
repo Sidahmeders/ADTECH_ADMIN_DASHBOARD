@@ -29,9 +29,7 @@ function Login() {
 
     const handleLogin = async (event) => {
         event.preventDefault()
-        let userData = await Fetch.POST('admin/users/login', userInfo, {
-            'Content-Type': 'application/json'
-        })
+        let userData = await Fetch.POSTJson('admin/users/login', userInfo, 'json')
 
         if (userData) {
             if (userData.data) {
