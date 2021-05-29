@@ -28,7 +28,7 @@ export default function FileInputElement({ label, changeHandler }) {
             <p className="file-picker" onClick={focusInput}>
                 click to select an image
             </p>
-            <img className="image-preview" src={file} alt="file-picker" />
+            <img id="image-preview" src={file} alt="file-picker" />
         </div>
     )
 }

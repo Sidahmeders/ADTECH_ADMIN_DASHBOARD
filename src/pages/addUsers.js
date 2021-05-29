@@ -17,8 +17,14 @@ export default function AddUsers() {
             setLatestUsers(() => data.users)
         }
     }
-    useEffect(() => {
+
+    const resetInputFields = () => {
         document.getElementById('create-user-form').reset()
+        document.querySelectorAll('#image-preview').forEach((item) => (item.src = ''))
+    }
+
+    useEffect(() => {
+        resetInputFields()
         getUsers()
     }, [alertMessage.success])
 
