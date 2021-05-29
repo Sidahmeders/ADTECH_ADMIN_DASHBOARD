@@ -26,7 +26,7 @@ function Login() {
         error: ''
     })
 
-    const handleOnChange = (event) => {
+    const handleUserInfoChange = (event) => {
         const value = event.target.value
         const entry = event.target.name
         setUserInfo(() => {
@@ -94,14 +94,14 @@ function Login() {
                         name="email"
                         type="text"
                         value={userInfo.email}
-                        changeHandler={handleOnChange}
+                        changeHandler={handleUserInfoChange}
                     />
                     <LoginInputElement
                         label="password"
                         name="password"
                         type="password"
                         value={userInfo.password}
-                        changeHandler={handleOnChange}
+                        changeHandler={handleUserInfoChange}
                     />
                     <ButtonElement clickHandler={handleLogin} label="login" />
                 </form>

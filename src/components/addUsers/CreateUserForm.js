@@ -7,9 +7,10 @@ import FileInputElement from '../common/form/FileInputElement/index'
 import DateInputElement from '../common/form/DateInputElement/index'
 import RadioInputElement from '../common/form/RadioInputElement/index'
 import ButtonElement from '../common/form/button/index'
+import { Success, Error } from '../common/alerts/index'
 
-export default function CreateUserForm() {
-    const [userInfo, setUserInfo] = useState({
+export default function CreateUserForm({ alertMessage, setAlertMessage }) {
+    const initialUserInfo = {
         first_name: '',
         last_name: '',
         birth_date: '',
@@ -24,7 +25,8 @@ export default function CreateUserForm() {
         specialty: '',
         email: '',
         password: ''
-    })
+    }
+    const [userInfo, setUserInfo] = useState({ ...initialUserInfo })
 
     const hadnleUserInfoChange = (event) => {
         const files = event.target.files
@@ -51,24 +53,46 @@ export default function CreateUserForm() {
 
     const submitNewUser = async (event) => {
         event.preventDefault()
-        console.log(userInfo)
-
         const body = new FormData()
         for (let file in userInfo) {
             body.append(file, userInfo[file])
         }
 
         const response = await Fetch.POSTMultiForm('admin/users', body)
-
-        console.log(response)
+        if (response) {
+            const { data, error } = response
+            if (data) {
+                setAlertMessage(() => {
+                    return {
+                        error: '',
+                        success: 'new user has beed added successfully..'
+                    }
+                })
+                setUserInfo(() => {
+                    return { ...initialUserInfo }
+                })
+            } else if (error) {
+                setAlertMessage(() => {
+                    return {
+                        success: '',
+                        error: error.message
+                    }
+                })
+            }
+        } else {
+            setAlertMessage(() => {
+                return {
+                    success: '',
+                    error: 'something unexpected happend, please check the dev console'
+                }
+            })
+        }
     }
-
-    console.log(userInfo)
 
     return (
         <div className="create-users-form">
             <h1>create new users</h1>
-            <form>
+            <form id="create-user-form">
                 <div className="row text">
                     <TextInputElement
                         label="first_name"
@@ -141,6 +165,15 @@ export default function CreateUserForm() {
                     value={userInfo.password}
                     changeHandler={hadnleUserInfoChange}
                 />
+                <div className="alert">
+                    {alertMessage.success ? (
+                        <Success message={alertMessage.success} />
+                    ) : alertMessage.error ? (
+                        <Error message={alertMessage.error} />
+                    ) : (
+                        ''
+                    )}
+                </div>
                 <ButtonElement clickHandler={submitNewUser} label="submit user" />
             </form>
         </div>

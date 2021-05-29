@@ -54,8 +54,13 @@
             -webkit-box-shadow: 0 0 0 50px $primary-color-dark inset;
             -webkit-text-fill-color: white;
         }
-    }
-    button {
-        width: 100% !important;
+        .alert {
+            width: 100%;
+            padding: 10px;
+            align-self: center;
+        }
+        button {
+            width: 100% !important;
+        }
     }
 }

@@ -105,14 +105,13 @@
 
 button {
     width: $form-width !important;
-    padding: 0 !important;
-    margin: 0 !important;
     display: block !important;
+    margin-top: 10px;
 }
 
 .forgot-password {
     width: 100%;
-    margin-top: -25px;
+    margin-top: 10px;
     display: flex;
     justify-content: flex-end;
     a {

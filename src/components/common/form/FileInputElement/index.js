@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import './style.scss'
 
-export default function FileInputElement({ label, changeHandler = () => {} }) {
+export default function FileInputElement({ label, changeHandler }) {
     const FileInputRef = useRef()
     const focusInput = () => FileInputRef.current.click()
 
@@ -28,7 +28,7 @@ export default function FileInputElement({ label, changeHandler = () => {} }) {
             <p className="file-picker" onClick={focusInput}>
                 click to select an image
             </p>
-            <img width="300px" className="image-preview" src={file} alt="file-picker" />
+            <img className="image-preview" src={file} alt="file-picker" />
         </div>
     )
 }
