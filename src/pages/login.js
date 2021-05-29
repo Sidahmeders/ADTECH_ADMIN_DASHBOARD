@@ -3,7 +3,17 @@ import { Link } from 'react-router-dom'
 import Fetch from '../utils/fetchData'
 import '../styles/login.scss'
 
+import { Success, Error } from '../components/common/alerts/index'
 import ButtonElement from '../components/common/form/button/index'
+
+const LoginInputElement = ({ label, type, name, value, changeHandler }) => {
+    return (
+        <div className="form_inputs">
+            <input name={name} type={type} value={value} onChange={changeHandler} required />
+            <label>{label}</label>
+        </div>
+    )
+}
 
 function Login() {
     const [userInfo, setUserInfo] = useState({
@@ -71,35 +81,28 @@ function Login() {
                 </div>
 
                 {alertMessage.success ? (
-                    <div className="alert success">{alertMessage.success}</div>
+                    <Success message={alertMessage.success} />
                 ) : alertMessage.error ? (
-                    <div className="alert error">{alertMessage.error}</div>
+                    <Error message={alertMessage.error} />
                 ) : (
                     ''
                 )}
 
                 <form autoComplete="off" className="form_items">
-                    <div className="form_inputs">
-                        <input
-                            onChange={handleOnChange}
-                            name="email"
-                            type="text"
-                            value={userInfo.email}
-                            required
-                        />
-                        <label>username or email</label>
-                    </div>
-                    <div className="form_inputs">
-                        <input
-                            onChange={handleOnChange}
-                            name="password"
-                            type="password"
-                            value={userInfo.password}
-                            autoComplete="fasle"
-                            required
-                        />
-                        <label>password</label>
-                    </div>
+                    <LoginInputElement
+                        label="username or email"
+                        name="email"
+                        type="text"
+                        value={userInfo.email}
+                        changeHandler={handleOnChange}
+                    />
+                    <LoginInputElement
+                        label="password"
+                        name="password"
+                        type="password"
+                        value={userInfo.password}
+                        changeHandler={handleOnChange}
+                    />
                     <ButtonElement clickHandler={handleLogin} label="login" />
                 </form>
                 <div className="forgot-password">

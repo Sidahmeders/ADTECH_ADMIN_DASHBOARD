@@ -93,7 +93,6 @@ export default function CreateUserForm() {
                         changeHandler={hadnleUserInfoChange}
                     />
                 </div>
-
                 <RadioInputElement
                     label="gender"
                     options={['male', 'female']}
