@@ -19,6 +19,8 @@ export default function CreateUserForm() {
         country: '',
         profile_image: '',
         identity_card: '',
+        year_of_study: '',
+        grade: '',
         specialty: '',
         email: '',
         password: ''
@@ -61,7 +63,7 @@ export default function CreateUserForm() {
         console.log(response)
     }
 
-    console.log(userInfo.profile_image, userInfo.identity_card)
+    console.log(userInfo)
 
     return (
         <div className="create-users-form">
@@ -91,6 +93,7 @@ export default function CreateUserForm() {
                         changeHandler={hadnleUserInfoChange}
                     />
                 </div>
+
                 <RadioInputElement
                     label="gender"
                     options={['male', 'female']}
@@ -113,8 +116,18 @@ export default function CreateUserForm() {
                     <FileInputElement label="identity_card" changeHandler={hadnleUserInfoChange} />
                 </div>
                 <RadioInputElement
+                    label="year_of_study"
+                    options={['1-st', '2-nd', '3-rd', '4-th', '5-th', '6-th']}
+                    changeHandler={hadnleUserInfoChange}
+                />
+                <RadioInputElement
                     label="specialty"
                     options={['OFD', 'OCE', 'PARO', 'PROTHESE', 'PCB']}
+                    changeHandler={hadnleUserInfoChange}
+                />
+                <RadioInputElement
+                    label="grade"
+                    options={['student', 'chakam', 'assistant', 'professor', 'haja-kbira']}
                     changeHandler={hadnleUserInfoChange}
                 />
                 <TextInputElement
