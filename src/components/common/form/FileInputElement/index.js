@@ -15,9 +15,8 @@ export default function FileInputElement({ label, changeHandler }) {
         <div className="file-input-element">
             <label htmlFor={label}>{label}</label>
             <input
-                type="file"
                 style={{ display: 'none' }}
-                id={label}
+                type="file"
                 name={label}
                 ref={FileInputRef}
                 onChange={(event) => {

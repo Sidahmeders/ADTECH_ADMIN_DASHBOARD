@@ -45,14 +45,16 @@
             background: $primary-color-dark;
         }
         input:-webkit-autofill {
-            box-shadow: 0 0 0 50px $primary-color-dark inset;
-            -webkit-box-shadow: 0 0 0 50px $primary-color-dark inset;
+            box-shadow: 0 0 0 50px $secondary-color inset;
+            -webkit-box-shadow: 0 0 0 50px $secondary-color inset;
             -webkit-text-fill-color: white;
+            caret-color: white;
         }
         input:-webkit-autofill:focus {
-            box-shadow: 0 0 0 50px $primary-color-dark inset;
-            -webkit-box-shadow: 0 0 0 50px $primary-color-dark inset;
+            box-shadow: 0 0 0 50px $secondary-color inset;
+            -webkit-box-shadow: 0 0 0 50px $secondary-color inset;
             -webkit-text-fill-color: white;
+            caret-color: white;
         }
         .alert {
             width: 100%;

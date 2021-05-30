@@ -9,8 +9,9 @@ export default function RadioInputElement({ label, options, changeHandler }) {
                     <div className="option" key={index}>
                         <input
                             type="radio"
-                            name={label}
                             id={option}
+                            className="radio-element"
+                            name={label}
                             value={option}
                             onChange={changeHandler}
                         />

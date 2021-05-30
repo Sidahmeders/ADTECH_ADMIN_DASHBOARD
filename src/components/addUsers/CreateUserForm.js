@@ -59,6 +59,7 @@ export default function CreateUserForm({ alertMessage, setAlertMessage }) {
         }
 
         const response = await Fetch.POSTMultiForm('admin/users', body)
+
         if (response) {
             const { data, error } = response
             if (data) {
@@ -71,6 +72,14 @@ export default function CreateUserForm({ alertMessage, setAlertMessage }) {
                 setUserInfo(() => {
                     return { ...initialUserInfo }
                 })
+                setTimeout(() => {
+                    setAlertMessage(() => {
+                        return {
+                            success: '',
+                            error: ''
+                        }
+                    })
+                }, 3000)
             } else if (error) {
                 setAlertMessage(() => {
                     return {
@@ -92,7 +101,7 @@ export default function CreateUserForm({ alertMessage, setAlertMessage }) {
     return (
         <div className="create-users-form">
             <h1>create new users</h1>
-            <form id="create-user-form">
+            <form id="form-x">
                 <div className="row text">
                     <TextInputElement
                         label="first_name"
@@ -134,15 +143,15 @@ export default function CreateUserForm({ alertMessage, setAlertMessage }) {
                         changeHandler={hadnleUserInfoChange}
                     />
                 </div>
-                <div className="row files">
-                    <FileInputElement label="profile_image" changeHandler={hadnleUserInfoChange} />
-                    <FileInputElement label="identity_card" changeHandler={hadnleUserInfoChange} />
-                </div>
                 <RadioInputElement
                     label="year_of_study"
                     options={['1-st', '2-nd', '3-rd', '4-th', '5-th', '6-th']}
                     changeHandler={hadnleUserInfoChange}
                 />
+                <div className="row files">
+                    <FileInputElement label="profile_image" changeHandler={hadnleUserInfoChange} />
+                    <FileInputElement label="identity_card" changeHandler={hadnleUserInfoChange} />
+                </div>
                 <RadioInputElement
                     label="specialty"
                     options={['OFD', 'OCE', 'PARO', 'PROTHESE', 'PCB']}
@@ -151,6 +160,11 @@ export default function CreateUserForm({ alertMessage, setAlertMessage }) {
                 <RadioInputElement
                     label="grade"
                     options={['student', 'chakam', 'assistant', 'professor', 'haja-kbira']}
+                    changeHandler={hadnleUserInfoChange}
+                />
+                <RadioInputElement
+                    label="role"
+                    options={['_unAuthorized', '_student', '_assistant', '_professor']}
                     changeHandler={hadnleUserInfoChange}
                 />
                 <TextInputElement

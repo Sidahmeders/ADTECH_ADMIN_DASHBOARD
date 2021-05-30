@@ -18,14 +18,17 @@ export default function AddUsers() {
         }
     }
 
-    const resetInputFields = () => {
-        document.getElementById('create-user-form').reset()
+    const clearInputFields = () => {
+        document.getElementById('form-x').reset()
+        document.querySelectorAll('.radio-element').forEach((item) => (item.checked = false))
         document.querySelectorAll('#image-preview').forEach((item) => (item.src = ''))
     }
 
     useEffect(() => {
-        resetInputFields()
+        clearInputFields()
         getUsers()
+
+        return () => alertMessage.success
     }, [alertMessage.success])
 
     return (

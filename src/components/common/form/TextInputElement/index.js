@@ -22,10 +22,10 @@ export default function TextInputElement({ label, value, type, changeHandler }) 
             <label htmlFor={label}>{label}</label>
             <input
                 type={inputType ? inputType : 'text'}
-                id={label}
                 name={label}
                 value={value}
                 onChange={changeHandler}
+                spellCheck="false"
             />
             {type === 'password' ? (
                 <img
