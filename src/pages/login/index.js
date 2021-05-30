@@ -1,21 +1,14 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Fetch from '../utils/fetchData'
-import '../styles/login.scss'
+import Fetch from '../../utils/fetchData'
+import '../../styles/login.scss'
 
-import { Success, Error } from '../components/common/alerts/index'
-import ButtonElement from '../components/common/form/button/index'
+import HandleAlertStatus from '../../components/common/alert/index'
+import ButtonElement from '../../components/common/form/button/index'
+import { handleSuccessfulLogin, handleFailedLogin } from './loginStatus'
+import LoginInputElement from './InputElement'
 
-const LoginInputElement = ({ label, type, name, value, changeHandler }) => {
-    return (
-        <div className="form_inputs">
-            <input name={name} type={type} value={value} onChange={changeHandler} required />
-            <label>{label}</label>
-        </div>
-    )
-}
-
-function Login() {
+export default function LoginPage() {
     const [userInfo, setUserInfo] = useState({
         email: '',
         password: ''
@@ -42,37 +35,25 @@ function Login() {
         let userData = await Fetch.POSTJson('admin/users/login', userInfo, 'json')
 
         if (userData) {
-            if (userData.data) {
-                setAlertMessage(() => {
-                    return {
-                        error: '',
-                        success: 'you are logged In welcome.'
-                    }
-                })
-                setTimeout(() => {
-                    window.location.href = '/home'
-                }, 1500)
-            } else if (userData.error) {
+            const { data, error } = userData
+            if (data) {
+                handleSuccessfulLogin(setAlertMessage)
+            } else if (error) {
+                handleFailedLogin(setAlertMessage, error)
+            } else {
                 setAlertMessage(() => {
                     return {
                         success: '',
-                        error: userData.error.message
+                        error: 'something unexpected happend, please check the dev console'
                     }
                 })
             }
-        } else {
-            setAlertMessage(() => {
-                return {
-                    success: '',
-                    error: 'something unexpected happend, please check the dev console'
-                }
-            })
         }
     }
 
     return (
         <div className="login-container">
-            <div className="form">
+            <div className="login-form">
                 <div className="form_logo">
                     AD<span>T</span>ECH
                 </div>
@@ -80,13 +61,7 @@ function Login() {
                     ADM<span>I</span>N
                 </div>
 
-                {alertMessage.success ? (
-                    <Success message={alertMessage.success} />
-                ) : alertMessage.error ? (
-                    <Error message={alertMessage.error} />
-                ) : (
-                    ''
-                )}
+                <HandleAlertStatus message={alertMessage} />
 
                 <form autoComplete="off" className="form_items">
                     <LoginInputElement
@@ -112,5 +87,3 @@ function Login() {
         </div>
     )
 }
-
-export default Login

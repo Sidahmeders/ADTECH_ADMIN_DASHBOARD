@@ -2,8 +2,8 @@ import Layout from './components/Layout/Layout'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 // import { ContextConsumer } from './context'
 
-import Login from './pages/login'
-import Home from './pages/home'
+import LoginPage from './pages/login/index'
+import HomePage from './pages/home'
 import DashBoard from './pages/dashboard'
 import UsersList from './pages/usersList'
 import AddUsers from './pages/addUsers'
@@ -17,9 +17,9 @@ function App() {
         <>
             <Router>
                 <Switch>
-                    <Route exact path="/" component={Login} />
+                    <Route exact path="/" component={LoginPage} />
                     <Layout>
-                        <Route exact path="/home" component={Home} />
+                        <Route exact path="/home" component={HomePage} />
                         <Route path="/home/dashboard" component={DashBoard} />
                         <Route path="/home/users-list" component={UsersList} />
                         <Route path="/home/add-users" component={AddUsers} />

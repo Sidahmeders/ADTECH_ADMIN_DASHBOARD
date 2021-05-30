@@ -7,7 +7,7 @@ import FileInputElement from '../common/form/FileInputElement/index'
 import DateInputElement from '../common/form/DateInputElement/index'
 import RadioInputElement from '../common/form/RadioInputElement/index'
 import ButtonElement from '../common/form/button/index'
-import { Success, Error } from '../common/alerts/index'
+import HandleAlertStatus from '../common/alert/index'
 
 export default function CreateUserForm({ alertMessage, setAlertMessage }) {
     const initialUserInfo = {
@@ -180,13 +180,7 @@ export default function CreateUserForm({ alertMessage, setAlertMessage }) {
                     changeHandler={hadnleUserInfoChange}
                 />
                 <div className="alert">
-                    {alertMessage.success ? (
-                        <Success message={alertMessage.success} />
-                    ) : alertMessage.error ? (
-                        <Error message={alertMessage.error} />
-                    ) : (
-                        ''
-                    )}
+                    <HandleAlertStatus message={alertMessage} />
                 </div>
                 <ButtonElement clickHandler={submitNewUser} label="submit user" />
             </form>
