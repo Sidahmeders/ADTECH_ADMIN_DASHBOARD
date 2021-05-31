@@ -9,23 +9,65 @@ import RadioInputElement from '../common/form/RadioInputElement/index'
 import ButtonElement from '../common/form/button/index'
 import HandleAlertStatus from '../common/alert/index'
 
-export default function CreateUserForm({ alertMessage, setAlertMessage }) {
-    const initialUserInfo = {
-        first_name: '',
-        last_name: '',
-        birth_date: '',
-        phone_number: '',
-        gender: '',
-        faculty: '',
-        country: '',
-        profile_image: '',
-        identity_card: '',
-        year_of_study: '',
-        grade: '',
-        specialty: '',
-        email: '',
-        password: ''
+const initialUserInfo = {
+    first_name: '',
+    last_name: '',
+    birth_date: '',
+    phone_number: '',
+    gender: '',
+    faculty: '',
+    country: '',
+    profile_image: '',
+    identity_card: '',
+    year_of_study: '',
+    grade: '',
+    specialty: '',
+    email: '',
+    password: ''
+}
+
+const handleSuccessfulSubmition = (setAlertMessage, setUserInfo) => {
+    setAlertMessage(() => {
+        return {
+            error: '',
+            success: 'new user has beed added successfully..'
+        }
+    })
+    setUserInfo(() => {
+        return { ...initialUserInfo }
+    })
+    setTimeout(() => {
+        setAlertMessage(() => {
+            return {
+                success: '',
+                error: ''
+            }
+        })
+    }, 3000)
+}
+
+const handleFailedSubmition = (setAlertMessage, error) => {
+    const errorMessage = error
+        ? error.message
+        : 'something unexpected happend, please check the dev console'
+    setAlertMessage(() => {
+        return {
+            success: '',
+            error: errorMessage
+        }
+    })
+}
+
+const createFormData = (userInfo) => {
+    const formData = new FormData()
+    for (let file in userInfo) {
+        formData.append(file, userInfo[file])
     }
+
+    return formData
+}
+
+export default function CreateUserForm({ alertMessage, setAlertMessage }) {
     const [userInfo, setUserInfo] = useState({ ...initialUserInfo })
 
     const hadnleUserInfoChange = (event) => {
@@ -53,48 +95,19 @@ export default function CreateUserForm({ alertMessage, setAlertMessage }) {
 
     const submitNewUser = async (event) => {
         event.preventDefault()
-        const body = new FormData()
-        for (let file in userInfo) {
-            body.append(file, userInfo[file])
-        }
 
-        const response = await Fetch.POSTMultiForm('admin/users', body)
+        const formData = createFormData(userInfo)
+        const response = await Fetch.POSTMultiForm('admin/users', formData)
 
         if (response) {
             const { data, error } = response
             if (data) {
-                setAlertMessage(() => {
-                    return {
-                        error: '',
-                        success: 'new user has beed added successfully..'
-                    }
-                })
-                setUserInfo(() => {
-                    return { ...initialUserInfo }
-                })
-                setTimeout(() => {
-                    setAlertMessage(() => {
-                        return {
-                            success: '',
-                            error: ''
-                        }
-                    })
-                }, 3000)
+                handleSuccessfulSubmition(setAlertMessage, setUserInfo)
             } else if (error) {
-                setAlertMessage(() => {
-                    return {
-                        success: '',
-                        error: error.message
-                    }
-                })
+                handleFailedSubmition(setAlertMessage, error)
             }
         } else {
-            setAlertMessage(() => {
-                return {
-                    success: '',
-                    error: 'something unexpected happend, please check the dev console'
-                }
-            })
+            handleFailedSubmition(setAlertMessage)
         }
     }
 
