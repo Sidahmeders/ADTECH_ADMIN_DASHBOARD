@@ -63,7 +63,6 @@ const createFormData = (userInfo) => {
     for (let file in userInfo) {
         formData.append(file, userInfo[file])
     }
-
     return formData
 }
 

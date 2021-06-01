@@ -18,7 +18,6 @@ class Fetch {
             let response = await fetch(`${url}/${route}`, {
                 method: 'POST',
                 body: JSON.stringify(body),
-                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -35,7 +34,8 @@ class Fetch {
         try {
             let response = await fetch(`${url}/${route}`, {
                 method: 'POST',
-                body: body
+                body: body,
+                credentials: 'include'
             })
             response = await response.json()
 
