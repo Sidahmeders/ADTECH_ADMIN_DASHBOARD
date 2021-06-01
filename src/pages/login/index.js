@@ -35,10 +35,9 @@ export default function LoginPage() {
         let userData = await Fetch.POSTJson('admin/users/login', userInfo, 'json')
 
         if (userData) {
-            const { token, data, error } = userData
+            const { data, error } = userData
             if (data) {
                 handleSuccessfulLogin(setAlertMessage)
-                console.log(token) // you should not rerturn the token from the server FIXME:
             } else if (error) {
                 handleFailedLogin(setAlertMessage, error)
             } else {

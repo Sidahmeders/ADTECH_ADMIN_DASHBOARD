@@ -3,7 +3,9 @@ const url = 'http://localhost:5000'
 class Fetch {
     async GET(route, limit = 10) {
         try {
-            let response = await fetch(`${url}/${route}?limit=${limit}`)
+            let response = await fetch(`${url}/${route}?limit=${limit}`, {
+                credentials: 'include'
+            })
             response = await response.json()
             response = response.data
 
