@@ -18,6 +18,7 @@ class Fetch {
             let response = await fetch(`${url}/${route}`, {
                 method: 'POST',
                 body: JSON.stringify(body),
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json'
                 }
