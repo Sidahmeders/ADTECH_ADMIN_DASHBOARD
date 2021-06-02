@@ -155,30 +155,23 @@ export default function CreateUserForm({ alertMessage, setAlertMessage }) {
                         changeHandler={hadnleUserInfoChange}
                     />
                 </div>
-                <RadioInputElement
-                    label="year_of_study"
-                    options={['1-st', '2-nd', '3-rd', '4-th', '5-th', '6-th']}
-                    changeHandler={hadnleUserInfoChange}
-                />
                 <div className="row files">
                     <FileInputElement label="profile_image" changeHandler={hadnleUserInfoChange} />
                     <FileInputElement label="identity_card" changeHandler={hadnleUserInfoChange} />
                 </div>
                 <RadioInputElement
-                    label="specialty"
-                    options={['OFD', 'OCE', 'PARO', 'PROTHESE', 'PCB']}
+                    label="grade"
+                    options={['student', 'resident', 'assistant', 'master_assistant', 'professor']}
                     changeHandler={hadnleUserInfoChange}
                 />
                 <RadioInputElement
-                    label="grade"
-                    options={[
-                        'student',
-                        'resident',
-                        'assistant',
-                        'professor',
-                        'genarlist',
-                        'specialist'
-                    ]}
+                    label="year_of_study"
+                    options={['1-st', '2-nd', '3-rd', '4-th', '5-th', '6-th']}
+                    changeHandler={hadnleUserInfoChange}
+                />
+                <RadioInputElement
+                    label="specialty"
+                    options={['ODF', 'OCE', 'PARO', 'PROTHESE', 'PCB']}
                     changeHandler={hadnleUserInfoChange}
                 />
                 <RadioInputElement
