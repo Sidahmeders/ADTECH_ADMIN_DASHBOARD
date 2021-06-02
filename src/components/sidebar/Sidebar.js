@@ -16,7 +16,7 @@ const sideBarItems = [
     { text: 'dashboard', icon: dashBoard },
     { text: 'users list', icon: usersList },
     { text: 'add users', icon: addUser },
-    { text: 'patients list', icon: patientsList },
+    { text: 'patients', icon: patientsList },
     { text: 'manage users', icon: newUsers },
     { text: 'admin profile', icon: userProfile },
     { text: 'notifications', icon: notification, notification: 13 },

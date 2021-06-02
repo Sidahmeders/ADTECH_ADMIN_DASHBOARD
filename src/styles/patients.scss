@@ -1,4 +1,4 @@
-.patients-list {
+.patients {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,15 +6,14 @@
     padding: 50px 0;
 }
 
-.patients-list .pie-charts {
+.patients .pie-charts {
     display: flex;
 }
 
-.patients-list .chart {
-    width: 30vw;
-    background: white;
-    padding: 20px;
-    padding-right: 50px;
+.patients .chart {
+    width: 25vw;
     margin: 20px;
+    background: white;
     border-radius: 15px;
+    padding: 20px;
 }

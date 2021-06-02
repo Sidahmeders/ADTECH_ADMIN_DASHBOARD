@@ -7,7 +7,8 @@ import HomePage from './pages/home'
 import DashBoard from './pages/dashboard'
 import UsersList from './pages/usersList'
 import AddUsers from './pages/addUsers'
-import PatientsList from './pages/patientsList'
+import Patients from './pages/patients'
+import ManageUsers from './pages/manageUsers'
 
 function App() {
     // const context = useContext(ContextConsumer)
@@ -23,7 +24,8 @@ function App() {
                         <Route path="/home/dashboard" component={DashBoard} />
                         <Route path="/home/users-list" component={UsersList} />
                         <Route path="/home/add-users" component={AddUsers} />
-                        <Route path="/home/patients-list" component={PatientsList} />
+                        <Route path="/home/patients" component={Patients} />
+                        <Route path="/home/manage-users" component={ManageUsers} />
                     </Layout>
                 </Switch>
             </Router>

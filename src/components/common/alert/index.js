@@ -8,7 +8,7 @@ function Error({ message }) {
     return <div className="alert error">{message}</div>
 }
 
-export default function HandleAlertStatus({ message }) {
+export default function AlertStatusBar({ message }) {
     return message.success ? (
         <Success message={message.success} />
     ) : message.error ? (

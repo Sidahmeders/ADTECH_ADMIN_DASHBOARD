@@ -7,7 +7,7 @@ import FileInputElement from '../common/form/FileInputElement/index'
 import DateInputElement from '../common/form/DateInputElement/index'
 import RadioInputElement from '../common/form/RadioInputElement/index'
 import ButtonElement from '../common/form/button/index'
-import HandleAlertStatus from '../common/alert/index'
+import AlertStatusBar from '../common/alert/index'
 
 const initialUserInfo = {
     first_name: '',
@@ -171,7 +171,14 @@ export default function CreateUserForm({ alertMessage, setAlertMessage }) {
                 />
                 <RadioInputElement
                     label="grade"
-                    options={['student', 'chakam', 'assistant', 'professor', 'haja-kbira']}
+                    options={[
+                        'student',
+                        'resident',
+                        'assistant',
+                        'professor',
+                        'genarlist',
+                        'specialist'
+                    ]}
                     changeHandler={hadnleUserInfoChange}
                 />
                 <RadioInputElement
@@ -192,7 +199,7 @@ export default function CreateUserForm({ alertMessage, setAlertMessage }) {
                     changeHandler={hadnleUserInfoChange}
                 />
                 <div className="alert">
-                    <HandleAlertStatus message={alertMessage} />
+                    <AlertStatusBar message={alertMessage} />
                 </div>
                 <ButtonElement clickHandler={submitNewUser} label="submit user" />
             </form>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Fetch from '../../utils/fetchData'
 import '../../styles/login.scss'
 
-import HandleAlertStatus from '../../components/common/alert/index'
+import AlertStatusBar from '../../components/common/alert/index'
 import ButtonElement from '../../components/common/form/button/index'
 import { handleSuccessfulLogin, handleFailedLogin } from './loginStatus'
 import LoginInputElement from './InputElement'
@@ -61,7 +61,7 @@ export default function LoginPage() {
                     ADM<span>I</span>N
                 </div>
 
-                <HandleAlertStatus message={alertMessage} />
+                <AlertStatusBar message={alertMessage} />
 
                 <form autoComplete="off" className="form_items">
                     <LoginInputElement

@@ -1,36 +1,53 @@
-const common = {
+export const common = {
     patients: {
-        totalPatients: 90,
-        Januray: 12,
-        Febuary: 12,
-        March: 12,
-        April: 12,
-        May: 12,
-        June: 12,
-        July: 12,
-        August: 12,
-        Septemebr: 12
+        total: 163,
+        specialty: {
+            ODF: {
+                total: 29
+            },
+            OCE: {
+                total: 34
+            },
+            PCB: {
+                total: 21
+            },
+            PARO: {
+                total: 36
+            },
+            PROTH: {
+                total: 43
+            }
+        }
+        // Januray: 9,
+        // Febuary: 11,
+        // March: 14,
+        // April: 6,
+        // May: 7,
+        // June: 4,
+        // July: 8,
+        // August: 15,
+        // Septemebr: 8
     },
     sex: {
-        male: 22,
-        female: 31
+        male: 65,
+        female: 98
     },
-    age: {
+    ages: {
         noveau_ne: {
             range: '0-2',
             total: 9
         },
         enfant: {
             range: '2-13',
-            total: 15
+            total: 29
         },
         adolescence: {
             range: '13-18',
-            total: 20
+            total: 44
         },
         adult: {
             range: '18-50',
-            total: 38
+            total: 53
         },
         vieux: {
             range: '50-99+',
@@ -38,19 +55,19 @@ const common = {
         }
     },
     hygiene_buccaux_dentaires: {
-        bone: 21,
-        moyenne: 16,
-        mauvaise: 33
+        bone: 45,
+        moyenne: 76,
+        mauvaise: 42
     },
     motif_de_consultation: {
-        fonctionnel: 25,
-        esthetitque: 11,
-        douler: 17,
-        autre: 13
+        fonctionnel: 52,
+        esthetitque: 25,
+        douler: 37,
+        autre: 49
     }
 }
 
-const prothese = {
+export const prothese = {
     calssification_de_limda: {
         mandibule: {
             class1: 8,
@@ -74,7 +91,7 @@ const prothese = {
     }
 }
 
-const OCE = {
+export const OCE = {
     calssification_de_black: {
         class1: 12,
         class2: 10,
@@ -132,7 +149,7 @@ const OCE = {
     }
 }
 
-const ODF = {
+export const ODF = {
     dignostic_postive: {
         class_squelitique: {
             class1: 12,
