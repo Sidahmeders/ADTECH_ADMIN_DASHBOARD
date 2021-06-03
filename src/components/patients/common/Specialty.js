@@ -1,6 +1,6 @@
-import PieChart from '../charts/PieChart'
-import Title from '../charts/addons/Title'
-import Percentage from '../charts/addons/Percentage'
+import PieChart from '../../charts/PieChart'
+import Title from '../../charts/addons/Title'
+import Percentage from '../../charts/addons/Percentage'
 
 const getSpecialtyData = (data) => {
     const labels = []

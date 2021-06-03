@@ -1,13 +1,11 @@
 import '../styles/patients.scss'
 
-import Specialties from '../components/patients/Specialty'
-import Sex from '../components/patients/Sex'
-import Age from '../components/patients/Age'
-import HygieneBuccal from '../components/patients/HygieneBuccal'
-
+import Specialties from '../components/patients/common/Specialty'
+import Sex from '../components/patients/common/Sex'
+import Age from '../components/patients/common/Age'
+import HygieneBuccal from '../components/patients/common/HygieneBuccal'
+import MotifDeConsultation from '../components/patients/common/MotifDeConsultation'
 import { common } from '../data/dummyData'
-import MotifDeConsultation from '../components/patients/MotifDeConsultation'
-
 const { patients, sex, ages, hygiene_buccaux_dentaires, motif_de_consultation } = common
 
 export default function PatientsList() {

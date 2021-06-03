@@ -1,6 +1,6 @@
-import DoughChart from '../charts/DoughChart'
-import Title from '../charts/addons/Title'
-import Percentage from '../charts/addons/Percentage'
+import DoughChart from '../../charts/DoughChart'
+import Title from '../../charts/addons/Title'
+import Percentage from '../../charts/addons/Percentage'
 
 export default function Sex({ sex }) {
     const labels = ['male', 'female']

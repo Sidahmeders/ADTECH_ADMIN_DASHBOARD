@@ -1,6 +1,6 @@
-import DoughChart from '../charts/DoughChart'
-import Title from '../charts/addons/Title'
-import Percentage from '../charts/addons/Percentage'
+import DoughChart from '../../charts/DoughChart'
+import Title from '../../charts/addons/Title'
+import Percentage from '../../charts/addons/Percentage'
 
 const getMotifDeConsultaionData = (data) => {
     const labels = []

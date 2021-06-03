@@ -1,6 +1,6 @@
-import PolarAreaChart from '../charts/PolarAreaChart'
-import Title from '../charts/addons/Title'
-import Percentage from '../charts/addons/Percentage'
+import PolarAreaChart from '../../charts/PolarAreaChart'
+import Title from '../../charts/addons/Title'
+import Percentage from '../../charts/addons/Percentage'
 
 const getAgeData = (chartData) => {
     const labels = []

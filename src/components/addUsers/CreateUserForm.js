@@ -164,16 +164,30 @@ export default function CreateUserForm({ alertMessage, setAlertMessage }) {
                     options={['student', 'resident', 'assistant', 'master_assistant', 'professor']}
                     changeHandler={hadnleUserInfoChange}
                 />
-                <RadioInputElement
-                    label="year_of_study"
-                    options={['1-st', '2-nd', '3-rd', '4-th', '5-th', '6-th']}
-                    changeHandler={hadnleUserInfoChange}
-                />
-                <RadioInputElement
-                    label="specialty"
-                    options={['ODF', 'OCE', 'PARO', 'PROTHESE', 'PCB']}
-                    changeHandler={hadnleUserInfoChange}
-                />
+                {userInfo.grade === 'student' ? (
+                    <RadioInputElement
+                        label="year_of_study"
+                        options={['1-st', '2-nd', '3-rd', '4-th', '5-th', '6-th']}
+                        changeHandler={hadnleUserInfoChange}
+                    />
+                ) : userInfo.grade === 'resident' ? (
+                    <RadioInputElement
+                        label="year_of_study"
+                        options={['1-st', '2-nd', '3-rd', '4-th']}
+                        changeHandler={hadnleUserInfoChange}
+                    />
+                ) : (
+                    ''
+                )}
+                {userInfo.grade !== 'student' ? (
+                    <RadioInputElement
+                        label="specialty"
+                        options={['ODF', 'OCE', 'PARO', 'PROTHESE', 'PCB']}
+                        changeHandler={hadnleUserInfoChange}
+                    />
+                ) : (
+                    ''
+                )}
                 <RadioInputElement
                     label="role"
                     options={['_unAuthorized', '_student', '_assistant', '_professor']}
