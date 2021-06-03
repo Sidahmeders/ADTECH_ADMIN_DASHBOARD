@@ -1,5 +1,6 @@
 import DoughChart from '../charts/DoughChart'
-import Title from './Title'
+import Title from '../charts/addons/Title'
+import Percentage from '../charts/addons/Percentage'
 
 const getMotifDeConsultaionData = (data) => {
     const labels = []
@@ -20,12 +21,13 @@ const getMotifDeConsultaionData = (data) => {
 
 export default function MotifDeConsultation({ motifDeConsultation }) {
     const { labels, chartData, total } = getMotifDeConsultaionData(motifDeConsultation)
+    const colors = ['blue', 'orange', 'green', 'gray']
 
     const motifDeConsultationData = {
         labels: [...labels],
         datasets: [
             {
-                backgroundColor: ['blue', 'orange', 'green', 'gray'],
+                backgroundColor: colors,
                 data: [...chartData]
             }
         ]
@@ -34,6 +36,7 @@ export default function MotifDeConsultation({ motifDeConsultation }) {
     return (
         <div>
             <Title label="total records" total={total} />
+            <Percentage labels={labels} data={chartData} colors={colors} />
             <DoughChart chartData={motifDeConsultationData} />
         </div>
     )

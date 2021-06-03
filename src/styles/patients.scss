@@ -4,6 +4,7 @@
     align-items: center;
     flex-wrap: wrap;
     padding: 50px 0;
+    background: white;
 }
 
 .patients .pie-charts {
@@ -11,9 +12,11 @@
 }
 
 .patients .chart {
-    width: 25vw;
+    width: fit-content;
     margin: 20px;
     background: white;
     border-radius: 15px;
     padding: 20px;
+    padding-right: 100px;
+    border: 2px solid rgb(230, 230, 230);
 }

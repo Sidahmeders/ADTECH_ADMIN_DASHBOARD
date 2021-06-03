@@ -1,16 +1,17 @@
 import PieChart from '../charts/PieChart'
-import Title from './Title'
+import Title from '../charts/addons/Title'
+import Percentage from '../charts/addons/Percentage'
 
 const getSpecialtyData = (data) => {
     const labels = []
-    const totals = []
+    const chartData = []
     for (let entry in data) {
         labels.push(entry)
-        totals.push(data[entry].total)
+        chartData.push(data[entry].total)
     }
     return {
         labels,
-        totals
+        chartData
     }
 }
 
@@ -18,15 +19,15 @@ export default function Specialties({ patients }) {
     const total = patients.total
     const specialties = patients.specialty
 
-    const labels = getSpecialtyData(specialties).labels
-    const data = getSpecialtyData(specialties).totals
+    const { labels, chartData } = getSpecialtyData(specialties)
+    const colors = ['skyblue', 'blue', 'red', 'green', 'orange']
 
     const specialtyData = {
         labels: [...labels],
         datasets: [
             {
-                backgroundColor: ['skyblue', 'blue', 'red', 'green', 'orange'],
-                data: [...data]
+                backgroundColor: colors,
+                data: [...chartData]
             }
         ]
     }
@@ -34,6 +35,7 @@ export default function Specialties({ patients }) {
     return (
         <div>
             <Title label="total records" total={total} />
+            <Percentage labels={labels} data={chartData} colors={colors} />
             <PieChart chartData={specialtyData} />
         </div>
     )

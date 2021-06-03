@@ -1,5 +1,6 @@
 import PieChart from '../charts/PieChart'
-import Title from './Title'
+import Title from '../charts/addons/Title'
+import Percentage from '../charts/addons/Percentage'
 
 const getHygineBuccalData = (data) => {
     const labels = []
@@ -20,12 +21,13 @@ const getHygineBuccalData = (data) => {
 
 export default function HygieneBuccal({ hygieneBuccal }) {
     const { labels, chartData, total } = getHygineBuccalData(hygieneBuccal)
+    const colors = ['blue', 'orange', 'red']
 
     const hygieneBuccalData = {
         labels: [...labels],
         datasets: [
             {
-                backgroundColor: ['blue', 'orange', 'green'],
+                backgroundColor: colors,
                 data: [...chartData]
             }
         ]
@@ -34,6 +36,7 @@ export default function HygieneBuccal({ hygieneBuccal }) {
     return (
         <div>
             <Title label="total records" total={total} />
+            <Percentage labels={labels} data={chartData} colors={colors} />
             <PieChart chartData={hygieneBuccalData} />
         </div>
     )
