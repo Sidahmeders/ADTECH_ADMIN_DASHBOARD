@@ -2,7 +2,7 @@ import DoughChart from '../../charts/DoughChart'
 import Title from '../../charts/addons/Title'
 import Percentage from '../../charts/addons/Percentage'
 
-const getMotifDeConsultaionData = (data) => {
+const getMotifConsultaionData = (data) => {
     const labels = []
     const chartData = []
     const colors = []
@@ -22,8 +22,8 @@ const getMotifDeConsultaionData = (data) => {
     }
 }
 
-export default function MotifDeConsultation({ motifDeConsultation }) {
-    const { labels, chartData, colors, total } = getMotifDeConsultaionData(motifDeConsultation)
+export default function MotifDeConsultation({ motifConsultation }) {
+    const { labels, chartData, colors, total } = getMotifConsultaionData(motifConsultation)
 
     const motifDeConsultationData = {
         labels: [...labels],

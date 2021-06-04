@@ -4,10 +4,10 @@ import '../styles/patients.scss'
 import Specialties from '../components/patients/common/Specialty'
 import Sex from '../components/patients/common/Sex'
 import Age from '../components/patients/common/Age'
-import HygieneBuccal from '../components/patients/common/HygieneBuccal'
-import MotifDeConsultation from '../components/patients/common/MotifDeConsultation'
+import HygieneBuccal from '../components/patients/common/HygieneBuccaul'
+import MotifDeConsultation from '../components/patients/common/MotifConsultation'
 import { common, getAllPatients } from '../data/commonData'
-const { hygiene_buccaux_dentaires, motif_de_consultation } = common
+const { hygienBuccaul, motif_consultation } = common
 
 export default function PatientsList() {
     const [state, setState] = useState(false)
@@ -31,8 +31,8 @@ export default function PatientsList() {
             ) : (
                 ''
             )}
-            <HygieneBuccal hygieneBuccal={hygiene_buccaux_dentaires} />
-            <MotifDeConsultation motifDeConsultation={motif_de_consultation} />
+            <HygieneBuccal hygienBuccaul={hygienBuccaul} />
+            <MotifDeConsultation motifConsultation={motif_consultation} />
         </div>
     )
 }

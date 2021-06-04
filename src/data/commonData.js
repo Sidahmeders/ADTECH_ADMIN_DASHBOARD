@@ -8,12 +8,12 @@ export async function getAllPatients(setState) {
 }
 
 export const common = {
-    hygiene_buccaux_dentaires: {
+    hygienBuccaul: {
         bone: 45,
         moyenne: 76,
         mauvaise: 42
     },
-    motif_de_consultation: {
+    motif_consultation: {
         fonctionnel: 52,
         esthetitque: 25,
         douler: 37,
