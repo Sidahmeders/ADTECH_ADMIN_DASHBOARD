@@ -2,26 +2,28 @@ import PolarAreaChart from '../../charts/PolarAreaChart'
 import Title from '../../charts/addons/Title'
 import Percentage from '../../charts/addons/Percentage'
 
-const getAgeData = (chartData) => {
+const getAgeData = (data) => {
     const labels = []
-    const data = []
+    const chartData = []
+    const colors = []
     let total = 0
-    for (let entry in chartData) {
-        labels.push(`${chartData[entry].range} ${entry}`)
-        data.push(chartData[entry].total)
-        total += chartData[entry].total
+    for (let entry in data) {
+        labels.push(`${data[entry].range} ${entry}`)
+        chartData.push(data[entry].total)
+        colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}`)
+        total += data[entry].total
     }
 
     return {
         labels,
-        data,
+        chartData,
+        colors,
         total
     }
 }
 
 export default function Age({ ages }) {
-    const { labels, data, total } = getAgeData(ages)
-    const colors = ['#B21F00', '#C9DE00', '#2FDE00', '#00A6B4', '#6800B4']
+    const { labels, chartData, colors, total } = getAgeData(ages)
     const percentAgeLabels = labels.map((item) => item.split(' ')[0])
 
     const ageData = {
@@ -29,7 +31,7 @@ export default function Age({ ages }) {
         datasets: [
             {
                 backgroundColor: colors,
-                data: [...data]
+                data: [...chartData]
             }
         ]
     }
@@ -37,7 +39,7 @@ export default function Age({ ages }) {
     return (
         <div>
             <Title label="total records" total={total} />
-            <Percentage labels={percentAgeLabels} data={data} colors={colors} />
+            <Percentage labels={percentAgeLabels} data={chartData} colors={colors} />
             <PolarAreaChart chartData={ageData} />
         </div>
     )

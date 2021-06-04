@@ -5,23 +5,25 @@ import Percentage from '../../charts/addons/Percentage'
 const getMotifDeConsultaionData = (data) => {
     const labels = []
     const chartData = []
+    const colors = []
     let total = 0
     for (let entry in data) {
         labels.push(entry)
         chartData.push(data[entry])
+        colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}`)
         total += data[entry]
     }
 
     return {
         labels,
         chartData,
+        colors,
         total
     }
 }
 
 export default function MotifDeConsultation({ motifDeConsultation }) {
-    const { labels, chartData, total } = getMotifDeConsultaionData(motifDeConsultation)
-    const colors = ['blue', 'orange', 'green', 'gray']
+    const { labels, chartData, colors, total } = getMotifDeConsultaionData(motifDeConsultation)
 
     const motifDeConsultationData = {
         labels: [...labels],

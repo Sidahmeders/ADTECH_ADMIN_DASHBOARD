@@ -1,7 +1,7 @@
 const url = 'http://localhost:5000'
 
 class Fetch {
-    async GET(route, limit = 10) {
+    async GET(route, limit) {
         try {
             let response = await fetch(`${url}/${route}?limit=${limit}`, {
                 credentials: 'include'

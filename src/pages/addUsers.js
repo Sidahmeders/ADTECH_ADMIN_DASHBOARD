@@ -10,8 +10,8 @@ export default function AddUsers() {
         error: ''
     })
 
-    let [latestUsers, setLatestUsers] = useState([])
-    let getUsers = async () => {
+    const [latestUsers, setLatestUsers] = useState([])
+    const getUsers = async () => {
         const data = await Fetch.GET('admin/users', 12)
         if (data) {
             setLatestUsers(() => data.users)
@@ -27,7 +27,6 @@ export default function AddUsers() {
     useEffect(() => {
         clearInputFields()
         getUsers()
-
         return () => alertMessage.success
     }, [alertMessage.success])
 

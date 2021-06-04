@@ -50,7 +50,7 @@ export const common = {
             total: 53
         },
         vieux: {
-            range: '50-99+',
+            range: '50+',
             total: 28
         }
     },

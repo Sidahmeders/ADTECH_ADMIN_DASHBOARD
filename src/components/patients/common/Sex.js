@@ -3,9 +3,14 @@ import Title from '../../charts/addons/Title'
 import Percentage from '../../charts/addons/Percentage'
 
 export default function Sex({ sex }) {
-    const labels = ['male', 'female']
-    const chartData = [sex.male, sex.female]
-    const colors = ['blue', 'pink']
+    const labels = []
+    const chartData = []
+    const colors = []
+    for (let entry in sex) {
+        labels.push(entry)
+        chartData.push(sex[entry])
+        colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}`)
+    }
 
     const sexData = {
         labels: labels,
