@@ -112,7 +112,6 @@ export default function CreateUserForm({ alertMessage, setAlertMessage }) {
 
     return (
         <div className="create-users-form">
-            <h2>create new users</h2>
             <form id="form-x">
                 <div className="row text">
                     <TextInputElement

@@ -43,7 +43,6 @@ export default function RecentUsers({ users }) {
     return (
         <div>
             <div className="recent-users">
-                <h2>recently added users</h2>
                 <RecentUser
                     user={{
                         name: 'name',

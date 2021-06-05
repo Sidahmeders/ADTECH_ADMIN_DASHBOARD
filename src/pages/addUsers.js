@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Fetch from '../utils/fetchData'
 
+import TextHeader from '../components/common/TextHeader/index'
 import RecentUsers from '../components/addUsers/RecentUsers'
 import CreateUserForm from '../components/addUsers/CreateUserForm'
 
@@ -32,7 +33,9 @@ export default function AddUsers() {
 
     return (
         <div className="add-users">
+            <TextHeader text="create new users" />
             <CreateUserForm alertMessage={alertMessage} setAlertMessage={setAlertMessage} />
+            <TextHeader text="recently added users" />
             <RecentUsers users={latestUsers} />
         </div>
     )

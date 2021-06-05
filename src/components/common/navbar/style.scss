@@ -1,11 +1,30 @@
 .navbar {
     display: flex;
-    background: whitesmoke;
+    border-bottom: 2px solid rgb(216, 216, 216);
 
-    .nav-element {
-        color: grayscale($color: #000000);
-        padding: 5px 20px;
+    &-element {
         border-bottom: 2px solid rgb(216, 216, 216);
-        margin-bottom: 5px;
+        transform: translateY(2px);
+        transition: 0.2s ease;
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            transition: 0.2s ease;
+        }
+        &.checked {
+            background: rgb(228, 238, 245);
+            border-bottom: 3px solid blue;
+
+            a:hover {
+                color: blue;
+            }
+        }
+        &:hover {
+            background: rgb(228, 238, 245);
+        }
     }
 }
