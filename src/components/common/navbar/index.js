@@ -23,6 +23,7 @@ export default function NavBar({ navLinks }) {
         <div className="navbar">
             {navLinks.map((item, index) => (
                 <NavbarElement
+                    key={index}
                     clickHandler={markChecked}
                     text={item.text}
                     href={item.href}

@@ -13,14 +13,14 @@ import notification from '../../../asset/icons/dashboard/bell-solid.svg'
 import logout from '../../../asset/icons/dashboard/logout.svg'
 
 const sideBarItems = [
-    { text: 'dashboard', icon: dashBoard },
-    { text: 'users list', icon: usersList },
-    { text: 'add users', icon: addUser },
-    { text: 'patients', icon: patientsList },
-    { text: 'manage users', icon: newUsers },
-    { text: 'admin profile', icon: userProfile },
-    { text: 'notifications', icon: notification, notification: 13 },
-    { text: 'logout', icon: logout }
+    { text: 'dashboard', route: 'dashboard', icon: dashBoard },
+    { text: 'users list', route: 'users-list', icon: usersList },
+    { text: 'add users', route: 'add-users', icon: addUser },
+    { text: 'patients', route: 'patients', icon: patientsList },
+    { text: 'manage users', route: 'manage-users/validate-users', icon: newUsers },
+    { text: 'admin profile', route: 'admin-profile', icon: userProfile },
+    { text: 'notifications', route: 'notifications', icon: notification, notification: 13 },
+    { text: 'logout', route: 'logout', icon: logout }
 ]
 
 function SideBar() {
@@ -46,6 +46,7 @@ function SideBar() {
                     key={index}
                     text={item.text}
                     icon={item.icon}
+                    route={item.route}
                     notification={item.notification}
                     clickHandler={handleRouteChange}
                 />

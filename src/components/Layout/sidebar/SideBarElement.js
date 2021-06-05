@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 
-export default function SideBarElement({ clickHandler, id, text, icon, notification }) {
-    const route = text.split(' ').join('-')
+export default function SideBarElement({ clickHandler, id, route, text, icon, notification }) {
     return (
         <Link
             to={`/home/${route}`}
