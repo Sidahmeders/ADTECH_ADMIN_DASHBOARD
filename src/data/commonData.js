@@ -13,7 +13,7 @@ export const common = {
         moyenne: 76,
         mauvaise: 42
     },
-    motif_consultation: {
+    motifConsultation: {
         fonctionnel: 52,
         esthetitque: 25,
         douler: 37,

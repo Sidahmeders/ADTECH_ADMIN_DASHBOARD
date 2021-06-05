@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom'
-import '../../styles/sidebar.scss'
+import '../../../styles/sidebar.scss'
 import SideBarElement from './SideBarElement'
 
 // dashboard icons
-import dashBoard from '../../asset/icons/dashboard/dashboard.svg'
-import userProfile from '../../asset/icons/dashboard/user-solid.svg'
-import usersList from '../../asset/icons/dashboard/users-solid.svg'
-import addUser from '../../asset/icons/dashboard/user-plus.svg'
-import patientsList from '../../asset/icons/dashboard/people.svg'
-import newUsers from '../../asset/icons/dashboard/new-users.svg'
-import notification from '../../asset/icons/dashboard/bell-solid.svg'
-import logout from '../../asset/icons/dashboard/logout.svg'
+import dashBoard from '../../../asset/icons/dashboard/dashboard.svg'
+import userProfile from '../../../asset/icons/dashboard/user-solid.svg'
+import usersList from '../../../asset/icons/dashboard/users-solid.svg'
+import addUser from '../../../asset/icons/dashboard/user-plus.svg'
+import patientsList from '../../../asset/icons/dashboard/people.svg'
+import newUsers from '../../../asset/icons/dashboard/new-users.svg'
+import notification from '../../../asset/icons/dashboard/bell-solid.svg'
+import logout from '../../../asset/icons/dashboard/logout.svg'
 
 const sideBarItems = [
     { text: 'dashboard', icon: dashBoard },

@@ -7,7 +7,7 @@ import Age from '../components/patients/common/Age'
 import HygieneBuccal from '../components/patients/common/HygieneBuccaul'
 import MotifDeConsultation from '../components/patients/common/MotifConsultation'
 import { common, getAllPatients } from '../data/commonData'
-const { hygienBuccaul, motif_consultation } = common
+const { hygienBuccaul, motifConsultation } = common
 
 export default function PatientsList() {
     const [state, setState] = useState(false)
@@ -32,7 +32,7 @@ export default function PatientsList() {
                 ''
             )}
             <HygieneBuccal hygienBuccaul={hygienBuccaul} />
-            <MotifDeConsultation motifConsultation={motif_consultation} />
+            <MotifDeConsultation motifConsultation={motifConsultation} />
         </div>
     )
 }
