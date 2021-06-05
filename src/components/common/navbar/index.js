@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom'
 import './style.scss'
 
-export default function NavBar() {
+const NavbarElement = ({ clickHandler, href, text, isChecked }) => {
+    return (
+        <div onClick={clickHandler} className={`navbar-element ${isChecked ? 'checked' : ''}`}>
+            <Link to={`/home/${href}`}>{text}</Link>
+        </div>
+    )
+}
+
+export default function NavBar({ navLinks }) {
     const markChecked = (event) => {
         const navbarEl = document.querySelectorAll('.navbar-element')
         navbarEl.forEach((item) => {
@@ -13,15 +21,14 @@ export default function NavBar() {
 
     return (
         <div className="navbar">
-            <div onClick={markChecked} className="navbar-element checked">
-                <Link to="/home/manage-users/1">validate users</Link>
-            </div>
-            <div onClick={markChecked} className="navbar-element">
-                <Link to="/home/manage-users/2">search & update users</Link>
-            </div>
-            <div onClick={markChecked} className="navbar-element">
-                <Link to="/home/manage-users/3">additinal settings</Link>
-            </div>
+            {navLinks.map((item, index) => (
+                <NavbarElement
+                    clickHandler={markChecked}
+                    text={item.text}
+                    href={item.href}
+                    isChecked={index === 0 ? true : false}
+                />
+            ))}
         </div>
     )
 }

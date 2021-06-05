@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import '../styles/patients.scss'
 
+import TextHeader from '../components/common/TextHeader'
+import NavBar from '../components/common/navbar/index'
 import Specialties from '../components/patients/common/Specialty'
 import Sex from '../components/patients/common/Sex'
 import Age from '../components/patients/common/Age'
@@ -22,17 +24,48 @@ export default function PatientsList() {
 
     return (
         <div className="patients">
-            {state ? (
-                <>
-                    <Specialties specialties={specialty} />
-                    <Sex sex={sex} />
-                    <Age ages={ages} />
-                </>
-            ) : (
-                ''
-            )}
-            <HygieneBuccal hygienBuccaul={hygienBuccaul} />
-            <MotifDeConsultation motifConsultation={motifConsultation} />
+            <TextHeader text="patients statistics" />
+            <div className="charts-container">
+                <NavBar
+                    navLinks={[
+                        {
+                            text: 'common',
+                            href: 'patients/common'
+                        },
+                        {
+                            text: 'odf',
+                            href: 'patients/odf'
+                        },
+                        {
+                            text: 'oce',
+                            href: 'patients/oce'
+                        },
+                        {
+                            text: 'paro',
+                            href: 'patients/paro'
+                        },
+                        {
+                            text: 'proth',
+                            href: 'patients/proth'
+                        },
+                        {
+                            text: 'pcb',
+                            href: 'patients/pcb'
+                        }
+                    ]}
+                />
+                {state ? (
+                    <>
+                        <Specialties specialties={specialty} />
+                        <Sex sex={sex} />
+                        <Age ages={ages} />
+                    </>
+                ) : (
+                    ''
+                )}
+                <HygieneBuccal hygienBuccaul={hygienBuccaul} />
+                <MotifDeConsultation motifConsultation={motifConsultation} />
+            </div>
         </div>
     )
 }
