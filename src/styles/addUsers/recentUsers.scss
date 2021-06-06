@@ -1,20 +1,14 @@
 .recent-users {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 20px;
 
     .row {
-        width: 90%;
         padding: 5px 20px;
         display: flex;
-        &:last-child {
-            padding-bottom: 30px;
-        }
+
         .column {
-            padding: 5px 0;
-            border-bottom: 1px solid rgb(212, 212, 212);
             flex: 1;
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
         }
     }
 }

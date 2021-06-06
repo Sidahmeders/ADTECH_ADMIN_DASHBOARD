@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import '../styles/addUsers/index.scss'
 import Fetch from '../utils/fetchData'
 
 import TextHeader from '../components/common/TextHeader/index'

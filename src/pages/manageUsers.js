@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import '../styles/manageUsers.scss'
+import { Switch, Route } from 'react-router-dom'
+import '../styles/manageUsers/index.scss'
 
 import TextHeader from '../components/common/TextHeader/index'
 import NavBar from '../components/common/navbar/index'
