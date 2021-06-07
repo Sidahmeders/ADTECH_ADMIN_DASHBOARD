@@ -15,6 +15,20 @@ class Fetch {
         }
     }
 
+    async Search(route, query) {
+        try {
+            let response = await fetch(`${url}/${route}?query=${query}`, {
+                credentials: 'include'
+            })
+            response = await response.json()
+            response = response.data
+
+            return response
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+
     async POSTJson(route, body) {
         try {
             let response = await fetch(`${url}/${route}`, {

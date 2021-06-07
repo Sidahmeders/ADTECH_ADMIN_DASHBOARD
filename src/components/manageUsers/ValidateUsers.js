@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import '../../styles/manageUsers/validateUsers.scss'
 import Fetch from '../../utils/fetchData'
 
@@ -69,17 +69,26 @@ const UnAuthUserRow = ({ user }) => {
 }
 
 export default function ValidateUsers() {
+    const _isMounted = useRef(true)
+
     const [unAuthorizedUsers, setUnAuthorizedUsers] = useState([])
 
     const fetchUnAuthorizedUsers = async () => {
         const data = await Fetch.GET('admin/users/unAuthorized', 15)
-        if (data) {
-            setUnAuthorizedUsers(() => data.users)
+        // Check always mounted component
+        if (_isMounted.current) {
+            // continue treatment of AJAX response...
+            if (data) {
+                setUnAuthorizedUsers(() => data.users)
+            }
         }
     }
 
     useEffect(() => {
         fetchUnAuthorizedUsers()
+        return () => {
+            _isMounted.current = false
+        }
     }, [])
 
     console.log(unAuthorizedUsers)

@@ -17,7 +17,7 @@ const sideBarItems = [
     { text: 'users list', route: 'users-list', icon: usersList },
     { text: 'add users', route: 'add-users', icon: addUser },
     { text: 'patients', route: 'patients', icon: patientsList },
-    { text: 'manage users', route: 'manage-users/validate-users', icon: newUsers },
+    { text: 'manage users', route: 'manage-users', icon: newUsers },
     { text: 'admin profile', route: 'admin-profile', icon: userProfile },
     { text: 'notifications', route: 'notifications', icon: notification, notification: 13 },
     { text: 'logout', route: 'logout', icon: logout }
