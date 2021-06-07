@@ -9,6 +9,7 @@ import CreateUserForm from '../components/addUsers/CreateUserForm'
 export default function AddUsers() {
     const [alertMessage, setAlertMessage] = useState({
         success: '',
+        pending: '',
         error: ''
     })
 

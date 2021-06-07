@@ -5,6 +5,34 @@
     padding: 0 20px;
     justify-content: center;
 
+    @keyframes pending {
+        0% {
+            background: orange;
+        }
+        25% {
+            background: rgba(255, 166, 0, 0.8);
+        }
+        50% {
+            background: rgba(255, 166, 0, 0.65);
+        }
+        75% {
+            background: rgba(255, 166, 0, 0.5);
+        }
+        100% {
+            background: rgba(255, 166, 0, 0.35);
+        }
+    }
+    &.disabled button {
+        animation-name: pending;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        background: red;
+        &:hover {
+            background: red;
+        }
+    }
+
     button {
         width: 75%;
         height: 45px;

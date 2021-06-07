@@ -26,10 +26,19 @@ const initialUserInfo = {
     password: ''
 }
 
-const handleSuccessfulSubmition = (setAlertMessage, setUserInfo) => {
+const handlePendingSubmition = (setAlertMessage, alertMessage) => {
     setAlertMessage(() => {
         return {
-            error: '',
+            ...alertMessage,
+            pending: 'please wait a moment...'
+        }
+    })
+}
+
+const handleSuccessfulSubmition = (setAlertMessage, alertMessage, setUserInfo) => {
+    setAlertMessage(() => {
+        return {
+            ...alertMessage,
             success: 'new user has beed added successfully..'
         }
     })
@@ -40,19 +49,20 @@ const handleSuccessfulSubmition = (setAlertMessage, setUserInfo) => {
         setAlertMessage(() => {
             return {
                 success: '',
+                pending: '',
                 error: ''
             }
         })
     }, 3000)
 }
 
-const handleFailedSubmition = (setAlertMessage, error) => {
+const handleFailedSubmition = (setAlertMessage, alertMessage, error) => {
     const errorMessage = error
         ? error.message
         : 'something unexpected happend, please check the dev console'
     setAlertMessage(() => {
         return {
-            success: '',
+            ...alertMessage,
             error: errorMessage
         }
     })
@@ -96,14 +106,15 @@ export default function CreateUserForm({ alertMessage, setAlertMessage }) {
         event.preventDefault()
 
         const formData = createFormData(userInfo)
+        handlePendingSubmition(setAlertMessage, alertMessage)
         const response = await Fetch.POSTMultiForm('admin/users', formData)
 
         if (response) {
             const { data, error } = response
             if (data) {
-                handleSuccessfulSubmition(setAlertMessage, setUserInfo)
+                handleSuccessfulSubmition(setAlertMessage, alertMessage, setUserInfo)
             } else if (error) {
-                handleFailedSubmition(setAlertMessage, error)
+                handleFailedSubmition(setAlertMessage, alertMessage, error)
             }
         } else {
             handleFailedSubmition(setAlertMessage)
@@ -207,7 +218,11 @@ export default function CreateUserForm({ alertMessage, setAlertMessage }) {
                 <div className="alert">
                     <AlertStatusBar message={alertMessage} />
                 </div>
-                <ButtonElement clickHandler={submitNewUser} label="submit user" />
+                {alertMessage.pending ? (
+                    <ButtonElement disable={true} />
+                ) : (
+                    <ButtonElement clickHandler={submitNewUser} label="submit user" />
+                )}
             </form>
         </div>
     )

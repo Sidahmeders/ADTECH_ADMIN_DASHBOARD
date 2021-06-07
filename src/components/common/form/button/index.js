@@ -1,9 +1,17 @@
 import './style.scss'
 
-export default function Button({ label, clickHandler }) {
+export default function Button({ label, clickHandler, disable }) {
     return (
-        <div className="button-element">
-            <button onClick={clickHandler}>{label}</button>
-        </div>
+        <>
+            {disable ? (
+                <div className="button-element disabled">
+                    <button onClick={(e) => e.preventDefault()}></button>
+                </div>
+            ) : (
+                <div className="button-element">
+                    <button onClick={clickHandler}>{label}</button>
+                </div>
+            )}
+        </>
     )
 }
