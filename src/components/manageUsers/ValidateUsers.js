@@ -7,7 +7,20 @@ const displayBinaryImage = (image) => {
     return `data:image/jpeg;base64,${base64String}`
 }
 
-const UnAuthUser = ({ user }) => {
+const UnAuthUserColumn = ({ label, value }) => (
+    <div className="column">
+        <span>{label}</span>: {value}
+    </div>
+)
+
+const PreviewImage = ({ label, clickHandler, imageSrc }) => (
+    <div onClick={clickHandler} className="image">
+        <span>{label}</span>
+        <img src={imageSrc} alt="ImagePreview" />
+    </div>
+)
+
+const UnAuthUserRow = ({ user }) => {
     const {
         first_name,
         last_name,
@@ -30,42 +43,26 @@ const UnAuthUser = ({ user }) => {
 
     return (
         <div className="row">
-            <div className="column">
-                <span>name</span>: {first_name} {last_name}
-            </div>
-            <div className="column">
-                <span>email</span>: {email}
-            </div>
-            <div className="column">
-                <span>role</span>: {role}
-            </div>
-            <div className="column">
-                <span>gender</span>: {gender}
-            </div>
-            <div className="column">
-                <span>grade</span>: {grade}
-            </div>
-            <div className="column">
-                <span>specialty</span>: {specialty}
-            </div>
-            <div className="column">
-                <span>year of study</span>: {year_of_study}
-            </div>
-            <div className="column">
-                <span>faculty</span>: {faculty}
-            </div>
-            <div className="column">
-                <span>phone number</span>: +{phone_number}
-            </div>
+            <UnAuthUserColumn label="name" value={first_name + '' + last_name} />
+            <UnAuthUserColumn label="email" value={email} />
+            <UnAuthUserColumn label="role" value={role} />
+            <UnAuthUserColumn label="gender" value={gender} />
+            <UnAuthUserColumn label="grade" value={grade} />
+            <UnAuthUserColumn label="specialty" value={specialty} />
+            <UnAuthUserColumn label="year of study" value={year_of_study} />
+            <UnAuthUserColumn label="faculty" value={faculty} />
+            <UnAuthUserColumn label="phone number" value={`+${phone_number}`} />
             <div className="images">
-                <div onClick={imageZoomIn} className="image">
-                    <span> profile image</span>
-                    <img src={displayBinaryImage(profile_image)} alt="profileImage" />
-                </div>
-                <div onClick={imageZoomIn} className="image">
-                    <span>identity card</span>
-                    <img src={displayBinaryImage(identity_card)} alt="identityCard" />
-                </div>
+                <PreviewImage
+                    label="profile image"
+                    imageSrc={displayBinaryImage(profile_image)}
+                    clickHandler={imageZoomIn}
+                />
+                <PreviewImage
+                    label="identity card"
+                    imageSrc={displayBinaryImage(identity_card)}
+                    clickHandler={imageZoomIn}
+                />
             </div>
         </div>
     )
@@ -92,7 +89,7 @@ export default function ValidateUsers() {
             <div className="unAuthUsers-container">
                 {unAuthorizedUsers
                     ? unAuthorizedUsers.map((user, index) => {
-                          return <UnAuthUser key={index} user={user} />
+                          return <UnAuthUserRow key={index} user={user} />
                       })
                     : ''}
             </div>
