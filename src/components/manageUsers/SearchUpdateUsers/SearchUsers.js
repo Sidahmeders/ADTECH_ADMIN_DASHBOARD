@@ -1,9 +1,10 @@
-import { useEffect, useState, useRef } from 'react'
-import Fetch from '../../utils/fetchData'
-import '../../styles/manageUsers/searchUpdateUsers.scss'
+import { useState } from 'react'
+import Fetch from '../../../utils/fetchData'
+import '../../../styles/manageUsers/searchUpdateUsers.scss'
 
-import SearchInputElement from '../common/form/SearchInputElement/index'
-import RadioInputElement from '../common/form/RadioInputElement/index'
+import SearchInputElement from '../../common/form/SearchInputElement/index'
+import RadioInputElement from '../../common/form/RadioInputElement/index'
+import ButtonElement from '../../common/form/button/index'
 
 const searchFields = ['first_name', 'last_name', 'email']
 
@@ -17,7 +18,7 @@ const setSerachQueryBasedOnType = (type, value, searchQuery, setSerachQuery) => 
         resetSerachInput()
         setSerachQuery(() => {
             return {
-                queryParam: value,
+                queryKey: value,
                 queryValue: ''
             }
         })
@@ -31,11 +32,9 @@ const setSerachQueryBasedOnType = (type, value, searchQuery, setSerachQuery) => 
     }
 }
 
-export default function SearchUpdateUsers() {
-    const _isMounted = useRef(true)
-
+export default function SearchUpdateUsers({ setUsers }) {
     const [searchQuery, setSerachQuery] = useState({
-        queryParam: '',
+        queryKey: '',
         queryValue: ''
     })
 
@@ -46,30 +45,19 @@ export default function SearchUpdateUsers() {
         setSerachQueryBasedOnType(type, value, searchQuery, setSerachQuery)
     }
 
-    const [users, setUsers] = useState()
+    const searchUsers = async (event) => {
+        event.preventDefault()
+        const { queryKey, queryValue } = searchQuery
+        const searchQueryParam = JSON.stringify({ [queryKey]: queryValue })
 
-    const searchUsers = async (seacrhQuery) => {
-        const searchQueryParam = JSON.stringify({ first_name: 'Jasmin' })
         const data = await Fetch.Search('admin/users/search', searchQueryParam)
-        if (_isMounted.current) {
-            if (data) {
-                setUsers(() => data)
-            }
+        if (data) {
+            setUsers(() => data)
         }
     }
 
-    useEffect(() => {
-        searchUsers(searchQuery)
-        return () => {
-            _isMounted.current = false
-        }
-    }, [])
-
-    // console.log(users)
-    console.log(searchQuery)
-
     return (
-        <div className="search-update-users">
+        <div className="search-users">
             <RadioInputElement
                 label="select a serach field"
                 options={[
@@ -83,24 +71,24 @@ export default function SearchUpdateUsers() {
                 changeHandler={handleSearchQueryChange}
             />
             <form id="searchUpdateForm">
-                {searchFields.includes(searchQuery.queryParam) ? (
+                {searchFields.includes(searchQuery.queryKey) ? (
                     <SearchInputElement
                         label="enter your search query"
                         changeHandler={handleSearchQueryChange}
                     />
-                ) : searchQuery.queryParam === 'specialty' ? (
+                ) : searchQuery.queryKey === 'specialty' ? (
                     <RadioInputElement
                         label="select a specialty"
-                        options={['OCE', 'ODF', 'PARO', 'PROTH', 'PCB']}
+                        options={['OCE', 'ODF', 'PARO', 'PROTHESE', 'PCB']}
                         changeHandler={handleSearchQueryChange}
                     />
-                ) : searchQuery.queryParam === 'year_of_study' ? (
+                ) : searchQuery.queryKey === 'year_of_study' ? (
                     <RadioInputElement
                         label="select a year"
-                        options={['1-th', '2-nd', '3-rd', '4-th', '5-th', '6-th']}
+                        options={['1-st', '2-nd', '3-rd', '4-th', '5-th', '6-th']}
                         changeHandler={handleSearchQueryChange}
                     />
-                ) : searchQuery.queryParam === 'grade' ? (
+                ) : searchQuery.queryKey === 'grade' ? (
                     <RadioInputElement
                         label="select a grade"
                         options={[
@@ -115,6 +103,7 @@ export default function SearchUpdateUsers() {
                 ) : (
                     ''
                 )}
+                <ButtonElement label="search now" clickHandler={searchUsers} />
             </form>
         </div>
     )

@@ -4,7 +4,7 @@ import '../styles/manageUsers/index.scss'
 import TextHeader from '../components/common/TextHeader/index'
 import NavBar from '../components/common/navbar/index'
 import ValidateUsers from '../components/manageUsers/ValidateUsers'
-import SearchUpdateUsers from '../components/manageUsers/SearchUpdateUsers'
+import SearchUpdateUsers from '../components/manageUsers/SearchUpdateUsers/index'
 
 export default function ManageUsersPage() {
     return (
