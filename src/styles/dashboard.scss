@@ -4,7 +4,6 @@
     justify-content: space-evenly;
     align-items: center;
     padding-top: 50px;
-    color: white;
 
     .right {
         .card {
@@ -16,10 +15,12 @@
             overflow: hidden;
 
             &:nth-child(1) {
-                background: linear-gradient(rgb(110, 122, 138), white);
+                background: rgb(236, 243, 255);
+                border: 2px solid #4566;
             }
             &:nth-child(2) {
-                background: linear-gradient(rgb(167, 134, 134), white);
+                background: rgb(255, 244, 244);
+                border: 2px solid #4566;
             }
         }
     }
@@ -27,8 +28,9 @@
         .card {
             width: 350px;
             height: 500px;
-            background: linear-gradient(rgb(99, 128, 113), white);
+            background: rgb(243, 255, 248);
             padding: 40px;
+            border: 2px solid #4566;
         }
     }
 }
@@ -44,10 +46,12 @@
         font-weight: 400;
         padding: 10px 0;
         text-transform: capitalize;
+        color: rgb(15, 15, 116);
     }
     p {
         padding: 10px;
         font-size: 30px;
         letter-spacing: 2px;
+        color: rgb(255, 72, 72);
     }
 }

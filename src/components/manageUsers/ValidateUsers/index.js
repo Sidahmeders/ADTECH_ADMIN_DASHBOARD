@@ -3,6 +3,7 @@ import '../../../styles/manageUsers/validateUsers.scss'
 import Fetch from '../../../utils/fetchData'
 
 import UserRow from '../UserRow'
+import Spinner from '../../../asset/icons/spinner.gif'
 
 export default function ValidateUsers() {
     const _isMounted = useRef(true)
@@ -29,11 +30,15 @@ export default function ValidateUsers() {
     return (
         <div className="validate-users">
             <div className="unAuthUsers-container">
-                {unAuthorizedUsers
-                    ? unAuthorizedUsers.map((user, index) => {
-                          return <UserRow key={index} user={user} />
-                      })
-                    : ''}
+                {unAuthorizedUsers.length ? (
+                    unAuthorizedUsers.map((user, index) => {
+                        return <UserRow key={index} user={user} />
+                    })
+                ) : (
+                    <div className="spinner">
+                        <img src={Spinner} alt="spinner" />
+                    </div>
+                )}
             </div>
         </div>
     )

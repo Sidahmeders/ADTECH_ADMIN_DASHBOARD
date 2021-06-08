@@ -65,5 +65,15 @@
                 }
             }
         }
+        .spinner {
+            width: 100%;
+            display: flex;
+            max-height: 65vh;
+            justify-content: center;
+            img {
+                width: 100%;
+                object-fit: contain;
+            }
+        }
     }
 }

@@ -5,22 +5,27 @@ import LineChart from '../components/charts/LineChart'
 import PieChart from '../components/charts/DoughChart'
 
 export default function DashBoard() {
+    const colors = []
+    for (let i = 0; i <= 6; i++) {
+        colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}`)
+    }
+
     const chartData = {
         labels: ['02', '23', '31', '13', '44', '16'],
         datasets: [
             {
                 label: 'active',
                 data: [54, 79, 59, 63, 39, 67],
-                backgroundColor: '#dff',
+                backgroundColor: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
                 borderWidth: 2,
-                borderColor: '#9007'
+                borderColor: `#${Math.floor(Math.random() * 16777215).toString(16)}`
             },
             {
                 label: 'total',
                 data: [80, 92, 69, 73, 60, 85],
-                backgroundColor: '#456',
+                backgroundColor: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
                 borderWidth: 2,
-                borderColor: '#7f66'
+                borderColor: `#${Math.floor(Math.random() * 16777215).toString(16)}`
             }
         ]
     }
@@ -29,8 +34,7 @@ export default function DashBoard() {
         labels: ['PCB', 'ODF', 'PARO', 'OCE', 'PROTH'],
         datasets: [
             {
-                backgroundColor: ['#B21F00', '#C9DE00', '#2FDE00', '#00A6B4', '#6800B4'],
-                hoverBackgroundColor: ['#501800', '#4B5000', '#175000', '#003350', '#35014F'],
+                backgroundColor: [...colors],
                 data: [65, 59, 80, 81, 56]
             }
         ]
