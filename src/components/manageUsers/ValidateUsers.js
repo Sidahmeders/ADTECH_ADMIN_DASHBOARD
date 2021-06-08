@@ -43,7 +43,7 @@ const UnAuthUserRow = ({ user }) => {
 
     return (
         <div className="row">
-            <UnAuthUserColumn label="name" value={first_name + '' + last_name} />
+            <UnAuthUserColumn label="name" value={first_name + ' ' + last_name} />
             <UnAuthUserColumn label="email" value={email} />
             <UnAuthUserColumn label="role" value={role} />
             <UnAuthUserColumn label="gender" value={gender} />
@@ -75,9 +75,7 @@ export default function ValidateUsers() {
 
     const fetchUnAuthorizedUsers = async () => {
         const data = await Fetch.GET('admin/users/unAuthorized', 15)
-        // Check always mounted component
         if (_isMounted.current) {
-            // continue treatment of AJAX response...
             if (data) {
                 setUnAuthorizedUsers(() => data.users)
             }

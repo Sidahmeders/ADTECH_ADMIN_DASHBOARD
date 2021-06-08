@@ -123,7 +123,7 @@ export default function CreateUserForm({ alertMessage, setAlertMessage }) {
 
     return (
         <div className="create-users-form">
-            <form id="form-x">
+            <form id="createUsers-form">
                 <div className="row text">
                     <TextInputElement
                         label="first_name"

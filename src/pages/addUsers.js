@@ -23,7 +23,7 @@ export default function AddUsers() {
     }
 
     const clearInputFields = () => {
-        document.getElementById('form-x').reset()
+        document.getElementById('createUsers-form').reset()
         document.querySelectorAll('.radio-element').forEach((item) => (item.checked = false))
         document.querySelectorAll('#image-preview').forEach((item) => (item.src = ''))
     }
