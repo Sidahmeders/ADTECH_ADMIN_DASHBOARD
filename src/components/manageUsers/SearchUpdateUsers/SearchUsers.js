@@ -5,6 +5,7 @@ import '../../../styles/manageUsers/searchUpdateUsers.scss'
 import SearchInputElement from '../../common/form/SearchInputElement/index'
 import RadioInputElement from '../../common/form/RadioInputElement/index'
 import ButtonElement from '../../common/form/button/index'
+import AlertStatusBar from '../../common/alert/index'
 
 const searchFields = ['first_name', 'last_name', 'email']
 
@@ -32,7 +33,41 @@ const setSerachQueryBasedOnType = (type, value, searchQuery, setSerachQuery) => 
     }
 }
 
-export default function SearchUpdateUsers({ setUsers }) {
+const handlePendingSearch = (setAlertMessage) => {
+    setAlertMessage(() => {
+        return {
+            pending: 'please wait a moment...',
+            success: '',
+            error: ''
+        }
+    })
+}
+
+const handleSuccesfulSearch = (setAlertMessage, setUsers, data) => {
+    setUsers(() => data.users)
+    setAlertMessage(() => {
+        return {
+            pending: '',
+            success: `${data.users.length} user has been found`,
+            error: ''
+        }
+    })
+}
+
+const handleFailedSearch = (setAlertMessage, error) => {
+    const errorMessage = error
+        ? error.message
+        : 'something unexpected happend, please check the dev console'
+    setAlertMessage(() => {
+        return {
+            pending: '',
+            success: '',
+            error: errorMessage
+        }
+    })
+}
+
+export default function SearchUpdateUsers({ setUsers, alertMessage, setAlertMessage }) {
     const [searchQuery, setSerachQuery] = useState({
         queryKey: '',
         queryValue: ''
@@ -50,9 +85,15 @@ export default function SearchUpdateUsers({ setUsers }) {
         const { queryKey, queryValue } = searchQuery
         const searchQueryParam = JSON.stringify({ [queryKey]: queryValue })
 
-        const data = await Fetch.Search('admin/users/search', searchQueryParam)
-        if (data) {
-            setUsers(() => data)
+        handlePendingSearch(setAlertMessage)
+        const response = await Fetch.Search('admin/users/search', searchQueryParam)
+        if (response) {
+            const { data, error } = response
+            if (data) {
+                handleSuccesfulSearch(setAlertMessage, setUsers, data)
+            } else if (error) {
+                handleFailedSearch(setAlertMessage, error)
+            }
         }
     }
 
@@ -103,7 +144,12 @@ export default function SearchUpdateUsers({ setUsers }) {
                 ) : (
                     ''
                 )}
-                <ButtonElement label="search now" clickHandler={searchUsers} />
+                <AlertStatusBar message={alertMessage} />
+                {alertMessage.pending ? (
+                    <ButtonElement disable={true} />
+                ) : (
+                    <ButtonElement label="search now" clickHandler={searchUsers} />
+                )}
             </form>
         </div>
     )

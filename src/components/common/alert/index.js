@@ -13,14 +13,18 @@ function Pending({ message }) {
 }
 
 export default function AlertStatusBar({ message }) {
-    return message.success ? (
-        <Success message={message.success} />
-    ) : message.error && !message.pending ? (
-        <Error message={message.error} />
-    ) : message.pending ? (
-        <Pending message={message.pending} />
-    ) : (
-        ''
+    return (
+        <div className="alert">
+            {message.pending ? (
+                <Pending message={message.pending} />
+            ) : message.error && !message.pending ? (
+                <Error message={message.error} />
+            ) : message.success ? (
+                <Success message={message.success} />
+            ) : (
+                ''
+            )}
+        </div>
     )
 }
 

@@ -7,7 +7,6 @@ class Fetch {
                 credentials: 'include'
             })
             response = await response.json()
-            response = response.data
 
             return response
         } catch (err) {
@@ -21,7 +20,6 @@ class Fetch {
                 credentials: 'include'
             })
             response = await response.json()
-            response = response.data
 
             return response
         } catch (err) {

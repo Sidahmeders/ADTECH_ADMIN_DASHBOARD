@@ -1,8 +1,9 @@
 import Fetch from '../utils/fetchData'
 
 export async function getAllPatients(setState) {
-    let data = await Fetch.GET('admin/patients/common-stat')
-    if (data) {
+    let response = await Fetch.GET('admin/patients/common-stat')
+    if (response) {
+        const { data } = response
         setState(() => data.commonStat)
     }
 }
