@@ -1,6 +1,6 @@
 import './style.scss'
 
-export default function RadioInputElement({ label, options, changeHandler }) {
+export default function RadioInputElement({ label, options, changeHandler, sub }) {
     return (
         <div className="radio-input-element">
             <h3>{label}</h3>
@@ -10,7 +10,7 @@ export default function RadioInputElement({ label, options, changeHandler }) {
                         <input
                             type="radio"
                             id={option}
-                            className="radio-element"
+                            className={sub ? `sub-radio-element` : 'radio-element'}
                             name={label}
                             value={option}
                             onChange={changeHandler}

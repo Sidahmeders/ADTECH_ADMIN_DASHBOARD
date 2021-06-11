@@ -4,62 +4,94 @@
     .unAuthUsers-container {
         padding: 20px;
 
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 10px;
+        .card {
             border: 2px solid #33d6;
             border-radius: 5px;
-            margin-bottom: 5px;
+            margin-bottom: 30px;
+            padding: 20px;
 
-            span {
-                color: blue;
-            }
-            .column {
-                width: 260px;
-                padding: 5px 0;
-                border-bottom: 1px solid #ddd;
-                margin: 0 10px;
-            }
-            .images {
+            .row {
                 display: flex;
-                justify-content: space-evenly;
-                width: 100%;
-                margin-top: 10px;
+                flex-wrap: wrap;
 
-                .image {
+                span {
+                    color: blue;
+                }
+                .column {
+                    width: 260px;
+                    padding: 5px 0;
+                    border-bottom: 1px solid #ddd;
+                    margin: 0 10px;
+                }
+                .images {
                     display: flex;
-                    flex-direction: column;
-                    padding: 10px;
+                    justify-content: space-evenly;
+                    width: 100%;
+                    margin-top: 10px;
 
-                    img {
-                        margin-top: 10px;
-                        margin-left: 20px;
-                        width: 260px;
-                        height: 180px;
-                        border: 2px solid #9446;
-
-                        &:hover {
-                            cursor: pointer;
-                        }
-                    }
-                    &.zoomed-in {
-                        &:before {
-                            content: '';
-                            position: fixed;
-                            left: 0;
-                            top: 0;
-                            width: 100vw;
-                            height: 100vh;
-                            background: #6668;
-                        }
+                    .image {
+                        display: flex;
+                        flex-direction: column;
+                        padding: 10px;
 
                         img {
-                            position: fixed;
-                            top: 18%;
-                            left: 290px;
-                            width: 70vw;
-                            height: 78vh;
+                            margin-top: 10px;
+                            margin-left: 20px;
+                            width: 260px;
+                            height: 180px;
+                            border: 2px solid #9446;
+
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                        &.zoomed-in {
+                            &:before {
+                                content: '';
+                                position: fixed;
+                                left: 0;
+                                top: 0;
+                                width: 100vw;
+                                height: 100vh;
+                                background: #6668;
+                            }
+
+                            img {
+                                position: fixed;
+                                top: 18%;
+                                left: 290px;
+                                width: 70vw;
+                                height: 78vh;
+                                z-index: 99;
+                            }
+                        }
+                    }
+                }
+            }
+            .buttons {
+                display: flex;
+                justify-content: center !important;
+
+                .button-element {
+                    margin: 0 30px;
+                    transform: translate(-20px, 38px);
+                    background: white;
+
+                    button {
+                        font-size: 13px;
+                        margin: 0;
+                        width: 100% !important;
+                    }
+                    &:nth-child(1) button {
+                        background: green;
+                        &:hover {
+                            background: #14b114;
+                        }
+                    }
+                    &:nth-child(2) button {
+                        background: #bb0808;
+                        &:hover {
+                            background: #ff0000;
                         }
                     }
                 }

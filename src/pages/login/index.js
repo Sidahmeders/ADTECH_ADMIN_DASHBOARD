@@ -32,7 +32,7 @@ export default function LoginPage() {
 
     const handleLogin = async (event) => {
         event.preventDefault()
-        let userData = await Fetch.POSTJson('admin/users/login', userInfo, 'json')
+        let userData = await Fetch.POSTJson('admin/users/login', userInfo)
 
         if (userData) {
             const { data, error } = userData

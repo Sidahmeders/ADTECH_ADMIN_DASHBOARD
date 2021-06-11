@@ -27,10 +27,10 @@ class Fetch {
         }
     }
 
-    async POSTJson(route, body) {
+    async POSTJson(route, body, method) {
         try {
             let response = await fetch(`${url}/${route}`, {
-                method: 'POST',
+                method: method || 'POST',
                 body: JSON.stringify(body),
                 credentials: 'include',
                 headers: {
@@ -50,6 +50,20 @@ class Fetch {
             let response = await fetch(`${url}/${route}`, {
                 method: 'POST',
                 body: body,
+                credentials: 'include'
+            })
+            response = await response.json()
+
+            return response
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+
+    async Delete(route, id) {
+        try {
+            let response = await fetch(`${url}/${route}?id=${id}`, {
+                method: 'DELETE',
                 credentials: 'include'
             })
             response = await response.json()

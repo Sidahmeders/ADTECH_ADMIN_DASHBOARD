@@ -11,6 +11,7 @@ const searchFields = ['first_name', 'last_name', 'email']
 
 const resetSerachInput = () => {
     document.getElementById('searchUpdateForm').reset()
+    document.querySelectorAll('.sub-radio-element').forEach((item) => (item.checked = false))
 }
 
 const setSerachQueryBasedOnType = (type, value, searchQuery, setSerachQuery) => {
@@ -122,12 +123,14 @@ export default function SearchUpdateUsers({ setUsers, alertMessage, setAlertMess
                         label="select a specialty"
                         options={['OCE', 'ODF', 'PARO', 'PROTHESE', 'PCB']}
                         changeHandler={handleSearchQueryChange}
+                        sub={true}
                     />
                 ) : searchQuery.queryKey === 'year_of_study' ? (
                     <RadioInputElement
                         label="select a year"
                         options={['1-st', '2-nd', '3-rd', '4-th', '5-th', '6-th']}
                         changeHandler={handleSearchQueryChange}
+                        sub={true}
                     />
                 ) : searchQuery.queryKey === 'grade' ? (
                     <RadioInputElement
@@ -140,6 +143,7 @@ export default function SearchUpdateUsers({ setUsers, alertMessage, setAlertMess
                             'professor'
                         ]}
                         changeHandler={handleSearchQueryChange}
+                        sub={true}
                     />
                 ) : (
                     ''

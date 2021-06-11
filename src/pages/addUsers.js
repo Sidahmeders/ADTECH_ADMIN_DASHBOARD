@@ -19,7 +19,9 @@ export default function AddUsers() {
         const response = await Fetch.GET('admin/users', 12)
         if (response) {
             const { data } = response
-            setLatestUsers(() => data.users)
+            if (data) {
+                setLatestUsers(() => data.users)
+            }
         }
     }
 

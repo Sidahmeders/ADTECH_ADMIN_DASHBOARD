@@ -82,6 +82,9 @@
         }
         .empty-search {
             margin: 0 4vw;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
         }
     }
 }
