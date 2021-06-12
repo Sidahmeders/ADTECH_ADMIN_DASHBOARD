@@ -32,11 +32,23 @@ export default function ValidateUsers() {
     }, [])
 
     const [droppedUser, setDroppedUser] = useState(false)
+    const [authorizedUser, setAuthorizedUser] = useState(false)
 
-    const handleAccessGranted = (event) => {
-        event.preventDefault()
-        const body = {}
-        Fetch.POSTJson('admin/users/grantAccess', body, 'PUT')
+    const removeReviewedUser = (users, id, setUnAuthorizedUsers) => {
+        users = users.filter((user) => user._id !== id)
+        setUnAuthorizedUsers(() => users)
+    }
+
+    const handleAccessGranted = async (user) => {
+        const body = { id: user._id, grade: user.grade }
+        const response = await Fetch.POSTJson('admin/users/grantAccess', body, 'PUT')
+        if (response) {
+            const { data } = response
+            if (data) {
+                setAuthorizedUser(() => data)
+                removeReviewedUser(unAuthorizedUsers, data.user_id, setUnAuthorizedUsers)
+            }
+        }
     }
 
     const handleDropingUser = async (userId) => {
@@ -45,8 +57,7 @@ export default function ValidateUsers() {
             const { data } = response
             if (data) {
                 setDroppedUser(() => data)
-                const users = unAuthorizedUsers.filter((user) => user._id !== data.user_id)
-                setUnAuthorizedUsers(() => users)
+                removeReviewedUser(unAuthorizedUsers, data.user_id, setUnAuthorizedUsers)
             }
         }
     }
@@ -59,7 +70,15 @@ export default function ValidateUsers() {
                         pending: `${unAuthorizedUsers.length} user are waiting to be reviewed`
                     }}
                 />
-            ) : droppedUser ? (
+            ) : (
+                ''
+            )}
+            {authorizedUser ? (
+                <AlertStatus message={{ success: `${authorizedUser.name} has been authorized` }} />
+            ) : (
+                ''
+            )}
+            {droppedUser ? (
                 <AlertStatus message={{ error: `${droppedUser.name} has been dropped` }} />
             ) : (
                 ''
@@ -73,7 +92,7 @@ export default function ValidateUsers() {
                                 <div className="buttons">
                                     <ButtonElement
                                         label="grant access"
-                                        clickHandler={handleAccessGranted}
+                                        clickHandler={() => handleAccessGranted(user)}
                                     />
                                     <ButtonElement
                                         label="drop this user"

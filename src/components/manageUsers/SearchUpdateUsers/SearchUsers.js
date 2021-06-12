@@ -49,7 +49,7 @@ const handleSuccesfulSearch = (setAlertMessage, setUsers, data) => {
     setAlertMessage(() => {
         return {
             pending: '',
-            success: `${data.users.length} user has been found`,
+            success: `${data.users.length} users has been found`,
             error: ''
         }
     })

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import '../styles/addUsers/index.scss'
 import Fetch from '../utils/fetchData'
 
@@ -7,6 +7,7 @@ import RecentUsers from '../components/addUsers/RecentUsers'
 import CreateUserForm from '../components/addUsers/CreateUserForm'
 
 export default function AddUsers() {
+    const _isMounted = useRef(true)
     const [alertMessage, setAlertMessage] = useState({
         success: '',
         pending: '',
@@ -17,10 +18,12 @@ export default function AddUsers() {
 
     const getUsers = async () => {
         const response = await Fetch.GET('admin/users', 12)
-        if (response) {
-            const { data } = response
-            if (data) {
-                setLatestUsers(() => data.users)
+        if (_isMounted.current) {
+            if (response) {
+                const { data } = response
+                if (data) {
+                    setLatestUsers(() => data.users)
+                }
             }
         }
     }
@@ -34,7 +37,9 @@ export default function AddUsers() {
     useEffect(() => {
         clearInputFields()
         getUsers()
-        return () => alertMessage.success
+        return () => {
+            _isMounted.current = false
+        }
     }, [alertMessage.success])
 
     return (

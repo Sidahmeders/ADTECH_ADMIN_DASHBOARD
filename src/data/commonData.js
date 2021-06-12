@@ -1,13 +1,3 @@
-import Fetch from '../utils/fetchData'
-
-export async function getAllPatients(setState) {
-    let response = await Fetch.GET('admin/patients/common-stat')
-    if (response) {
-        const { data } = response
-        setState(() => data.commonStat)
-    }
-}
-
 export const common = {
     hygienBuccaul: {
         bone: 45,

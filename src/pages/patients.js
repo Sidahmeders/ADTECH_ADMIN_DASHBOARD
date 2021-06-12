@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
+import Fetch from '../utils/fetchData'
 import '../styles/patients.scss'
 
 import TextHeader from '../components/common/TextHeader'
@@ -8,19 +9,36 @@ import Sex from '../components/patients/common/Sex'
 import Age from '../components/patients/common/Age'
 import HygieneBuccal from '../components/patients/common/HygieneBuccaul'
 import MotifDeConsultation from '../components/patients/common/MotifConsultation'
-import { common, getAllPatients } from '../data/commonData'
+import { common } from '../data/commonData'
+
 const { hygienBuccaul, motifConsultation } = common
 
 export default function PatientsList() {
-    const [state, setState] = useState(false)
+    const _isMounted = useRef(true)
+    const [patientsStat, setPatientStat] = useState(false)
+
+    async function getPatientsStat(setPatientStat) {
+        let response = await Fetch.GET('admin/patients/common-stat')
+        if (_isMounted.current) {
+            if (response) {
+                const { data } = response
+                if (data) {
+                    setPatientStat(() => data.commonStat)
+                }
+            }
+        }
+    }
 
     useEffect(() => {
-        getAllPatients(setState)
+        getPatientsStat(setPatientStat)
+        return () => {
+            _isMounted.current = false
+        }
     }, [])
 
-    const { specialty, sex, ages } = state
+    const { specialty, sex, ages } = patientsStat
 
-    console.log(state)
+    console.log(patientsStat)
 
     return (
         <div className="patients">
@@ -54,7 +72,7 @@ export default function PatientsList() {
                         }
                     ]}
                 />
-                {state ? (
+                {patientsStat ? (
                     <>
                         <Specialties specialties={specialty} />
                         <Sex sex={sex} />
