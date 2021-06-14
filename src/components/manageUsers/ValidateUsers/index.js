@@ -5,21 +5,56 @@ import Fetch from '../../../utils/fetchData'
 import UserRow from '../UserRow'
 import Spinner from '../../../asset/icons/spinner.gif'
 import ButtonElement from '../../common/form/button/index'
-import AlertStatus from '../../common/alert/index'
+import AlertStatusBar from '../../common/alert/index'
+
+const handlePendingSubmition = (setAlertMessage) => {
+    setAlertMessage(() => {
+        return {
+            pending: 'please wait a moment...',
+            success: '',
+            error: ''
+        }
+    })
+}
+
+const handleFailedSubmition = (setAlertMessage, error) => {
+    const errorMessage = error
+        ? error.message
+        : 'something unexpected happend, please check the dev console'
+    setAlertMessage(() => {
+        return {
+            pending: '',
+            success: '',
+            error: errorMessage
+        }
+    })
+}
 
 export default function ValidateUsers() {
     const _isMounted = useRef(true)
 
     const [unAuthorizedUsers, setUnAuthorizedUsers] = useState([])
 
+    const [alertMessage, setAlertMessage] = useState({
+        pending: '',
+        success: '',
+        error: ''
+    })
+
     const fetchUnAuthorizedUsers = async () => {
+        handlePendingSubmition(setAlertMessage)
         const response = await Fetch.GET('admin/users/unAuthorized', 15)
+
         if (_isMounted.current) {
             if (response) {
-                const { data } = response
+                const { data, error } = response
                 if (data) {
                     setUnAuthorizedUsers(() => data.users)
+                } else if (error) {
+                    handleFailedSubmition(setAlertMessage, error)
                 }
+            } else {
+                handleFailedSubmition(setAlertMessage)
             }
         }
     }
@@ -65,21 +100,27 @@ export default function ValidateUsers() {
     return (
         <div className="validate-users">
             {unAuthorizedUsers.length ? (
-                <AlertStatus
+                <AlertStatusBar
                     message={{
                         pending: `${unAuthorizedUsers.length} user are waiting to be reviewed`
                     }}
                 />
+            ) : alertMessage.pending ? (
+                <AlertStatusBar message={alertMessage} />
+            ) : alertMessage.error ? (
+                <AlertStatusBar message={alertMessage} />
             ) : (
                 ''
             )}
             {authorizedUser ? (
-                <AlertStatus message={{ success: `${authorizedUser.name} has been authorized` }} />
+                <AlertStatusBar
+                    message={{ success: `${authorizedUser.name} has been authorized` }}
+                />
             ) : (
                 ''
             )}
             {droppedUser ? (
-                <AlertStatus message={{ error: `${droppedUser.name} has been dropped` }} />
+                <AlertStatusBar message={{ error: `${droppedUser.name} has been dropped` }} />
             ) : (
                 ''
             )}

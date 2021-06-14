@@ -95,6 +95,8 @@ export default function SearchUpdateUsers({ setUsers, alertMessage, setAlertMess
             } else if (error) {
                 handleFailedSearch(setAlertMessage, error)
             }
+        } else {
+            handleFailedSearch(setAlertMessage)
         }
     }
 

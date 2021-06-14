@@ -46,6 +46,8 @@
                             }
                         }
                         &.zoomed-in {
+                            z-index: 9;
+
                             &:before {
                                 content: '';
                                 position: fixed;
@@ -62,7 +64,6 @@
                                 left: 290px;
                                 width: 70vw;
                                 height: 78vh;
-                                z-index: 99;
                             }
                         }
                     }

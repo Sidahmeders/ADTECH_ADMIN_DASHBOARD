@@ -11,3 +11,7 @@ $label-border-color: rgb(218, 218, 218);
 $btn-color: #0770a0;
 $btn-color-hover: #0e89c2;
 $ease: ease 0.5s;
+
+button {
+    outline: none;
+}
