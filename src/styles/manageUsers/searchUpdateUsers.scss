@@ -106,5 +106,52 @@
             justify-content: center;
             margin-bottom: 20px;
         }
+        .selected-user-container {
+            height: fit-content;
+            background: white;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 250px;
+
+            .form-container {
+                display: flex;
+                flex-direction: column;
+                margin: 0 4vw;
+                margin-bottom: 30px;
+
+                .row {
+                    display: flex;
+                    &.text {
+                        margin: 10px 0;
+                    }
+                    &.files {
+                        margin: 15px;
+                        flex-wrap: wrap;
+                    }
+                    .text-input-element {
+                        width: 100%;
+                    }
+                }
+                .buttons {
+                    margin-top: 20px;
+                    button {
+                        font-size: 17px;
+                    }
+                    :nth-child(1) button {
+                        background: orange;
+                        &:hover {
+                            background: #ffbb3c;
+                        }
+                    }
+                    :nth-child(2) button {
+                        background: green;
+                        &:hover {
+                            background: #039603;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
