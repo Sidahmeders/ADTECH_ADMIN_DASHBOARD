@@ -5,6 +5,7 @@ export default function UserRow({ user }) {
     const {
         first_name,
         last_name,
+        birth_date,
         email,
         role,
         gender,
@@ -21,6 +22,7 @@ export default function UserRow({ user }) {
         <div className="row">
             <UserColumn label="name" value={first_name + ' ' + last_name} />
             <UserColumn label="email" value={email} />
+            <UserColumn label="birth date" value={birth_date.split('T')[0]} />
             <UserColumn label="role" value={role} />
             <UserColumn label="gender" value={gender} />
             <UserColumn label="grade" value={grade} />

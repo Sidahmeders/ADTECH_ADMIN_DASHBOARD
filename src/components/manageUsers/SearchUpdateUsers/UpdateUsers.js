@@ -7,11 +7,54 @@ import UserRow from '../UserRow'
 import NoFile from '../../../asset/icons/noFile.gif'
 
 import TextInputElement from '../../common/form/TextInputElement/index'
-import FileInputElement from '../../common/form/FileInputElement/index'
 import DateInputElement from '../../common/form/DateInputElement/index'
 import RadioInputElement from '../../common/form/RadioInputElement/index'
 import ButtonElement from '../../common/form/button/index'
-// import AlertStatusBar from '../../common/alert/index'
+import AlertStatusBar from '../../common/alert/index'
+
+const handlePendingUpdate = (setAlertMessage) => {
+    setAlertMessage(() => {
+        return {
+            pending: 'please wait a moment...',
+            success: '',
+            error: ''
+        }
+    })
+}
+
+const handleSuccessfulUpdate = (setUserInfo, setAlertMessage, data) => {
+    setUserInfo(() => data.user)
+    setAlertMessage(() => {
+        return {
+            pending: '',
+            success: 'user has been succefuly updated..',
+            error: ''
+        }
+    })
+    setTimeout(() => {
+        setUserInfo(() => false)
+        setAlertMessage(() => {
+            return {
+                pending: '',
+                success: '',
+                error: ''
+            }
+        })
+    }, 2000)
+}
+
+const handleFailedUpdate = (setAlertMessage, error) => {
+    const errorMessage = error
+        ? error.message
+        : 'something unexpected happend, please check the dev console'
+    setAlertMessage(() => {
+        return {
+            pending: '',
+            success: '',
+            error: errorMessage
+        }
+    })
+}
 
 const checkSelectedRadioElement = (userInfo) => {
     document.querySelectorAll('.options').forEach((item) => {
@@ -30,30 +73,33 @@ const checkSelectedRadioElement = (userInfo) => {
     })
 }
 
-export default function UpdateUsers({ users }) {
+const insertDateInput = (userInfo) => {
+    const date = userInfo.birth_date ? userInfo.birth_date.split('T')[0] : ''
+    const dateElement = document.getElementsByClassName('date-input-element')[0]
+    if (dateElement) {
+        const dateInput = dateElement.children[1]
+        dateInput.value = date
+    }
+}
+
+export default function UpdateUsers({ users, setUsers }) {
     const [userInfo, setUserInfo] = useState(false)
 
-    const hadnleUserInfoChange = (event) => {
-        const files = event.target.files
-        const entry = event.target.name
+    const [alertMessage, setAlertMessage] = useState({
+        pending: '',
+        success: '',
+        error: ''
+    })
 
-        if (files) {
-            const file = files[0]
-            setUserInfo(() => {
-                return {
-                    ...userInfo,
-                    [entry]: file
-                }
-            })
-        } else {
-            const value = event.target.value
-            setUserInfo(() => {
-                return {
-                    ...userInfo,
-                    [entry]: value
-                }
-            })
-        }
+    const hadnleUserInfoChange = (event) => {
+        const entry = event.target.name
+        const value = event.target.value
+        setUserInfo(() => {
+            return {
+                ...userInfo,
+                [entry]: value
+            }
+        })
     }
 
     const updateUserInfo = async (userId) => {
@@ -67,10 +113,31 @@ export default function UpdateUsers({ users }) {
         }
     }
 
-    console.log(userInfo)
+    const cancelUpdate = () => {
+        setUserInfo(() => false)
+    }
+
+    const submitUpdate = async () => {
+        userInfo.id = userInfo._id
+        handlePendingUpdate(setAlertMessage)
+        const response = await Fetch.POSTJson('admin/users', userInfo, 'PUT')
+
+        if (response) {
+            const { data, error } = response
+            if (data) {
+                handleSuccessfulUpdate(setUserInfo, setAlertMessage, data)
+                setUsers(() => [])
+            } else if (error) {
+                handleFailedUpdate(setAlertMessage, error)
+            } else {
+                handleFailedUpdate(setAlertMessage)
+            }
+        }
+    }
 
     useEffect(() => {
         checkSelectedRadioElement(userInfo)
+        insertDateInput(userInfo)
     }, [userInfo])
 
     return (
@@ -173,22 +240,11 @@ export default function UpdateUsers({ users }) {
                             value={userInfo.password || ''}
                             changeHandler={hadnleUserInfoChange}
                         />
-                        {/* <AlertStatusBar message={alertMessage} /> */}
-                        {/* {alertMessage.pending ? (
-                            <ButtonElement disable={true} />
-                        ) : ( */}
+                        <AlertStatusBar message={alertMessage} />
                         <div className="row buttons">
-                            <ButtonElement
-                                clickHandler={() => updateUserInfo(userInfo._id)}
-                                label="submit the update"
-                            />
-                            <ButtonElement
-                                clickHandler={() => updateUserInfo(userInfo._id)}
-                                label="cancel the update"
-                            />
+                            <ButtonElement clickHandler={submitUpdate} label="submit the update" />
+                            <ButtonElement clickHandler={cancelUpdate} label="cancel the update" />
                         </div>
-
-                        {/* )} */}
                     </div>
                 </div>
             ) : users.length ? (

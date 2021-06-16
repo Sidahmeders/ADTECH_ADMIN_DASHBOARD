@@ -19,7 +19,7 @@ export default function SearchUpdateUsers() {
                 alertMessage={alertMessage}
                 setAlertMessage={setAlertMessage}
             />
-            <UpdateUsers users={users} />
+            <UpdateUsers users={users} setUsers={setUsers} />
         </div>
     )
 }
