@@ -37,7 +37,7 @@ export default function HygieneBuccaul({ hygienBuccaul }) {
 
     return (
         <div>
-            <Title label="total records" total={total} />
+            <Title label="hygiene buccual" total={total} />
             <Percentage labels={labels} data={chartData} colors={colors} />
             <PieChart chartData={hygieneBuccalData} />
         </div>

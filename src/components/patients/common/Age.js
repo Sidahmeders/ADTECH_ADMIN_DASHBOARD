@@ -38,7 +38,7 @@ export default function Age({ ages }) {
 
     return (
         <div>
-            <Title label="total records" total={total} />
+            <Title label="age records" total={total} />
             <Percentage labels={percentAgeLabels} data={chartData} colors={colors} />
             <PolarAreaChart chartData={ageData} />
         </div>

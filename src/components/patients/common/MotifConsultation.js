@@ -37,7 +37,7 @@ export default function MotifDeConsultation({ motifConsultation }) {
 
     return (
         <div>
-            <Title label="total records" total={total} />
+            <Title label="motif de consultation" total={total} />
             <Percentage labels={labels} data={chartData} colors={colors} />
             <DoughChart chartData={motifDeConsultationData} />
         </div>

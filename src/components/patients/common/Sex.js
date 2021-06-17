@@ -24,7 +24,7 @@ export default function Sex({ sex }) {
 
     return (
         <div>
-            <Title label="total patients" total={sex.female + sex.male} />
+            <Title label="sex records" total={sex.female + sex.male} />
             <Percentage labels={labels} data={chartData} colors={colors} />
             <DoughChart chartData={sexData} />
         </div>

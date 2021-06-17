@@ -5,6 +5,7 @@ import TextHeader from '../components/common/TextHeader'
 import NavBar from '../components/common/navbar/index'
 
 import CommonStat from '../components/patients/common/index'
+import OCEStat from '../components/patients/OCE/index'
 
 export default function PatientsList() {
     return (
@@ -41,6 +42,7 @@ export default function PatientsList() {
                 />
                 <Switch>
                     <Route path="/home/manage-patients/common" component={CommonStat} />
+                    <Route path="/home/manage-patients/odf" component={OCEStat} />
                 </Switch>
             </div>
         </div>

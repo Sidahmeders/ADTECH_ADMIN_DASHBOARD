@@ -1,18 +1,19 @@
-import PieChart from '../../charts/PieChart'
+import RadarChart from '../../charts/RadarChart'
 import Title from '../../charts/addons/Title'
 import Percentage from '../../charts/addons/Percentage'
 
-const getSpecialtyData = (data) => {
+const getSitStaData = (data) => {
     const labels = []
     const chartData = []
     const colors = []
     let total = 0
     for (let entry in data) {
         labels.push(entry)
-        chartData.push(data[entry].total)
+        chartData.push(data[entry])
         colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}`)
-        total += data[entry].total
+        total += data[entry]
     }
+
     return {
         labels,
         chartData,
@@ -21,13 +22,14 @@ const getSpecialtyData = (data) => {
     }
 }
 
-export default function Specialties({ specialties }) {
-    const { labels, chartData, colors, total } = getSpecialtyData(specialties)
+export default function SitSta({ sit_sta }) {
+    const { labels, chartData, colors, total } = getSitStaData(sit_sta)
 
-    const specialtyData = {
+    const sitStaData = {
         labels: [...labels],
         datasets: [
             {
+                label: 'sit sta',
                 backgroundColor: colors,
                 data: [...chartData]
             }
@@ -36,9 +38,9 @@ export default function Specialties({ specialties }) {
 
     return (
         <div>
-            <Title label="specialty records" total={total} />
+            <Title label="sit-sta" total={total} />
             <Percentage labels={labels} data={chartData} colors={colors} />
-            <PieChart chartData={specialtyData} />
+            <RadarChart chartData={sitStaData} />
         </div>
     )
 }

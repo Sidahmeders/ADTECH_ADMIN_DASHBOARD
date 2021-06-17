@@ -11,13 +11,13 @@ export const OCE = {
         class2: 10,
         class3: 6
     },
-    la_dent_cousale: {
+    dent_cousale: {
         11: 3,
         12: 2,
         13: 2,
         15: 2,
         16: 2,
-        17: 3,
+        17: 4,
         18: 5,
         21: 3,
         22: 3,

@@ -1,18 +1,19 @@
-import PieChart from '../../charts/PieChart'
+import PolarAreaChart from '../../charts/PolarAreaChart'
 import Title from '../../charts/addons/Title'
 import Percentage from '../../charts/addons/Percentage'
 
-const getSpecialtyData = (data) => {
+const getClassBlackData = (data) => {
     const labels = []
     const chartData = []
     const colors = []
     let total = 0
     for (let entry in data) {
         labels.push(entry)
-        chartData.push(data[entry].total)
+        chartData.push(data[entry])
         colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}`)
-        total += data[entry].total
+        total += data[entry]
     }
+
     return {
         labels,
         chartData,
@@ -21,10 +22,10 @@ const getSpecialtyData = (data) => {
     }
 }
 
-export default function Specialties({ specialties }) {
-    const { labels, chartData, colors, total } = getSpecialtyData(specialties)
+export default function ClassBlack({ calssification_de_black }) {
+    const { labels, chartData, colors, total } = getClassBlackData(calssification_de_black)
 
-    const specialtyData = {
+    const classBlackData = {
         labels: [...labels],
         datasets: [
             {
@@ -36,9 +37,9 @@ export default function Specialties({ specialties }) {
 
     return (
         <div>
-            <Title label="specialty records" total={total} />
+            <Title label="class black" total={total} />
             <Percentage labels={labels} data={chartData} colors={colors} />
-            <PieChart chartData={specialtyData} />
+            <PolarAreaChart chartData={classBlackData} />
         </div>
     )
 }
