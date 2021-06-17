@@ -7,7 +7,7 @@ import HomePage from './pages/home'
 import DashBoard from './pages/dashboard'
 import UsersList from './pages/usersList'
 import AddUsers from './pages/addUsers'
-import Patients from './pages/patients'
+import ManagePatients from './pages/managePatients'
 import ManageUsers from './pages/manageUsers'
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
                         <Route path="/home/dashboard" component={DashBoard} />
                         <Route path="/home/users-list" component={UsersList} />
                         <Route path="/home/add-users" component={AddUsers} />
-                        <Route path="/home/patients" component={Patients} />
+                        <Route path="/home/manage-patients" component={ManagePatients} />
                         <Route path="/home/manage-users" component={ManageUsers} />
                     </Layout>
                 </Switch>
