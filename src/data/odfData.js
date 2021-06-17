@@ -1,7 +1,7 @@
 export const ODF = {
     dignostic_postive: {
         class_squelitique: {
-            class1: 12,
+            class1: 13,
             class2: 10,
             class3: 6
         },
