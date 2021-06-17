@@ -1,4 +1,4 @@
-import RadarChart from '../../charts/RadarChart'
+import PolarAreaChart from '../../charts/PolarAreaChart'
 import Title from '../../charts/addons/Title'
 import Percentage from '../../charts/addons/Percentage'
 
@@ -40,7 +40,7 @@ export default function SitSta({ sit_sta }) {
         <div>
             <Title label="sit-sta" total={total} />
             <Percentage labels={labels} data={chartData} colors={colors} />
-            <RadarChart chartData={sitStaData} />
+            <PolarAreaChart chartData={sitStaData} />
         </div>
     )
 }

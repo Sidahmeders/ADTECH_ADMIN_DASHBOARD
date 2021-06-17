@@ -12,9 +12,9 @@ export default function OCEStat() {
     return (
         <>
             <ClassBlack calssification_de_black={calssification_de_black} />
-            <SitSta sit_sta={sit_sta} />
-            <DentCousale dent_cousale={dent_cousale} />
             <DignosticEtiologique dignostic_etiologique={dignostic_etiologique} />
+            <DentCousale dent_cousale={dent_cousale} />
+            <SitSta sit_sta={sit_sta} />
             <Treatment treatment={treatment} />
         </>
     )

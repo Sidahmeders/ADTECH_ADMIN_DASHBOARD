@@ -3,13 +3,13 @@ export const OCE = {
         class1: 12,
         class2: 10,
         class3: 6,
-        class4: 3,
+        class4: 4,
         class5: 9
     },
     sit_sta: {
         class1: 12,
-        class2: 10,
-        class3: 6
+        class2: 9,
+        class3: 7
     },
     dent_cousale: {
         11: 3,

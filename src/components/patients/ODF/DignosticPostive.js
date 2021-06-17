@@ -26,10 +26,13 @@ export default function DignosticPostive({ dignostic_postive }) {
     const { class_squelitique, typologie_facial } = dignostic_postive
     const classSquelitiqueData = getDignosticPostiveData(class_squelitique)
     const typologieFacialData = getDignosticPostiveData(typologie_facial)
+
     const fillData = [0, 0, 0]
 
+    const labels = [...classSquelitiqueData.labels, ...typologieFacialData.labels]
+
     const dignosticPostiveData = {
-        labels: [...classSquelitiqueData.labels, ...typologieFacialData.labels],
+        labels: labels,
         datasets: [
             {
                 label: 'class squelitique',
@@ -51,7 +54,7 @@ export default function DignosticPostive({ dignostic_postive }) {
                 total={classSquelitiqueData.total + typologieFacialData.total}
             />
             <Percentage
-                labels={[...classSquelitiqueData.labels, ...typologieFacialData.labels]}
+                labels={labels}
                 data={[...classSquelitiqueData.chartData, ...typologieFacialData.chartData]}
                 colors={[...classSquelitiqueData.colors, ...typologieFacialData.colors]}
             />
