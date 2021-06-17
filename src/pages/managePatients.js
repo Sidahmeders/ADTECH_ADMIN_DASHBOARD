@@ -7,6 +7,7 @@ import NavBar from '../components/common/navbar/index'
 import CommonStat from '../components/patients/common/index'
 import ODFStat from '../components/patients/ODF/index'
 import OCEStat from '../components/patients/OCE/index'
+import ProtheseStat from '../components/patients/PROTH/index'
 
 export default function PatientsList() {
     return (
@@ -43,8 +44,9 @@ export default function PatientsList() {
                 />
                 <Switch>
                     <Route path="/home/manage-patients/common" component={CommonStat} />
-                    <Route path="/home/manage-patients/oce" component={OCEStat} />
                     <Route path="/home/manage-patients/odf" component={ODFStat} />
+                    <Route path="/home/manage-patients/oce" component={OCEStat} />
+                    <Route path="/home/manage-patients/proth" component={ProtheseStat} />
                 </Switch>
             </div>
         </div>

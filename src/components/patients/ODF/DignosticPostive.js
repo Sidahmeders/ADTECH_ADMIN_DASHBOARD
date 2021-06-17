@@ -24,22 +24,22 @@ const getDignosticPostiveData = (data) => {
 
 export default function DignosticPostive({ dignostic_postive }) {
     const { class_squelitique, typologie_facial } = dignostic_postive
-    const classSquelitique = getDignosticPostiveData(class_squelitique)
-    const typologieFacial = getDignosticPostiveData(typologie_facial)
+    const classSquelitiqueData = getDignosticPostiveData(class_squelitique)
+    const typologieFacialData = getDignosticPostiveData(typologie_facial)
     const fillData = [0, 0, 0]
 
     const dignosticPostiveData = {
-        labels: [...classSquelitique.labels, ...typologieFacial.labels],
+        labels: [...classSquelitiqueData.labels, ...typologieFacialData.labels],
         datasets: [
             {
                 label: 'class squelitique',
-                backgroundColor: classSquelitique.colors,
-                data: [...classSquelitique.chartData, ...fillData]
+                backgroundColor: classSquelitiqueData.colors,
+                data: [...classSquelitiqueData.chartData, ...fillData]
             },
             {
                 label: 'typologie facial',
-                backgroundColor: typologieFacial.colors,
-                data: [...fillData, ...typologieFacial.chartData]
+                backgroundColor: typologieFacialData.colors,
+                data: [...fillData, ...typologieFacialData.chartData]
             }
         ]
     }
@@ -48,12 +48,12 @@ export default function DignosticPostive({ dignostic_postive }) {
         <div>
             <Title
                 label="dignostic postive"
-                total={classSquelitique.total + typologieFacial.total}
+                total={classSquelitiqueData.total + typologieFacialData.total}
             />
             <Percentage
-                labels={[...classSquelitique.labels, ...typologieFacial.labels]}
-                data={[...classSquelitique.chartData, ...typologieFacial.chartData]}
-                colors={[...classSquelitique.colors, ...typologieFacial.colors]}
+                labels={[...classSquelitiqueData.labels, ...typologieFacialData.labels]}
+                data={[...classSquelitiqueData.chartData, ...typologieFacialData.chartData]}
+                colors={[...classSquelitiqueData.colors, ...typologieFacialData.colors]}
             />
             <RadarChart chartData={dignosticPostiveData} />
         </div>
