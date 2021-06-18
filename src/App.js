@@ -9,6 +9,7 @@ import UsersList from './pages/usersList'
 import AddUsers from './pages/addUsers'
 import ManagePatients from './pages/managePatients'
 import ManageUsers from './pages/manageUsers'
+import AdminProfile from './pages/adminProfile'
 
 function App() {
     // const context = useContext(ContextConsumer)
@@ -26,6 +27,7 @@ function App() {
                         <Route path="/home/add-users" component={AddUsers} />
                         <Route path="/home/manage-patients" component={ManagePatients} />
                         <Route path="/home/manage-users" component={ManageUsers} />
+                        <Route path="/home/admin-profile" component={AdminProfile} />
                     </Layout>
                 </Switch>
             </Router>
