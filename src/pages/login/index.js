@@ -9,7 +9,7 @@ import { handleSuccessfulLogin, handleFailedLogin } from './loginStatus'
 import LoginInputElement from './InputElement'
 
 export default function LoginPage() {
-    const [userInfo, setUserInfo] = useState({
+    const [adminUserInfo, setAdminUserInfo] = useState({
         email: '',
         password: ''
     })
@@ -22,9 +22,9 @@ export default function LoginPage() {
     const handleUserInfoChange = (event) => {
         const value = event.target.value
         const entry = event.target.name
-        setUserInfo(() => {
+        setAdminUserInfo(() => {
             return {
-                ...userInfo,
+                ...adminUserInfo,
                 [entry]: value
             }
         })
@@ -32,12 +32,13 @@ export default function LoginPage() {
 
     const handleLogin = async (event) => {
         event.preventDefault()
-        let userData = await Fetch.POSTJson('admin/users/login', userInfo)
+        let userData = await Fetch.POSTJson('admin/users/login', adminUserInfo)
 
         if (userData) {
             const { data, error } = userData
             if (data) {
-                handleSuccessfulLogin(setAlertMessage)
+                const adminUserInfo = data.user
+                handleSuccessfulLogin(setAlertMessage, adminUserInfo)
             } else if (error) {
                 handleFailedLogin(setAlertMessage, error)
             } else {
@@ -68,14 +69,14 @@ export default function LoginPage() {
                         label="username or email"
                         name="email"
                         type="text"
-                        value={userInfo.email}
+                        value={adminUserInfo.email}
                         changeHandler={handleUserInfoChange}
                     />
                     <LoginInputElement
                         label="password"
                         name="password"
                         type="password"
-                        value={userInfo.password}
+                        value={adminUserInfo.password}
                         changeHandler={handleUserInfoChange}
                     />
                     <ButtonElement clickHandler={handleLogin} label="login" />

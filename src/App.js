@@ -12,8 +12,7 @@ import ManageUsers from './pages/manageUsers'
 import AdminProfile from './pages/adminProfile'
 
 function App() {
-    // const context = useContext(ContextConsumer)
-    // const { randomFunction } = context
+    // const { randomFunction } = useContext(ContextConsumer)
 
     return (
         <>
