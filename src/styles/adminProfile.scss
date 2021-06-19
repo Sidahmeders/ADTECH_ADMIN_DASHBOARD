@@ -1,0 +1,13 @@
+.admin-profile {
+    margin: 0 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+
+    .card {
+        border: 2px solid #6662;
+        border-radius: 3px;
+        padding: 20px;
+    }
+}
