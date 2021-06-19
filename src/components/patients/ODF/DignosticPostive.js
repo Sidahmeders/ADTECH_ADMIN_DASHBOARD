@@ -27,9 +27,8 @@ export default function DignosticPostive({ dignostic_postive }) {
     const classSquelitiqueData = getDignosticPostiveData(class_squelitique)
     const typologieFacialData = getDignosticPostiveData(typologie_facial)
 
-    const fillData = [0, 0, 0]
-
     const labels = [...classSquelitiqueData.labels, ...typologieFacialData.labels]
+    const filler = [0, 0, 0]
 
     const dignosticPostiveData = {
         labels: labels,
@@ -37,12 +36,12 @@ export default function DignosticPostive({ dignostic_postive }) {
             {
                 label: 'class squelitique',
                 backgroundColor: classSquelitiqueData.colors,
-                data: [...classSquelitiqueData.chartData, ...fillData]
+                data: [...classSquelitiqueData.chartData, ...filler]
             },
             {
                 label: 'typologie facial',
                 backgroundColor: typologieFacialData.colors,
-                data: [...fillData, ...typologieFacialData.chartData]
+                data: [...filler, ...typologieFacialData.chartData]
             }
         ]
     }

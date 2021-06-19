@@ -44,9 +44,10 @@ export default function ValidateUsers() {
     const fetchUnAuthorizedUsers = async () => {
         handlePendingSubmition(setAlertMessage)
         const response = await Fetch.GET('admin/users/unAuthorized', 15)
-
+        console.log(response) // FIXME: after streaming data
         if (_isMounted.current) {
             if (response) {
+                console.log(response)
                 const { data, error } = response
                 if (data) {
                     setUnAuthorizedUsers(() => data.users)

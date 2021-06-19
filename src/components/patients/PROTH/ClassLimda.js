@@ -27,11 +27,11 @@ export default function ClassLimda({ classLimda }) {
     const mandibuleData = getClassLimdaData(mandibule, 'mandi')
     const maxillaireData = getClassLimdaData(maxillaire, 'maxil')
 
-    const fillMand = [0, 0, 0]
-    const fillMaxi = [0, 0, 0, 0]
-
     const colors = [...mandibuleData.colors, ...maxillaireData.colors]
     const lables = [...mandibuleData.labels, ...maxillaireData.labels]
+    const data = [...mandibuleData.chartData, ...maxillaireData.chartData]
+    const MandFiller = [0, 0, 0]
+    const MaxiFiller = [0, 0, 0, 0]
 
     const classLimdaData = {
         labels: lables,
@@ -39,12 +39,12 @@ export default function ClassLimda({ classLimda }) {
             {
                 label: 'mandibule',
                 backgroundColor: colors,
-                data: [...mandibuleData.chartData, ...fillMand]
+                data: [...mandibuleData.chartData, ...MandFiller]
             },
             {
                 label: 'maxillaire',
                 backgroundColor: colors,
-                data: [...fillMaxi, ...maxillaireData.chartData]
+                data: [...MaxiFiller, ...maxillaireData.chartData]
             }
         ]
     }
@@ -52,11 +52,7 @@ export default function ClassLimda({ classLimda }) {
     return (
         <div>
             <Title label="class limda" total={mandibuleData.total + maxillaireData.total} />
-            <Percentage
-                labels={[...mandibuleData.labels, ...maxillaireData.labels]}
-                data={[...mandibuleData.chartData, ...maxillaireData.chartData]}
-                colors={colors}
-            />
+            <Percentage labels={lables} data={data} colors={colors} />
             <DoughChart chartData={classLimdaData} />
         </div>
     )
