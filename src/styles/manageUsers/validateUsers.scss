@@ -111,5 +111,9 @@
                 object-fit: contain;
             }
         }
+        .empty-result {
+            display: flex;
+            justify-content: center;
+        }
     }
 }

@@ -9,7 +9,7 @@ const getDentCousaleData = (data) => {
     for (let entry in data) {
         labels.push(entry)
         chartData.push(data[entry])
-        colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}`)
+        colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}66`)
         total += data[entry]
     }
 

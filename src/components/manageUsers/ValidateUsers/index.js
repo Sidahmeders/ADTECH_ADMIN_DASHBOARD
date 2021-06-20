@@ -2,8 +2,10 @@ import { useEffect, useState, useRef } from 'react'
 import '../../../styles/manageUsers/validateUsers.scss'
 import Fetch from '../../../utils/fetchData'
 
-import UserRow from '../UserRow'
 import Spinner from '../../../asset/icons/spinner.gif'
+import EmptyResult from '../../../asset/icons/notUsed/nothingFound.gif'
+
+import UserRow from '../UserRow'
 import ButtonElement from '../../common/form/button/index'
 import AlertStatusBar from '../../common/alert/index'
 
@@ -30,10 +32,31 @@ const handleFailedSubmition = (setAlertMessage, error) => {
     })
 }
 
+const removeReviewedUser = (users, id, setUnAuthorizedUsers) => {
+    users = users.filter((user) => user._id !== id)
+    setUnAuthorizedUsers(() => users)
+}
+
+const hanldeResponseData = (data, setUnAuthorizedUsers, setEmptyResponse, setAlertMessage) => {
+    const unAuthUsers = data.users
+    if (unAuthUsers.length) {
+        setUnAuthorizedUsers(() => unAuthUsers)
+    } else {
+        setEmptyResponse(() => true)
+        setAlertMessage(() => {
+            return {
+                pending: '',
+                success: 'everything seems up to date',
+                error: ''
+            }
+        })
+    }
+}
+
 export default function ValidateUsers() {
     const _isMounted = useRef(true)
-
     const [unAuthorizedUsers, setUnAuthorizedUsers] = useState([])
+    const [emptyResponse, setEmptyResponse] = useState(false)
 
     const [alertMessage, setAlertMessage] = useState({
         pending: '',
@@ -49,7 +72,12 @@ export default function ValidateUsers() {
             if (response) {
                 const { data, error } = response
                 if (data) {
-                    setUnAuthorizedUsers(() => data.users)
+                    hanldeResponseData(
+                        data,
+                        setUnAuthorizedUsers,
+                        setEmptyResponse,
+                        setAlertMessage
+                    )
                 } else if (error) {
                     handleFailedSubmition(setAlertMessage, error)
                 }
@@ -68,11 +96,6 @@ export default function ValidateUsers() {
 
     const [droppedUser, setDroppedUser] = useState(false)
     const [authorizedUser, setAuthorizedUser] = useState(false)
-
-    const removeReviewedUser = (users, id, setUnAuthorizedUsers) => {
-        users = users.filter((user) => user._id !== id)
-        setUnAuthorizedUsers(() => users)
-    }
 
     const handleAccessGranted = async (user) => {
         const body = { id: user._id, grade: user.grade }
@@ -109,6 +132,8 @@ export default function ValidateUsers() {
                 <AlertStatusBar message={alertMessage} />
             ) : alertMessage.error ? (
                 <AlertStatusBar message={alertMessage} />
+            ) : alertMessage.success ? (
+                <AlertStatusBar message={alertMessage} />
             ) : (
                 ''
             )}
@@ -143,6 +168,10 @@ export default function ValidateUsers() {
                             </div>
                         )
                     })
+                ) : emptyResponse ? (
+                    <div className="empty-result">
+                        <img src={EmptyResult} alt="empty-result" />
+                    </div>
                 ) : (
                     <div className="spinner">
                         <img src={Spinner} alt="spinner" />
