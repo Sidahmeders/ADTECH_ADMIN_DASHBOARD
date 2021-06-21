@@ -107,7 +107,9 @@
             margin: 0 4vw;
             display: flex;
             justify-content: center;
-            margin-bottom: 20px;
+            img {
+                max-width: 650px;
+            }
         }
         .selected-user-container {
             height: fit-content;

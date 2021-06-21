@@ -9,7 +9,7 @@ const NavbarElement = ({ clickHandler, href, text, isChecked }) => {
     )
 }
 
-export default function NavBar({ navLinks }) {
+export default function TopNavbar({ navLinks }) {
     const markChecked = (event) => {
         const navbarEl = document.querySelectorAll('.navbar-element')
         navbarEl.forEach((item) => {

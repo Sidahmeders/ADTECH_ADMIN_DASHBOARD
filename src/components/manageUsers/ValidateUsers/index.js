@@ -3,7 +3,7 @@ import '../../../styles/manageUsers/validateUsers.scss'
 import Fetch from '../../../utils/fetchData'
 
 import Spinner from '../../../asset/icons/spinner.gif'
-import EmptyResult from '../../../asset/icons/notUsed/nothingFound.gif'
+import EmptyResult from '../../../asset/icons/nothingFound.gif'
 
 import UserRow from '../UserRow'
 import ButtonElement from '../../common/form/button/index'
@@ -37,19 +37,12 @@ const removeReviewedUser = (users, id, setUnAuthorizedUsers) => {
     setUnAuthorizedUsers(() => users)
 }
 
-const hanldeResponseData = (data, setUnAuthorizedUsers, setEmptyResponse, setAlertMessage) => {
+const hanldeSuccessfulResponse = (data, setUnAuthorizedUsers, setEmptyResponse) => {
     const unAuthUsers = data.users
     if (unAuthUsers.length) {
         setUnAuthorizedUsers(() => unAuthUsers)
     } else {
         setEmptyResponse(() => true)
-        setAlertMessage(() => {
-            return {
-                pending: '',
-                success: 'everything seems up to date',
-                error: ''
-            }
-        })
     }
 }
 
@@ -72,12 +65,14 @@ export default function ValidateUsers() {
             if (response) {
                 const { data, error } = response
                 if (data) {
-                    hanldeResponseData(
-                        data,
-                        setUnAuthorizedUsers,
-                        setEmptyResponse,
-                        setAlertMessage
-                    )
+                    hanldeSuccessfulResponse(data, setUnAuthorizedUsers, setEmptyResponse)
+                    setAlertMessage(() => {
+                        return {
+                            pending: '',
+                            success: '',
+                            error: ''
+                        }
+                    })
                 } else if (error) {
                     handleFailedSubmition(setAlertMessage, error)
                 }
@@ -131,8 +126,6 @@ export default function ValidateUsers() {
             ) : alertMessage.pending ? (
                 <AlertStatusBar message={alertMessage} />
             ) : alertMessage.error ? (
-                <AlertStatusBar message={alertMessage} />
-            ) : alertMessage.success ? (
                 <AlertStatusBar message={alertMessage} />
             ) : (
                 ''

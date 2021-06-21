@@ -4,7 +4,7 @@ import '../../../styles/manageUsers/searchUpdateUsers.scss'
 
 import TextHeader from '../../common/TextHeader/index'
 import UserRow from '../UserRow'
-import NoFile from '../../../asset/icons/noFile.gif'
+import NoFile from '../../../asset/icons/EmptyFolder.png'
 
 import TextInputElement from '../../common/form/TextInputElement/index'
 import DateInputElement from '../../common/form/DateInputElement/index'

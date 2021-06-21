@@ -13,7 +13,6 @@ import AdminProfile from './pages/adminProfile'
 
 function App() {
     // const { randomFunction } = useContext(ContextConsumer)
-
     return (
         <>
             <Router>
