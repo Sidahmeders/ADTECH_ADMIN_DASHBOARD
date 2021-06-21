@@ -3,10 +3,10 @@ import '../styles/patients.scss'
 
 import TextHeader from '../components/common/TextHeader'
 import TopNavBar from '../components/common/topNavbar/index'
-import CommonStat from '../components/patients/common/index'
-import ODFStat from '../components/patients/ODF/index'
-import OCEStat from '../components/patients/OCE/index'
-import ProtheseStat from '../components/patients/PROTH/index'
+import CommonStat from '../components/reports/common/index'
+import ODFStat from '../components/reports/ODF/index'
+import OCEStat from '../components/reports/OCE/index'
+import ProtheseStat from '../components/reports/PROTH/index'
 
 export default function PatientsList() {
     return (
@@ -17,35 +17,35 @@ export default function PatientsList() {
                     navLinks={[
                         {
                             text: 'common',
-                            href: 'manage-patients/common'
+                            href: 'reports/common'
                         },
                         {
                             text: 'odf',
-                            href: 'manage-patients/odf'
+                            href: 'reports/odf'
                         },
                         {
                             text: 'oce',
-                            href: 'manage-patients/oce'
+                            href: 'reports/oce'
                         },
                         {
                             text: 'paro',
-                            href: 'manage-patients/paro'
+                            href: 'reports/paro'
                         },
                         {
                             text: 'proth',
-                            href: 'manage-patients/proth'
+                            href: 'reports/proth'
                         },
                         {
                             text: 'pcb',
-                            href: 'manage-patients/pcb'
+                            href: 'reports/pcb'
                         }
                     ]}
                 />
                 <Switch>
-                    <Route path="/home/manage-patients/common" component={CommonStat} />
-                    <Route path="/home/manage-patients/odf" component={ODFStat} />
-                    <Route path="/home/manage-patients/oce" component={OCEStat} />
-                    <Route path="/home/manage-patients/proth" component={ProtheseStat} />
+                    <Route path="/home/reports/common" component={CommonStat} />
+                    <Route path="/home/reports/odf" component={ODFStat} />
+                    <Route path="/home/reports/oce" component={OCEStat} />
+                    <Route path="/home/reports/proth" component={ProtheseStat} />
                 </Switch>
             </div>
         </div>

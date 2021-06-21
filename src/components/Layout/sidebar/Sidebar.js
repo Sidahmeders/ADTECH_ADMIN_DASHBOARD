@@ -7,7 +7,7 @@ import dashBoard from '../../../asset/icons/dashboard/dashboard.svg'
 import userProfile from '../../../asset/icons/dashboard/user-solid.svg'
 import usersList from '../../../asset/icons/dashboard/users-solid.svg'
 import addUser from '../../../asset/icons/dashboard/user-plus.svg'
-import patientsList from '../../../asset/icons/dashboard/people.svg'
+import reports from '../../../asset/icons/dashboard/charts.svg'
 import newUsers from '../../../asset/icons/dashboard/new-users.svg'
 import notification from '../../../asset/icons/dashboard/bell-solid.svg'
 import logout from '../../../asset/icons/dashboard/logout.svg'
@@ -16,7 +16,7 @@ const sideBarItems = [
     { text: 'dashboard', route: 'dashboard', icon: dashBoard },
     { text: 'users list', route: 'users-list', icon: usersList },
     { text: 'add users', route: 'add-users', icon: addUser },
-    { text: 'manage patients', route: 'manage-patients', icon: patientsList },
+    { text: 'reports', route: 'reports', icon: reports },
     { text: 'manage users', route: 'manage-users', icon: newUsers },
     { text: 'admin profile', route: 'admin-profile', icon: userProfile },
     { text: 'notifications', route: 'notifications', icon: notification, notification: 13 },

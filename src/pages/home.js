@@ -1,5 +1,3 @@
-import '../styles/home.scss'
-
 import gif1 from '../asset/icons/home/icon1.gif'
 import gif2 from '../asset/icons/home/icon2.gif'
 import gif3 from '../asset/icons/home/icon3.gif'
@@ -11,9 +9,8 @@ const gifs = [gif1, gif2, gif3, gif4, gif5, gif6]
 
 export default function HomePage() {
     return (
-        <div className="home-page">
+        <>
             <div
-                className="gifs"
                 style={{
                     display: 'flex',
                     minHeight: '90vh',
@@ -22,6 +19,6 @@ export default function HomePage() {
                 }}>
                 <img src={gifs[Math.floor(Math.random() * 6)]} alt="add-users" />
             </div>
-        </div>
+        </>
     )
 }
