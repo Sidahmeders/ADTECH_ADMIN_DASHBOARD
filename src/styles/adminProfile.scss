@@ -1,13 +1,115 @@
-.admin-profile {
+.admin-page {
     margin: 0 2vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
 
-    .card {
+    .header {
+        display: flex;
+        justify-content: space-between;
         border: 2px solid #6662;
-        border-radius: 3px;
-        padding: 20px;
+        border-top-color: transparent;
+        border-radius: 0 0 25px 25px;
+        padding: 8px;
+
+        .search-contacts {
+            display: flex;
+            align-items: center;
+            min-width: 25vw;
+            justify-content: center;
+            position: relative;
+
+            input {
+                outline: none;
+                border: 2px solid #6662;
+                border-radius: 5px;
+                font-size: 18px;
+                padding: 6px 12px;
+            }
+        }
+
+        .right-icons {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            div {
+                margin: 10px 20px;
+                transition: 0.5s;
+                font-size: 17px;
+
+                img {
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                    object-fit: cover;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+                &:hover {
+                    color: #2296f3;
+                }
+            }
+        }
+    }
+
+    .admin-profile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 80vh;
+        margin-top: 20px;
+        border-radius: 25px;
+        padding: 0 2vw;
+
+        .left {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            min-height: 450px;
+
+            img {
+                border-radius: 10px;
+                transform: translateY(-15px);
+                width: 300px;
+                height: 280px;
+                object-fit: cover;
+            }
+            .faculty,
+            .specialty {
+                font-size: 20px;
+                padding: 10px 20px;
+                margin-left: 3vw;
+                text-transform: capitalize;
+            }
+        }
+
+        .right {
+            display: flex;
+            flex-direction: column;
+            min-height: 450px;
+            min-width: 45vw;
+
+            div {
+                margin: 15px 0;
+            }
+            .name {
+                font-size: 28px;
+            }
+            .birth-date,
+            .phone,
+            .email {
+                font-size: 20px;
+                margin-left: 22px;
+                text-transform: capitalize;
+                color: #444;
+
+                span {
+                    padding: 0 5px;
+                    color: #2296f3;
+                    text-transform: initial;
+                }
+            }
+        }
     }
 }

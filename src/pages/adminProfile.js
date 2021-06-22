@@ -8,26 +8,79 @@ function getAdminUserFromLocalStorage() {
     return adminUserInfo
 }
 
+const getBirthDate = (birthDate) => {
+    const months = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+    ]
+    birthDate = birthDate.split('-')
+    birthDate[1] = months[parseInt(birthDate[1])]
+    birthDate = birthDate.join(' ')
+    birthDate = birthDate.replace(/-/g, ', ')
+    return birthDate
+}
+
 export default function AdminProfile() {
     const adminUserInfo = getAdminUserFromLocalStorage()
+    let birthDate = adminUserInfo ? adminUserInfo.birth_date.split('T')[0] : ''
+    birthDate = getBirthDate(birthDate)
 
     return (
-        <>
-            {adminUserInfo ? (
-                <div className="admin-profile">
-                    <img width="250px" src={profileImage} alt="profile-image" />
-                    <div className="card">
-                        <p>full name: {adminUserInfo.first_name + ' ' + adminUserInfo.last_name}</p>
-                        <p>birth date: {adminUserInfo.birth_date.split('T')[0]}</p>
-                        <p>faculty: {adminUserInfo.faculty}</p>
-                        <p>specialty: {adminUserInfo.specialty}</p>
-                        <p>phone_number: {adminUserInfo.phone_number}</p>
-                        <p>email: {adminUserInfo.email}</p>
+        <div className="admin-page">
+            <div className="header">
+                <div className="search-contacts">
+                    <input type="search" placeholder="search" id="search-contact" />
+                </div>
+                <div className="right-icons">
+                    <div className="contacts">contacts</div>
+                    <div className="allow-contacts">allow contacts</div>
+                    <div className="messages">messages</div>
+                    <div className="image">
+                        <img src={profileImage} alt="profile" />
                     </div>
                 </div>
-            ) : (
-                ''
-            )}
-        </>
+            </div>
+            <div className="admin-profile">
+                {adminUserInfo ? (
+                    <>
+                        <div className="left">
+                            <img src={profileImage} alt="profile" />
+                            <div className="status">
+                                <div className="faculty">
+                                    faculty: <span>{adminUserInfo.faculty}</span>
+                                </div>
+                                <div className="specialty">
+                                    specialty: <span>{adminUserInfo.specialty}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="right">
+                            <div className="name">
+                                {adminUserInfo.first_name + ' ' + adminUserInfo.last_name}
+                            </div>
+                            <div className="birth-date">birth date: {birthDate}</div>
+                            <div className="phone">
+                                phone number: <span>+213{adminUserInfo.phone_number}</span>
+                            </div>
+                            <div className="email">
+                                email: <span>{adminUserInfo.email}</span>
+                            </div>
+                        </div>
+                    </>
+                ) : (
+                    ''
+                )}
+            </div>
+        </div>
     )
 }
