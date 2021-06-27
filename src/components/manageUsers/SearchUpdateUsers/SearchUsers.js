@@ -130,7 +130,7 @@ export default function SearchUpdateUsers({ setUsers, alertMessage, setAlertMess
                 ) : searchQuery.queryKey === 'year_of_study' ? (
                     <RadioInputElement
                         label="select a year"
-                        options={['1-st', '2-nd', '3-rd', '4-th', '5-th', '6-th']}
+                        options={['1st', '2nd', '3rd', '4th', '5th', '6th']}
                         changeHandler={handleSearchQueryChange}
                         sub={true}
                     />

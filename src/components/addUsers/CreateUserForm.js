@@ -180,13 +180,13 @@ export default function CreateUserForm({ alertMessage, setAlertMessage }) {
                 {userInfo.grade === 'student' ? (
                     <RadioInputElement
                         label="year_of_study"
-                        options={['1-st', '2-nd', '3-rd', '4-th', '5-th', '6-th']}
+                        options={['1st', '2nd', '3rd', '4th', '5th', '6th']}
                         changeHandler={hadnleUserInfoChange}
                     />
                 ) : userInfo.grade === 'resident' ? (
                     <RadioInputElement
                         label="year_of_study"
-                        options={['1-st', '2-nd', '3-rd', '4-th']}
+                        options={['1st', '2nd', '3rd', '4th']}
                         changeHandler={hadnleUserInfoChange}
                     />
                 ) : (
