@@ -1,5 +1,5 @@
 import { Switch, Route } from 'react-router-dom'
-import '../styles/patients.scss'
+import '../styles/reports.scss'
 
 import TextHeader from '../components/common/TextHeader'
 import TopNavBar from '../components/common/topNavbar/index'
@@ -10,7 +10,7 @@ import ProtheseStat from '../components/reports/PROTH/index'
 
 export default function PatientsList() {
     return (
-        <div className="patients">
+        <div className="reports">
             <TextHeader text="patients statistics" />
             <div className="charts-container">
                 <TopNavBar

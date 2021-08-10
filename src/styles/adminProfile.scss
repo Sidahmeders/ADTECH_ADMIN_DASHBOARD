@@ -81,6 +81,10 @@
                 padding: 10px 20px;
                 margin-left: 3vw;
                 text-transform: capitalize;
+                color: #95a8ac;
+                span {
+                    color: #405a5a;
+                }
             }
         }
 
@@ -92,9 +96,11 @@
 
             div {
                 margin: 15px 0;
+                color: #95a8ac;
             }
             .name {
                 font-size: 28px;
+                color: #405a5a;
             }
             .birth-date,
             .phone,
@@ -102,7 +108,6 @@
                 font-size: 20px;
                 margin-left: 22px;
                 text-transform: capitalize;
-                color: #444;
 
                 span {
                     padding: 0 5px;

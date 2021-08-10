@@ -1,4 +1,4 @@
-.patients {
+.reports {
     .charts-container {
         display: flex;
         justify-content: space-evenly;
@@ -9,11 +9,11 @@
     }
 }
 
-.patients .pie-charts {
+.reports .pie-charts {
     display: flex;
 }
 
-.patients .chart {
+.reports .chart {
     width: fit-content;
     margin: 20px;
     background: white;
