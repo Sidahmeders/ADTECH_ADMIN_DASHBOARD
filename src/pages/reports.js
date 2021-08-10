@@ -2,7 +2,7 @@ import { Switch, Route } from 'react-router-dom'
 import '../styles/reports.scss'
 
 import TextHeader from '../components/common/TextHeader'
-import TopNavBar from '../components/common/topNavbar/index'
+import TopNavbar from '../components/common/topNavbar/index'
 import CommonStat from '../components/reports/common/index'
 import ODFStat from '../components/reports/ODF/index'
 import OCEStat from '../components/reports/OCE/index'
@@ -13,7 +13,7 @@ export default function PatientsList() {
         <div className="reports">
             <TextHeader text="patients statistics" />
             <div className="charts-container">
-                <TopNavBar
+                <TopNavbar
                     navLinks={[
                         {
                             text: 'common',

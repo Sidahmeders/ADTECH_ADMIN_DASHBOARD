@@ -2,7 +2,7 @@ import { Switch, Route } from 'react-router-dom'
 import '../styles/manageUsers/index.scss'
 
 import TextHeader from '../components/common/TextHeader/index'
-import TopNavBar from '../components/common/topNavbar/index'
+import TopNavbar from '../components/common/topNavbar/index'
 import ValidateUsers from '../components/manageUsers/ValidateUsers/index'
 import SearchUpdateUsers from '../components/manageUsers/SearchUpdateUsers/index'
 
@@ -11,7 +11,7 @@ export default function ManageUsersPage() {
         <>
             <div className="manage-users">
                 <TextHeader text="manage users" />
-                <TopNavBar
+                <TopNavbar
                     navLinks={[
                         {
                             text: 'validate users',

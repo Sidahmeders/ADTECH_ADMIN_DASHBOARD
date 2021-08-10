@@ -1,5 +1,4 @@
 import '../styles/adminProfile.scss'
-
 import profileImage from '../asset/images/person.jpg'
 
 function getAdminUserFromLocalStorage() {

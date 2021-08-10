@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-const Drags = () => {
+const CephaloCanvas = () => {
     // track mouse position on mousemove
     let mousePosition
     // track state of mousedown and up
@@ -157,9 +157,6 @@ const Drags = () => {
             for (let i = circles.length - 1; i >= 0; i--) {
                 circles[i].draw()
             }
-            // for (let i = lines.length - 1; i >= 0; i--) {
-            //     lines[i].draw()
-            // }
         }
 
         //key track of circle focus and focused index
@@ -466,7 +463,7 @@ const Drags = () => {
     })
 
     return (
-        <div className="canvas">
+        <div className="cephalo-canvas">
             <canvas ref={canvas}></canvas>
             <div className="calc-head">
                 <div ref={calcHead}></div>
@@ -475,4 +472,4 @@ const Drags = () => {
     )
 }
 
-export default Drags
+export default CephaloCanvas

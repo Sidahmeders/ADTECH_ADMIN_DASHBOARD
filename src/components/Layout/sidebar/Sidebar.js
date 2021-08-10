@@ -19,10 +19,10 @@ const sideBarItems = [
     { text: 'add users', route: 'add-users', icon: addUser },
     { text: 'reports', route: 'reports', icon: reports },
     { text: 'manage users', route: 'manage-users', icon: newUsers },
+    { text: 'dental charts', route: 'dental-charts', icon: projects },
     { text: 'admin profile', route: 'admin-profile', icon: userProfile },
     { text: 'notifications', route: 'notifications', icon: notification, notification: 13 },
-    { text: 'logout', route: 'logout', icon: logout },
-    { text: 'cephalo metric', route: 'cephalo', icon: projects }
+    { text: 'logout', route: 'logout', icon: logout }
 ]
 
 function SideBar() {
