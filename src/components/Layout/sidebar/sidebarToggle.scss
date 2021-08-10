@@ -1,0 +1,16 @@
+.sidebar-toggle {
+    position: absolute;
+    right: 5%;
+    bottom: 1%;
+    padding: 5px 8px;
+    border-radius: 5px;
+    transition: 0.5s;
+    background: #ffc0cb34;
+    &:hover {
+        cursor: pointer;
+        background-color: #ffc0cb7a;
+    }
+    img {
+        transform: translate(1px, 1px);
+    }
+}

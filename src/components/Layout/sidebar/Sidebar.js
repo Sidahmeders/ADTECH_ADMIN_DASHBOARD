@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import '../../../styles/sidebar.scss'
-import SideBarElement from './SideBarElement'
+import './sidebar.scss'
+import SidebarElement from './SidebarElement'
+import SideBarToggle from './sidebarToggle'
 
 // dashboard icons
 import dashBoard from '../../../asset/icons/dashboard/dashboard.svg'
@@ -43,7 +44,7 @@ function SideBar() {
                 AD<span>T</span>ECH
             </Link>
             {sideBarItems.map((item, index) => (
-                <SideBarElement
+                <SidebarElement
                     id={index}
                     key={index}
                     text={item.text}
@@ -53,6 +54,7 @@ function SideBar() {
                     clickHandler={handleRouteChange}
                 />
             ))}
+            <SideBarToggle />
         </div>
     )
 }

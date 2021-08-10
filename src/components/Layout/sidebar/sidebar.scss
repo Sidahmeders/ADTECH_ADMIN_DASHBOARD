@@ -1,0 +1,24 @@
+@import '../../../styles/vars.scss';
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    background: $secondary-color;
+    z-index: 99;
+
+    .logo {
+        display: block;
+        text-decoration: none;
+        font-family: 'Lobster', cursive;
+        font-size: 2.5rem;
+        text-align: center;
+        padding-right: 25px;
+        padding-top: 10px;
+        color: $faint-color;
+
+        span {
+            color: $primary-color;
+        }
+    }
+}
