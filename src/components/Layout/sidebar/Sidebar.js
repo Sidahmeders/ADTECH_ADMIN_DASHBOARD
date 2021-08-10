@@ -11,6 +11,7 @@ import reports from '../../../asset/icons/dashboard/charts.svg'
 import newUsers from '../../../asset/icons/dashboard/new-users.svg'
 import notification from '../../../asset/icons/dashboard/bell-solid.svg'
 import logout from '../../../asset/icons/dashboard/logout.svg'
+import projects from '../../../asset/icons/dashboard/projects.svg'
 
 const sideBarItems = [
     { text: 'dashboard', route: 'dashboard', icon: dashBoard },
@@ -20,7 +21,8 @@ const sideBarItems = [
     { text: 'manage users', route: 'manage-users', icon: newUsers },
     { text: 'admin profile', route: 'admin-profile', icon: userProfile },
     { text: 'notifications', route: 'notifications', icon: notification, notification: 13 },
-    { text: 'logout', route: 'logout', icon: logout }
+    { text: 'logout', route: 'logout', icon: logout },
+    { text: 'cephalo metric', route: 'cephalo', icon: projects }
 ]
 
 function SideBar() {

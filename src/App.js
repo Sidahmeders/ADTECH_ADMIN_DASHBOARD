@@ -10,6 +10,7 @@ import AddUsers from './pages/addUsers'
 import Reports from './pages/reports'
 import ManageUsers from './pages/manageUsers'
 import AdminProfile from './pages/adminProfile'
+import Cephalo from './pages/cephalo'
 
 function App() {
     // const { randomFunction } = useContext(ContextConsumer)
@@ -26,6 +27,7 @@ function App() {
                         <Route path="/home/reports" component={Reports} />
                         <Route path="/home/manage-users" component={ManageUsers} />
                         <Route path="/home/admin-profile" component={AdminProfile} />
+                        <Route path="/home/cephalo" component={Cephalo} />
                     </Layout>
                 </Switch>
             </Router>
