@@ -16,7 +16,7 @@ export default function CommonStat() {
     const [patientsStat, setPatientStat] = useState(false)
 
     async function getPatientsStat(setPatientStat) {
-        let response = await Fetch.GET('admin/patients/common-stat')
+        let response = await Fetch.GET('admin/patients/statistics/common')
         if (_isMounted.current) {
             if (response) {
                 const { data } = response
