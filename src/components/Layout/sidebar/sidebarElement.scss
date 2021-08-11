@@ -6,7 +6,7 @@
     padding: 2vh 20px;
     margin: 15px 0;
     text-decoration: none;
-    color: $faint-color;
+    color: #74746e;
 
     &:nth-child(1) {
         margin-top: 30px;
@@ -17,7 +17,7 @@
     }
     &.selected {
         background: $focus-color;
-        color: white;
+        color: #2b7991;
     }
     .text {
         margin-left: 15px;

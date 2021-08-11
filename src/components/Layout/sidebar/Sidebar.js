@@ -3,6 +3,8 @@ import './sidebar.scss'
 import SidebarElement from './SidebarElement'
 import SideBarToggle from './sidebarToggle'
 
+// import LocalStorage from '../../../utils/localStorage'
+
 // dashboard icons
 import dashBoard from '../../../asset/icons/dashboard/dashboard.svg'
 import userProfile from '../../../asset/icons/dashboard/user-solid.svg'
