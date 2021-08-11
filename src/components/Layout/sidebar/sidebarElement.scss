@@ -3,10 +3,19 @@
 .sidebar-element {
     display: flex;
     align-items: center;
-    padding: 2vh 20px;
+    padding: 1.5vh 4px;
     margin: 15px 0;
     text-decoration: none;
     color: #74746e;
+
+    &:before {
+        content: '';
+        width: 30px;
+        height: 4.5vh;
+        margin-right: -6px;
+        border-radius: 30px;
+        transform: translateX(-15px);
+    }
 
     &:nth-child(1) {
         margin-top: 30px;
@@ -17,7 +26,11 @@
     }
     &.selected {
         background: $focus-color;
-        color: #2b7991;
+        color: #456da8;
+        &:before {
+            background-color: #8bb4eb;
+            box-shadow: 0 0 12px #419ace;
+        }
     }
     .text {
         margin-left: 15px;
