@@ -5,12 +5,12 @@
     padding: 2px 4px;
     border-radius: 10px;
     transition: 0.5s;
-    background: #9bcde48f;
+    background: #9bcde449;
     &:hover {
         cursor: pointer;
-        background-color: #36a4ee81;
+        background-color: #36a4ee42;
     }
     img {
-        transform: translate(1px, 1px);
+        transform: translate(1px, 2px);
     }
 }
