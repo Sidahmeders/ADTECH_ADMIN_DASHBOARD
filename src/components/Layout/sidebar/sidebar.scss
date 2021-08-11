@@ -1,14 +1,23 @@
 @import '../../../styles/vars.scss';
 
 .sidebar {
-    width: 220px;
     height: 100vh;
     position: fixed;
     background: $bg-color;
     z-index: 99;
 
-    &-open {
+    &.open {
         width: 220px;
+    }
+    &.closed {
+        width: 70px;
+        overflow: hidden;
+        .text {
+            display: none;
+        }
+        .logo {
+            display: none;
+        }
     }
     .logo {
         display: block;

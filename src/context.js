@@ -1,14 +1,21 @@
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
+import LocalStorage from './utils/localStorage'
 
 const Context = createContext()
 
 function ContextProvider(props) {
-    const randomFunction = () => console.log('random context function')
+    const [sidebarState, setSidebarState] = useState(LocalStorage.getSidebarState())
+
+    const toggleSidebar = () => {
+        console.log(sidebarState)
+        setSidebarState(() => LocalStorage.toggleSidebarState(sidebarState))
+    }
 
     return (
         <Context.Provider
             value={{
-                randomFunction
+                sidebarState,
+                toggleSidebar
             }}>
             {props.children}
         </Context.Provider>

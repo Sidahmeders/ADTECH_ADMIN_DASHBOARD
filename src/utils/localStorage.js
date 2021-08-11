@@ -7,12 +7,13 @@ class LocalStorage {
         localStorage.getItem('url-path')
     }
 
-    setSidebarState({ state }) {
-        localStorage.setItem('toggle-state', state)
+    getSidebarState() {
+        return localStorage.getItem('toggle-state')
     }
 
-    getSidebarState() {
-        localStorage.getItem('toggle-state')
+    toggleSidebarState(state) {
+        localStorage.setItem('toggle-state', !state)
+        return !state
     }
 }
 

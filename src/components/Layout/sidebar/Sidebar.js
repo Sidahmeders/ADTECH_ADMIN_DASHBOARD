@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import './sidebar.scss'
 import SidebarElement from './SidebarElement'
-import SideBarToggle from './sidebarToggle'
-
-// import LocalStorage from '../../../utils/localStorage'
+import SideBarToggle from './SidebarToggle'
+import { ContextConsumer } from '../../../context'
+import { useContext } from 'react'
 
 // dashboard icons
 import dashBoard from '../../../asset/icons/dashboard/dashboard.svg'
@@ -29,6 +29,8 @@ const sideBarItems = [
 ]
 
 function SideBar() {
+    const { sidebarState, toggleSidebar } = useContext(ContextConsumer)
+
     const handleRouteChange = (id) => {
         const sideBarElements = document.querySelectorAll('.sidebar-element')
         sideBarElements.forEach((item, index) => {
@@ -41,7 +43,7 @@ function SideBar() {
     }
 
     return (
-        <div className="sidebar">
+        <div className={`sidebar ${sidebarState ? 'closed' : 'open'}`}>
             <Link onClick={() => handleRouteChange(null)} to="/home" className="logo">
                 AD<span>T</span>ECH
             </Link>
@@ -56,7 +58,7 @@ function SideBar() {
                     clickHandler={handleRouteChange}
                 />
             ))}
-            <SideBarToggle />
+            <SideBarToggle sidebarState={sidebarState} toggleSidebar={toggleSidebar} />
         </div>
     )
 }
