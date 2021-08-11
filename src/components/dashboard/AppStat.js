@@ -9,12 +9,18 @@ function AppStat() {
             {
                 label: 'active users',
                 data: [54, 79, 59, 63, 39, 67],
-                backgroundColor: ['#963', '#384', '#468', '#774', '#989', '#d73']
+                backgroundColor: ['#9634', '#3844', '#4684', '#7474', '#9894', '#d734'],
+                borderColor: ['#9639', '#3849', '#4689', '#7479', '#9849', '#d739'],
+                borderWidth: 3,
+                borderRadius: 3
             },
             {
                 label: 'total users',
                 data: [80, 92, 69, 73, 60, 85],
-                backgroundColor: ['#965', '#386', '#46d', '#776', '#98f', '#d75']
+                backgroundColor: ['#9654', '#3864', '#46d4', '#7764', '#98f4', '#d754'],
+                borderColor: ['#9659', '#3869', '#46d9', '#7769', '#98f9', '#d759'],
+                borderWidth: 3,
+                borderRadius: 3
             }
         ]
     }
@@ -35,17 +41,13 @@ function AppStat() {
             {
                 label: 'Hours spent on the app',
                 data: [34, 59, 39, 43, 19, 47, 23, 41, 29],
-                backgroundColor: [
-                    '#963',
-                    '#384',
-                    '#468',
-                    '#774',
-                    '#989',
-                    '#d73',
-                    '#455',
-                    '#198',
-                    '#d56'
-                ]
+                borderColor: '#0974',
+                backgroundColor: '#4f72',
+                hoverBorderColor: '#5d75',
+                fill: true,
+                radius: 8,
+                pointRadius: 6,
+                pointHoverRadius: 10
             }
         ]
     }

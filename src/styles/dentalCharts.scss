@@ -19,11 +19,11 @@
         background-color: #456;
         z-index: 99;
         position: fixed;
-        top: 15%;
+        top: 25%;
         right: 1%;
-        width: 30vw;
+        width: 20vw;
         height: auto;
-        border: 2px solid red;
+        border: 2px solid #d9e6f3;
         border-radius: 5px;
         padding: 10px 0;
 
@@ -32,18 +32,21 @@
             flex-wrap: wrap;
             justify-content: center;
 
-            .unSelected {
+            .unSelected,
+            .selected {
+                width: 35px;
                 margin: 5px;
-                color: black;
                 display: flex;
                 justify-content: center;
                 padding: 5px 0;
                 border-radius: 3px;
+                font-size: 12px;
+            }
+
+            .unSelected {
+                color: black;
                 transition: 0.3s;
                 background-color: #fff;
-                width: 55px;
-                border: 2px solid #444;
-
                 &:hover {
                     background-color: #fff;
                     cursor: copy;
@@ -51,15 +54,8 @@
                 }
             }
             .selected {
-                margin: 5px;
                 color: #999;
-                display: flex;
-                justify-content: center;
-                padding: 5px 0;
-                border-radius: 3px;
                 background-color: #ddd;
-                width: 55px;
-                border: 2px solid #444;
 
                 &:hover {
                     cursor: not-allowed;
