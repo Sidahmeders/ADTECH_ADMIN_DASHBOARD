@@ -2,13 +2,13 @@
     position: absolute;
     right: 5%;
     bottom: 1%;
-    padding: 5px 8px;
-    border-radius: 5px;
+    padding: 2px 4px;
+    border-radius: 10px;
     transition: 0.5s;
-    background: #4451808f;
+    background: #9bcde48f;
     &:hover {
         cursor: pointer;
-        background-color: #131fc28f;
+        background-color: #36a4ee81;
     }
     img {
         transform: translate(1px, 1px);
