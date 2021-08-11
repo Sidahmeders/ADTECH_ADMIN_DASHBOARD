@@ -10,9 +10,9 @@ import ProtheseStat from '../components/reports/PROTH/index'
 
 export default function PatientsList() {
     return (
-        <div className="reports">
+        <>
             <TextHeader text="patients statistics" />
-            <div className="charts-container">
+            <div className="reports">
                 <TopNavbar
                     navLinks={[
                         {
@@ -48,6 +48,6 @@ export default function PatientsList() {
                     <Route path="/home/reports/proth" component={ProtheseStat} />
                 </Switch>
             </div>
-        </div>
+        </>
     )
 }

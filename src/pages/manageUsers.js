@@ -9,8 +9,8 @@ import SearchUpdateUsers from '../components/manageUsers/SearchUpdateUsers/index
 export default function ManageUsersPage() {
     return (
         <>
+            <TextHeader text="manage users" />
             <div className="manage-users">
-                <TextHeader text="manage users" />
                 <TopNavbar
                     navLinks={[
                         {

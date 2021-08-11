@@ -1,12 +1,10 @@
 .reports {
-    .charts-container {
-        display: flex;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-        background: white;
-        margin: 0 2vw;
-        overflow-x: hidden;
-    }
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    background: white;
+    margin: 0 2vw;
+    overflow-x: hidden;
 }
 
 .reports .pie-charts {

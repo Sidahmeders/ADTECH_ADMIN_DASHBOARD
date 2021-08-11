@@ -27,6 +27,7 @@
     &.selected {
         background: $focus-color;
         color: #456da8;
+        border-radius: 0 20px 20px 0;
         &:before {
             background-color: #8bb4eb;
             box-shadow: 0 0 12px #419ace;
