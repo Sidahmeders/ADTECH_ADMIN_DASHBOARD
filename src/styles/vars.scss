@@ -1,5 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Lobster');
-@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+@font-face {
+    font-family: 'Jost';
+    src: url(../asset/fonts/Jost-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat'), url(../asset/fonts/Montserrat-Regular.ttf) format('truetype');
+}
+
 $primary-color: white;
 $secondary-color: #222;
 $bg-color: #f9f9fa;

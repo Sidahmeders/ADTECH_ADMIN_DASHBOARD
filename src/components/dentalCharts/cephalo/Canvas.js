@@ -3,12 +3,7 @@ import { cephaloPoints, chartState } from './_state'
 import calculateTheDistanceAndAngle from './_calculateTheDistanceAndAngle'
 
 const CephaloCanvas = () => {
-    // track mouse position on mousemove
-    let mousePosition
-    // track state of mousedown and up
-    let isMouseDown
-
-    //reference to the canvas element
+    // reference to the canvas element
     const canvas = useRef(null)
 
     // render the canvas on screen
@@ -17,7 +12,7 @@ const CephaloCanvas = () => {
         // set the width and height of the canvas
         ctx.width = window.innerWidth * 0.98
         ctx.height = window.innerHeight * 1.22
-        //reference to 2d context
+        // reference to 2d context
         let c = ctx.getContext('2d')
 
         // Circle class to draw on the canvas
@@ -42,7 +37,7 @@ const CephaloCanvas = () => {
             }
         }
 
-        //add listeners
+        // add event-listeners
         document.addEventListener('mousemove', dragPoints)
         document.addEventListener('mousedown', setDraggable)
         document.addEventListener('mouseup', setDraggable)
@@ -50,7 +45,7 @@ const CephaloCanvas = () => {
 
         let circles = []
 
-        //append a new circles && lines to the canvas
+        // append a new circles && lines to the canvas
         function addPoints(e) {
             // check if the user selected a point from clac-head
             if (chartState.isPointSelected) {
@@ -69,35 +64,35 @@ const CephaloCanvas = () => {
             }
         }
 
-        //main draw method
+        // main draw method
         function draw() {
             //clear canvas
             c.clearRect(0, 0, ctx.width, ctx.height)
             drawCircles()
         }
 
-        //draw circles
+        // draw circles
         function drawCircles() {
             for (let i = circles.length - 1; i >= 0; i--) {
                 circles[i].draw()
             }
         }
 
-        //key track of circle focus and focused index
+        // key track of circle focus and focused index
         let focused = {
             key: 0,
             state: false
         }
 
         function dragPoints(e) {
-            if (!isMouseDown) return
+            if (chartState.isMouseDown) return
             getMousePosition(e)
-            //if any circle is focused
+            // if any circle is focused
             if (focused.state) {
-                //get the x and y current postion of the mouse
-                let xPos = (circles[focused.key].y = mousePosition.x)
-                let yPos = (circles[focused.key].y = mousePosition.y)
-                //update the x and y coordinates of the circle
+                // get the x and y current postion of the mouse
+                let xPos = (circles[focused.key].y = chartState.mousePosition.x)
+                let yPos = (circles[focused.key].y = chartState.mousePosition.y)
+                // update the x and y coordinates of the circle
                 circles[focused.key].x = xPos
                 circles[focused.key].y = yPos
                 // get the reference-chartState.entryPoint from the circle
@@ -106,7 +101,7 @@ const CephaloCanvas = () => {
                 cephaloPoints.forEach((point) => {
                     let key = Object.keys(point)[0]
                     if (key === ruleRef) {
-                        point[ruleRef] = [mousePosition.x, mousePosition.y]
+                        point[ruleRef] = [chartState.mousePosition.x, chartState.mousePosition.y]
                     }
                 })
 
@@ -114,7 +109,7 @@ const CephaloCanvas = () => {
                 calculateTheDistanceAndAngle()
                 return
             }
-            //no circle currently focused check if circle is hovered
+            // no circle currently focused check if circle is hovered
             for (let i = 0; i < circles.length; i++) {
                 if (intersects(circles[i])) {
                     circles.moveIndex(i, 0)
@@ -125,13 +120,13 @@ const CephaloCanvas = () => {
             draw()
         }
 
-        //set mousedown state
+        // set mousedown state
         function setDraggable(e) {
             let t = e.type
             if (t === 'mousedown') {
-                isMouseDown = true
+                chartState.isMouseDown = true
             } else if (t === 'mouseup') {
-                isMouseDown = false
+                chartState.isMouseDown = false
                 releaseFocus()
             }
         }
@@ -142,19 +137,19 @@ const CephaloCanvas = () => {
 
         function getMousePosition(e) {
             let rect = ctx.getBoundingClientRect()
-            mousePosition = {
+            chartState.mousePosition = {
                 x: Math.round(e.x - rect.left),
                 y: Math.round(e.y - rect.top)
             }
         }
 
-        //detects whether the mouse cursor is between x and y relative to the radius specified
+        // detects whether the mouse cursor is between x and y relative to the radius specified
         function intersects(circle) {
             // subtract the x, y coordinates from the mouse position to get coordinates
             // for the hotspot location and check against the area of the radius
-            let areaX = mousePosition.x - circle.x
-            let areaY = mousePosition.y - circle.y
-            //return true if x^2 + y^2 <= radius squared.
+            let areaX = chartState.mousePosition.x - circle.x
+            let areaY = chartState.mousePosition.y - circle.y
+            // return true if x^2 + y^2 <= radius squared.
             return areaX ** 2 + areaY ** 2 <= circle.r ** 2
         }
 

@@ -36,7 +36,9 @@ const cephaloPoints = [
 
 const chartState = {
     isPointSelected: undefined, // check is the user selected a point
-    entryPoint: undefined // set the the entry-point for our Object
+    entryPoint: undefined, // set the the entry-point for our Object
+    mousePosition: undefined, // track mouse position on mousemove
+    isMouseDown: undefined // track state of mousedown and up
 }
 
 export { cephaloPoints, chartState }

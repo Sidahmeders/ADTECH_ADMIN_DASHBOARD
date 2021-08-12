@@ -3,7 +3,7 @@ import intersectionOfTwoVectors from './functions/intersectionOfTwoVectors'
 import convertScreenCoordinatesToCartesianPlanePoints from './functions/convertScreenCoordinatesToCartesianPlanePoints'
 import findTheAngleBetweenTwoVectors from './functions/findTheAngleBetweenTwoVectors'
 import findTheDistanceBetweenTwoPoints from './functions/findTheDistanceBetweenTwoPoints'
-import differenceBetweenPoAndGo from './functions/differenceBetweenPoAndGo'
+import getTheDifferenceBetweenPoAndGo from './functions/getTheDifferenceBetweenPoAndGo'
 
 export default function calculateTheDistanceAndAngle() {
     const coordinates = {
@@ -78,7 +78,7 @@ export default function calculateTheDistanceAndAngle() {
         }
     }
 
-    const FMA_Diff = differenceBetweenPoAndGo(
+    const FMA_Diff = getTheDifferenceBetweenPoAndGo(
         coordinates.PFr.Po[0],
         coordinates.PFr.Po[1],
         coordinates.MA.Go[0],
@@ -169,5 +169,4 @@ export default function calculateTheDistanceAndAngle() {
     // console.log("coordinates", coordinates.PFr, coordinates.U1U1ap)
     console.log('angle', angles)
     console.log('distance', distances)
-    // console.log("distance", distance.toFixed(2))
 }
