@@ -1,88 +1,12 @@
 import { useEffect, useRef } from 'react'
+import { cephaloPoints, chartState } from './_state'
+import calculateTheDistanceAndAngle from './_calculateTheDistanceAndAngle'
 
 const CephaloCanvas = () => {
     // track mouse position on mousemove
     let mousePosition
     // track state of mousedown and up
     let isMouseDown
-    // set the the entry-point for our Object
-    let entryPoint
-    // check is the user selected a point
-    let isPointSelected
-
-    // the cephalo-metric calc-points
-    const rules = [
-        { S: false },
-        { A: false },
-        { B: false },
-        { N: false }, //4
-        { Na: false },
-        { Pog: false },
-        { Me: false },
-        { Gn: false }, //8
-        { ENA: false },
-        { ENP: false },
-        { Xi: false },
-        { Go: false }, //12
-        { Ba: false },
-        { Po: false },
-        { Or: false },
-        { Pt: false }, //16
-        { Ar: false },
-        { D: false },
-        { Pm: false },
-        { Co: false }, //20
-        { U1: false },
-        { L1: false },
-        { U1ap: false },
-        { L1ap: false }, //24
-        { OLp: false },
-        { OLa: false },
-        { PN: false },
-        { DC: false }, //28
-        { R1: false },
-        { R2: false },
-        { R3: false },
-        { R4: false } //32
-    ]
-
-    const getThePointLandMark = (e) => {
-        // set the isPointSelected to true if it's unSelected
-        isPointSelected = e.target.classList.contains('unSelected')
-        // check if there is a valid-point update the entry
-        if (isPointSelected) entryPoint = e.target.innerText
-        // replace the class-name to disable the button
-        e.target.classList.remove('unSelected')
-        e.target.classList.add('selected')
-        calculateTheDistanceAndAngle()
-    }
-
-    const calcHead = useRef(null)
-
-    // render the cephalo-metric-calculator
-    const renderClacHead = () => {
-        // create a new div element to replace it with the Refrence
-        const calculator = document.createElement('div')
-        // add class attribute for styling the css
-        calculator.setAttribute('class', 'buttons')
-
-        rules.forEach((rule) => {
-            // get the key-entry of the objects
-            let key = Object.keys(rule)[0]
-            //create a new span to be the button element
-            let span = document.createElement('span')
-            // set the text to be the key-entry
-            span.innerText = key
-            // add on-click handler
-            span.onclick = getThePointLandMark
-            // set the class attribute for our button element
-            span.setAttribute('class', 'unSelected')
-            // append the button to the div element
-            calculator.appendChild(span)
-        })
-        // finally replace the refrence div with our new created-div calculator
-        calcHead.current.replaceWith(calculator)
-    }
 
     //reference to the canvas element
     const canvas = useRef(null)
@@ -129,19 +53,19 @@ const CephaloCanvas = () => {
         //append a new circles && lines to the canvas
         function addPoints(e) {
             // check if the user selected a point from clac-head
-            if (isPointSelected) {
+            if (chartState.isPointSelected) {
                 const { layerX, layerY } = e
 
-                rules.forEach((rule) => {
-                    let key = Object.keys(rule)[0]
-                    if (key === entryPoint) {
-                        circles.push(new Circle(layerX, layerY, entryPoint))
-                        rule[entryPoint] = [layerX, layerY]
+                cephaloPoints.forEach((point) => {
+                    let key = Object.keys(point)[0]
+                    if (key === chartState.entryPoint) {
+                        circles.push(new Circle(layerX, layerY, chartState.entryPoint))
+                        point[chartState.entryPoint] = [layerX, layerY]
                     }
                 })
                 drawCircles()
-                isPointSelected = false
-                entryPoint = false
+                chartState.isPointSelected = false
+                chartState.entryPoint = false
             }
         }
 
@@ -176,13 +100,13 @@ const CephaloCanvas = () => {
                 //update the x and y coordinates of the circle
                 circles[focused.key].x = xPos
                 circles[focused.key].y = yPos
-                // get the reference-entryPoint from the circle
+                // get the reference-chartState.entryPoint from the circle
                 const ruleRef = circles[focused.key].cirRef
-                // update the rules (x,y) coorinates based on the reference-key
-                rules.forEach((rule) => {
-                    let key = Object.keys(rule)[0]
+                // update the cephaloPoints (x,y) coorinates based on the reference-key
+                cephaloPoints.forEach((point) => {
+                    let key = Object.keys(point)[0]
                     if (key === ruleRef) {
-                        rule[ruleRef] = [mousePosition.x, mousePosition.y]
+                        point[ruleRef] = [mousePosition.x, mousePosition.y]
                     }
                 })
 
@@ -247,227 +171,11 @@ const CephaloCanvas = () => {
         draw()
     }
 
-    const convertScreenCoordinatesToCartesianPlanePoints = (originX, originY, x1, y1, x2, y2) => {
-        const vectorA = [originX - x1, originY - y1]
-        const vectorB = [originX - x2, originY - y2]
-
-        return [...vectorA, ...vectorB]
-    }
-
-    const findTheAngleBetweenTwoVectors = (Ux, Uy, Vx, Vy) => {
-        const UV_dot_Product = Ux * Vx + Uy * Vy
-        const U_magnitude = Math.sqrt(Ux ** 2 + Uy ** 2)
-        const V_magnitude = Math.sqrt(Vx ** 2 + Vy ** 2)
-
-        const cos_theta = Math.acos(UV_dot_Product / (U_magnitude * V_magnitude))
-        const theta = cos_theta * (180 / Math.PI)
-
-        return theta
-    }
-
-    const findTheDistanceBetweenTwoPoints = (x1, y1, x2, y2) => {
-        return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
-    }
-
-    const differenceBetweenPoAndGo = (Po_x, Po_y, Go_x, Go_y) => {
-        return [Go_x - Po_x, Go_y - Po_y]
-    }
-
-    const intersectionOfTwoVectors = (S_x, S_y, Gn_x, Gn_y, Po_x, Po_y, Or_x, Or_y) => {
-        const d = {
-            SGn: { x: Gn_x - S_x, y: Gn_y - S_y },
-            PoOr: { x: Or_x - Po_x, y: Or_y - Po_y }
-        }
-
-        const SGn_len = Math.sqrt(d.SGn.x ** 2 + d.SGn.y ** 2)
-        const PoOr_Len = Math.sqrt(d.PoOr.x ** 2 + d.PoOr.y ** 2)
-
-        const d_SGn = [d.SGn.x / SGn_len, d.SGn.y / SGn_len]
-        const d_PoOr = [d.PoOr.x / PoOr_Len, d.PoOr.y / SGn_len]
-
-        return [...d_SGn, ...d_PoOr]
-    }
-
-    const calculateTheDistanceAndAngle = () => {
-        let coordinates = {
-            SNA: {
-                // angle between S-N-A
-                S: rules[0].S,
-                N: rules[3].N,
-                A: rules[1].A
-            },
-            SNB: {
-                // angle between S-N-B
-                S: rules[0].S,
-                N: rules[3].N,
-                B: rules[2].B
-            },
-            ANB: {
-                // angle between A-N-B
-                A: rules[1].A,
-                N: rules[3].N,
-                B: rules[2].B
-            },
-            // angle between lines (PFr-MA) = FMA
-            PFr: {
-                // line Po-Or
-                Po: rules[13].Po,
-                Or: rules[14].Or
-            },
-            MA: {
-                // line Go-Me
-                Go: rules[11].Go,
-                Me: rules[6].Me
-            },
-            // angle between lines (PFr-SGn) = axe_y_de_Brodie
-            SGn: {
-                // line S-Gn
-                S: rules[0].S,
-                Gn: rules[7].Gn
-            },
-            // angle between BaNa && PtGn = axe_facial_de_Rickette FIXME:
-            BaNa: {
-                // line Ba-Na
-                Ba: rules[12].Ba,
-                Na: rules[4].Na
-            },
-            PtGn: {
-                // line Pt-Gn
-                Pt: rules[15].Pt,
-                Gn: rules[7].Gn
-            },
-            // angle between PFr && U1U1ap = I/F TODO:
-            U1U1ap: {
-                // line U1-U1ap
-                U1: rules[20].U1,
-                U1ap: rules[22].U1ap
-            },
-            // angle between MA && L1L1ap = I/M TODO:
-            L1L1ap: {
-                // line L1-L1ap
-                L1: rules[21].L1,
-                L1ap: rules[23].L1ap
-            },
-            // distnce bewteen A && NaPog = convenxite FIXME:
-            NaPog: {
-                Na: rules[4].Na,
-                Pog: rules[5].Pog
-            },
-            // distance between (Pt vertical onto PFr) and (ENA vertical onto PFr) TODO:
-            // distance between (Pt vertical onto ENAENP) and A TODO:
-            ENAENP: {
-                ENA: rules[8].ENA,
-                ENP: rules[9].ENP
-            }
-        }
-
-        const FMA_Diff = differenceBetweenPoAndGo(
-            coordinates.PFr.Po[0],
-            coordinates.PFr.Po[1],
-            coordinates.MA.Go[0],
-            coordinates.MA.Go[1]
-        )
-
-        const axeYDeBrodieIntersection = intersectionOfTwoVectors(
-            coordinates.SGn.S[0],
-            coordinates.SGn.S[1],
-            coordinates.SGn.Gn[0],
-            coordinates.SGn.Gn[1],
-            coordinates.PFr.Po[0],
-            coordinates.PFr.Po[1],
-            coordinates.PFr.Or[0],
-            coordinates.PFr.Or[1]
-        )
-
-        const axeFacialDeRicketteIntersection = intersectionOfTwoVectors(
-            coordinates.PtGn.Pt[0],
-            coordinates.PtGn.Pt[1],
-            coordinates.PtGn.Gn[0],
-            coordinates.PtGn.Gn[1],
-            coordinates.BaNa.Na[0],
-            coordinates.BaNa.Na[1],
-            coordinates.BaNa.Ba[0],
-            coordinates.BaNa.Ba[1]
-        )
-
-        let screenToCartesianCoordinates = {
-            SNA: convertScreenCoordinatesToCartesianPlanePoints(
-                coordinates.SNA.N[0],
-                coordinates.SNA.N[1], // Origin (x,y)_axes
-                coordinates.SNA.S[0],
-                coordinates.SNA.S[1], // Vector-A (x,y)_axes
-                coordinates.SNA.A[0],
-                coordinates.SNA.A[1] // Vector-B (x,y)_axes
-            ),
-            SNB: convertScreenCoordinatesToCartesianPlanePoints(
-                coordinates.SNB.N[0],
-                coordinates.SNB.N[1], // Origin (x,y)_axes
-                coordinates.SNB.S[0],
-                coordinates.SNB.S[1], // Vector-A (x,y)_axes
-                coordinates.SNB.B[0],
-                coordinates.SNB.B[1] // Vector-B (x,y)_axes
-            ),
-            ANB: convertScreenCoordinatesToCartesianPlanePoints(
-                coordinates.ANB.N[0],
-                coordinates.ANB.N[1], // Origin (x,y)_axes
-                coordinates.ANB.B[0],
-                coordinates.ANB.B[1], // Vector-A (x,y)_axes
-                coordinates.ANB.A[0],
-                coordinates.ANB.A[1] // Vector-B (x,y)_axes
-            ),
-            FMA: convertScreenCoordinatesToCartesianPlanePoints(
-                coordinates.PFr.Po[0],
-                coordinates.PFr.Po[1], // Origin (x,y)_axes
-                coordinates.PFr.Or[0],
-                coordinates.PFr.Or[1], // Vector-A (x,y)_axes
-                coordinates.MA.Me[0] - FMA_Diff[0],
-                coordinates.MA.Me[1] - FMA_Diff[1] // Vector-B (x,y)_axes
-            )
-        }
-
-        let angles = {
-            SNA: findTheAngleBetweenTwoVectors(...screenToCartesianCoordinates.SNA).toFixed(2),
-            SNB: findTheAngleBetweenTwoVectors(...screenToCartesianCoordinates.SNB).toFixed(2),
-            ANB: findTheAngleBetweenTwoVectors(...screenToCartesianCoordinates.ANB).toFixed(2),
-            FMA: findTheAngleBetweenTwoVectors(...screenToCartesianCoordinates.FMA).toFixed(2),
-            axe_Brodie: findTheAngleBetweenTwoVectors(...axeYDeBrodieIntersection).toFixed(2),
-            axe_Rickette: findTheAngleBetweenTwoVectors(...axeFacialDeRicketteIntersection).toFixed(
-                2
-            )
-        }
-
-        let distances = {
-            convenxite_A_Na: findTheDistanceBetweenTwoPoints(
-                rules[1].A[0],
-                rules[1].A[1], // Point-A (x,y)_axes
-                rules[4].Na[0],
-                rules[4].Na[1] // Point-B (x,y)_axes
-            ).toFixed(2),
-            convenxite_A_Pog: findTheDistanceBetweenTwoPoints(
-                rules[1].A[0],
-                rules[1].A[1], // Point-A (x,y)_axes
-                rules[5].Pog[0],
-                rules[5].Pog[1] // Point-B (x,y)_axes
-            ).toFixed(2)
-        }
-
-        // console.log("coordinates", coordinates.PFr, coordinates.U1U1ap)
-        console.log('angle', angles)
-        console.log('distance', distances)
-        // console.log("distance", distance.toFixed(2))
-    }
-
-    useEffect(() => {
-        renderCanvas()
-        renderClacHead()
-    })
+    useEffect(() => renderCanvas())
 
     return (
         <div className="cephalo-canvas">
             <canvas ref={canvas}></canvas>
-            <div className="calc-head">
-                <div ref={calcHead}></div>
-            </div>
         </div>
     )
 }
