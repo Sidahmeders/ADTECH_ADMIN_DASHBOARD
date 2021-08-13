@@ -7,11 +7,8 @@ export default function FileInputElement({ label, changeHandler }) {
 
     const [file, setFile] = useState('')
     const onFileChange = (event) => {
-        let previewImage
         const imageFile = event.target.files[0]
-        if (imageFile) {
-            previewImage = URL.createObjectURL(imageFile)
-        }
+        let previewImage = imageFile ? URL.createObjectURL(imageFile) : undefined
         setFile(() => previewImage)
     }
 

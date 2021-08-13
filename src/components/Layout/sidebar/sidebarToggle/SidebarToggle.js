@@ -1,6 +1,6 @@
 import './style.scss'
-import expand from '../../../../asset/icons/dashboard/expand.svg'
-import compress from '../../../../asset/icons/dashboard/compress.svg'
+import expand from '../../../../asset/icons/sidebar/expand.svg'
+import compress from '../../../../asset/icons/sidebar/compress.svg'
 
 export default function SidebarToggle({ sidebarState, toggleSidebar }) {
     return (

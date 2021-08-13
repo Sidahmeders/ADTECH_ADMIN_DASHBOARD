@@ -1,9 +1,9 @@
-import gif1 from '../asset/icons/home/icon1.gif'
-import gif2 from '../asset/icons/home/icon2.gif'
-import gif3 from '../asset/icons/home/icon3.gif'
-import gif4 from '../asset/icons/home/icon4.gif'
-import gif5 from '../asset/icons/home/icon5.gif'
-import gif6 from '../asset/icons/home/icon6.gif'
+import gif1 from '../asset/images/home/icon1.gif'
+import gif2 from '../asset/images/home/icon2.gif'
+import gif3 from '../asset/images/home/icon3.gif'
+import gif4 from '../asset/images/home/icon4.gif'
+import gif5 from '../asset/images/home/icon5.gif'
+import gif6 from '../asset/images/home/icon6.gif'
 
 const gifs = [gif1, gif2, gif3, gif4, gif5, gif6]
 

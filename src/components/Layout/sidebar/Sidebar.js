@@ -6,15 +6,15 @@ import { ContextConsumer } from '../../../context'
 import { useContext } from 'react'
 
 // dashboard icons
-import dashBoard from '../../../asset/icons/dashboard/dashboard.svg'
-import userProfile from '../../../asset/icons/dashboard/user-solid.svg'
-import usersList from '../../../asset/icons/dashboard/users-solid.svg'
-import addUser from '../../../asset/icons/dashboard/user-plus.svg'
-import reports from '../../../asset/icons/dashboard/charts.svg'
-import newUsers from '../../../asset/icons/dashboard/new-users.svg'
-import notification from '../../../asset/icons/dashboard/bell-solid.svg'
-import logout from '../../../asset/icons/dashboard/logout.svg'
-import projects from '../../../asset/icons/dashboard/projects.svg'
+import dashBoard from '../../../asset/icons/sidebar/dashboard.svg'
+import userProfile from '../../../asset/icons/sidebar/user-solid.svg'
+import usersList from '../../../asset/icons/sidebar/users-solid.svg'
+import addUser from '../../../asset/icons/sidebar/user-plus.svg'
+import reports from '../../../asset/icons/sidebar/charts.svg'
+import newUsers from '../../../asset/icons/sidebar/new-users.svg'
+import notification from '../../../asset/icons/sidebar/bell-solid.svg'
+import logout from '../../../asset/icons/sidebar/logout.svg'
+import projects from '../../../asset/icons/sidebar/projects.svg'
 
 const sideBarItems = [
     { text: 'dashboard', route: 'dashboard', icon: dashBoard },

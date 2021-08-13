@@ -1,28 +1,15 @@
 import './style.scss'
 import { useState, useRef } from 'react'
+import emptyFile from '../../../../asset/icons/skull.gif'
 
 export default function RadioGraph() {
     const FileInputRef = useRef()
     const focusInput = () => FileInputRef.current.click()
 
     const [file, setFile] = useState('')
-
     const onFileChange = (event) => {
-        let previewImage
         const imageFile = event.target.files[0]
-        if (imageFile) {
-            previewImage = URL.createObjectURL(imageFile)
-        }
-        setFile(() => previewImage)
-    }
-
-    const changeHandler = (event) => {
-        let previewImage
-        const files = event.target.files
-        const imageFile = files[0]
-        if (imageFile) {
-            previewImage = URL.createObjectURL(imageFile)
-        }
+        let previewImage = imageFile ? URL.createObjectURL(imageFile) : undefined
         setFile(() => previewImage)
     }
 
@@ -34,16 +21,20 @@ export default function RadioGraph() {
                     type="file"
                     name="radio-graph"
                     ref={FileInputRef}
-                    onChange={(event) => {
-                        onFileChange(event)
-                        changeHandler(event)
-                    }}
+                    onChange={onFileChange}
                 />
                 <p className="file-picker" onClick={focusInput}>
                     click to select a radio graph
                 </p>
             </div>
-            <img src={file} alt="skull" />
+            {file ? (
+                <img src={file} alt="radio-graph" />
+            ) : (
+                <div className="empty-file">
+                    {' '}
+                    <img src={emptyFile} alt="no-file" />{' '}
+                </div>
+            )}
         </div>
     )
 }
