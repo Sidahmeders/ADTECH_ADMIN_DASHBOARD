@@ -1,5 +1,5 @@
-import Canvas from './Canvas'
-import CalcHead from './CalcHead'
+import Canvas from './canvas/Canvas'
+import CalcHead from './calcHead/CalcHead'
 import skull from '../../../asset/images/radioGraph.bmp'
 
 export default function Cephalo() {

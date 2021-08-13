@@ -1,6 +1,7 @@
+import './style.scss'
 import { useRef, useEffect } from 'react'
-import { cephaloPoints, chartState } from './_state'
-import calculateTheDistanceAndAngle from './_calculateTheDistanceAndAngle'
+import { cephaloPoints, chartState } from '../_state'
+import calculateTheDistanceAndAngle from '../_calculateTheDistanceAndAngle'
 
 export default function CalcHead() {
     const getThePointLandMark = (e) => {

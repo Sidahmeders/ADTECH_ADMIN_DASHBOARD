@@ -1,6 +1,7 @@
+import './style.scss'
 import { useEffect, useRef } from 'react'
-import { cephaloPoints, chartState } from './_state'
-import calculateTheDistanceAndAngle from './_calculateTheDistanceAndAngle'
+import { cephaloPoints, chartState } from '../_state'
+import calculateTheDistanceAndAngle from '../_calculateTheDistanceAndAngle'
 
 const CephaloCanvas = () => {
     // reference to the canvas element

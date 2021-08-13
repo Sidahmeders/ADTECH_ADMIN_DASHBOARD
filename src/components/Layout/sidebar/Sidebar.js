@@ -1,7 +1,7 @@
+import './style.scss'
 import { Link } from 'react-router-dom'
-import './sidebar.scss'
-import SidebarElement from './SidebarElement'
-import SideBarToggle from './SidebarToggle'
+import SidebarElement from './sidebarElement/SidebarElement'
+import SideBarToggle from './sidebarToggle/SidebarToggle'
 import { ContextConsumer } from '../../../context'
 import { useContext } from 'react'
 

@@ -1,5 +1,5 @@
+import './style.scss'
 import { Link } from 'react-router-dom'
-import './sidebarElement.scss'
 
 export default function SideBarElement({ clickHandler, id, route, text, icon, notification }) {
     return (
