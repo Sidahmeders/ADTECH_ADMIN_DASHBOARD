@@ -1,4 +1,4 @@
-export default function intersectionOfTwoVectors(S_x, S_y, Gn_x, Gn_y, Po_x, Po_y, Or_x, Or_y) {
+export default function getIntersectionOfTwoVectors(S_x, S_y, Gn_x, Gn_y, Po_x, Po_y, Or_x, Or_y) {
     const d = {
         SGn: { x: Gn_x - S_x, y: Gn_y - S_y },
         PoOr: { x: Or_x - Po_x, y: Or_y - Po_y }

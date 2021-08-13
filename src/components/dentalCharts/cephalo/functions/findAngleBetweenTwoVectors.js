@@ -1,4 +1,4 @@
-export default function findTheAngleBetweenTwoVectors(Ux, Uy, Vx, Vy) {
+export default function findAngleBetweenTwoVectors(Ux, Uy, Vx, Vy) {
     const UV_dot_Product = Ux * Vx + Uy * Vy
     const U_magnitude = Math.sqrt(Ux ** 2 + Uy ** 2)
     const V_magnitude = Math.sqrt(Vx ** 2 + Vy ** 2)

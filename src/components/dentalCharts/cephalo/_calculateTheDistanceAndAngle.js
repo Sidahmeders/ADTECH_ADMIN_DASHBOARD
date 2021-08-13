@@ -1,9 +1,9 @@
 import { cephaloPoints } from './_state'
-import intersectionOfTwoVectors from './functions/intersectionOfTwoVectors'
+import getIntersectionOfTwoVectors from './functions/getIntersectionOfTwoVectors'
 import convertScreenCoordinatesToCartesianPlanePoints from './functions/convertScreenCoordinatesToCartesianPlanePoints'
-import findTheAngleBetweenTwoVectors from './functions/findTheAngleBetweenTwoVectors'
-import findTheDistanceBetweenTwoPoints from './functions/findTheDistanceBetweenTwoPoints'
-import getTheDifferenceBetweenPoAndGo from './functions/getTheDifferenceBetweenPoAndGo'
+import findAngleBetweenTwoVectors from './functions/findAngleBetweenTwoVectors'
+import findDistanceBetweenTwoPoints from './functions/findDistanceBetweenTwoPoints'
+import getDifferenceBetweenPoAndGo from './functions/getDifferenceBetweenPoAndGo'
 
 export default function calculateTheDistanceAndAngle() {
     const coordinates = {
@@ -78,14 +78,14 @@ export default function calculateTheDistanceAndAngle() {
         }
     }
 
-    const FMA_Diff = getTheDifferenceBetweenPoAndGo(
+    const FMA_Diff = getDifferenceBetweenPoAndGo(
         coordinates.PFr.Po[0],
         coordinates.PFr.Po[1],
         coordinates.MA.Go[0],
         coordinates.MA.Go[1]
     )
 
-    const axeYDeBrodieIntersection = intersectionOfTwoVectors(
+    const axeYDeBrodieIntersection = getIntersectionOfTwoVectors(
         coordinates.SGn.S[0],
         coordinates.SGn.S[1],
         coordinates.SGn.Gn[0],
@@ -96,7 +96,7 @@ export default function calculateTheDistanceAndAngle() {
         coordinates.PFr.Or[1]
     )
 
-    const axeFacialDeRicketteIntersection = intersectionOfTwoVectors(
+    const axeFacialDeRicketteIntersection = getIntersectionOfTwoVectors(
         coordinates.PtGn.Pt[0],
         coordinates.PtGn.Pt[1],
         coordinates.PtGn.Gn[0],
@@ -143,22 +143,22 @@ export default function calculateTheDistanceAndAngle() {
     }
 
     const angles = {
-        SNA: findTheAngleBetweenTwoVectors(...screenToCartesianCoordinates.SNA).toFixed(2),
-        SNB: findTheAngleBetweenTwoVectors(...screenToCartesianCoordinates.SNB).toFixed(2),
-        ANB: findTheAngleBetweenTwoVectors(...screenToCartesianCoordinates.ANB).toFixed(2),
-        FMA: findTheAngleBetweenTwoVectors(...screenToCartesianCoordinates.FMA).toFixed(2),
-        axe_Brodie: findTheAngleBetweenTwoVectors(...axeYDeBrodieIntersection).toFixed(2),
-        axe_Rickette: findTheAngleBetweenTwoVectors(...axeFacialDeRicketteIntersection).toFixed(2)
+        SNA: findAngleBetweenTwoVectors(...screenToCartesianCoordinates.SNA).toFixed(2),
+        SNB: findAngleBetweenTwoVectors(...screenToCartesianCoordinates.SNB).toFixed(2),
+        ANB: findAngleBetweenTwoVectors(...screenToCartesianCoordinates.ANB).toFixed(2),
+        FMA: findAngleBetweenTwoVectors(...screenToCartesianCoordinates.FMA).toFixed(2),
+        axe_Brodie: findAngleBetweenTwoVectors(...axeYDeBrodieIntersection).toFixed(2),
+        axe_Rickette: findAngleBetweenTwoVectors(...axeFacialDeRicketteIntersection).toFixed(2)
     }
 
     const distances = {
-        convenxite_A_Na: findTheDistanceBetweenTwoPoints(
+        convenxite_A_Na: findDistanceBetweenTwoPoints(
             cephaloPoints[1].A[0],
             cephaloPoints[1].A[1], // Point-A (x,y)_axes
             cephaloPoints[4].Na[0],
             cephaloPoints[4].Na[1] // Point-B (x,y)_axes
         ).toFixed(2),
-        convenxite_A_Pog: findTheDistanceBetweenTwoPoints(
+        convenxite_A_Pog: findDistanceBetweenTwoPoints(
             cephaloPoints[1].A[0],
             cephaloPoints[1].A[1], // Point-A (x,y)_axes
             cephaloPoints[5].Pog[0],
