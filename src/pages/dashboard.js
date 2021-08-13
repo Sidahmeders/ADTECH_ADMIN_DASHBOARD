@@ -1,5 +1,5 @@
-import UsersStat from '../components/dashboard/UsersStat'
-import AppStat from '../components/dashboard/AppStat'
+import UsersStat from '../components/dashboard/userStat/UsersStat'
+import AppStat from '../components/dashboard/appStat/AppStat'
 import TextHeader from '../components/common/TextHeader/index'
 
 export default function DashBoard() {

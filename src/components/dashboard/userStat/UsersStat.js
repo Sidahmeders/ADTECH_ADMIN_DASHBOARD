@@ -1,7 +1,7 @@
-import '../../styles/dashboard.scss'
-import BarChart from '../charts/BarChart'
-import LineChart from '../charts/LineChart'
-import PieChart from '../charts/DoughChart'
+import './style.scss'
+import BarChart from '../../charts/BarChart'
+import LineChart from '../../charts/LineChart'
+import PieChart from '../../charts/DoughChart'
 
 export default function DashBoard() {
     const colors = []

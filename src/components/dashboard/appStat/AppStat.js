@@ -1,6 +1,6 @@
-import '../../styles/dashboard.scss'
-import BarChart from '../charts/BarChart'
-import LineChart from '../charts/LineChart'
+import './style.scss'
+import BarChart from '../../charts/BarChart'
+import LineChart from '../../charts/LineChart'
 
 function AppStat() {
     const barChartData = {
