@@ -1,6 +1,6 @@
+import './style.scss'
 import { useState } from 'react'
 import Fetch from '../../../utils/fetchData'
-import './style.scss'
 
 import TextInputElement from '../../common/form/TextInputElement/index'
 import FileInputElement from '../../common/form/FileInputElement/index'

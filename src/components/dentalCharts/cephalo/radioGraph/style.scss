@@ -1,9 +1,19 @@
+@import '../../../../styles/vars.scss';
+
 .radio-graph {
     img {
         position: absolute;
         left: 220px;
-        top: 25%;
+        top: 30%;
         width: 58vw;
         padding: 20px;
+    }
+
+    .file-picker {
+        z-index: 9;
+        position: fixed;
+        right: -0.2%;
+        top: 31%;
+        width: fit-content;
     }
 }
