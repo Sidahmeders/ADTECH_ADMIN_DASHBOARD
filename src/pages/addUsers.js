@@ -1,10 +1,10 @@
-import '../styles/addUsers/index.scss'
+import '../styles/addUsers.scss'
 import { useEffect, useState } from 'react'
 import Fetch from '../utils/fetchData'
 
 import TextHeader from '../components/common/TextHeader/index'
-import RecentUsers from '../components/addUsers/RecentUsers'
-import CreateUserForm from '../components/addUsers/CreateUserForm'
+import RecentUsers from '../components/addUsers/recentUsers/RecentUsers'
+import CreateUserForm from '../components/addUsers/createUsers/CreateUsers'
 
 export default function AddUsers() {
     const [alertMessage, setAlertMessage] = useState({

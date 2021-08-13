@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import Fetch from '../../utils/fetchData'
-import '../../styles/addUsers/createUsersForm.scss'
+import Fetch from '../../../utils/fetchData'
+import './style.scss'
 
-import TextInputElement from '../common/form/TextInputElement/index'
-import FileInputElement from '../common/form/FileInputElement/index'
-import DateInputElement from '../common/form/DateInputElement/index'
-import RadioInputElement from '../common/form/RadioInputElement/index'
-import ButtonElement from '../common/form/button/index'
-import AlertStatusBar from '../common/alert/index'
+import TextInputElement from '../../common/form/TextInputElement/index'
+import FileInputElement from '../../common/form/FileInputElement/index'
+import DateInputElement from '../../common/form/DateInputElement/index'
+import RadioInputElement from '../../common/form/RadioInputElement/index'
+import ButtonElement from '../../common/form/button/index'
+import AlertStatusBar from '../../common/alert/index'
 
 const initialUserInfo = {
     first_name: '',

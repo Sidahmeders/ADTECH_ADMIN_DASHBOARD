@@ -6,10 +6,8 @@ export default function DashBoard() {
     return (
         <>
             <TextHeader text="Dashboard" />
-            <div className="dashboard">
-                <UsersStat />
-                <AppStat />
-            </div>
+            <UsersStat />
+            <AppStat />
         </>
     )
 }

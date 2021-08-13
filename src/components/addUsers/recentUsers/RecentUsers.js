@@ -1,4 +1,4 @@
-import '../../styles/addUsers/recentUsers.scss'
+import './style.scss'
 
 function getAge(dateString) {
     var today = new Date()
