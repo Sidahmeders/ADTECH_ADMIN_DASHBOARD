@@ -3,7 +3,6 @@
 .radio-graph {
     img {
         position: absolute;
-        left: 220px;
         top: 30%;
         width: 55vw;
         padding: 20px;
@@ -11,7 +10,7 @@
 
     .file-picker {
         z-index: 9;
-        position: fixed;
+        position: absolute;
         right: -0.2%;
         top: 31%;
         width: fit-content;
