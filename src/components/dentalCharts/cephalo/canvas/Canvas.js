@@ -11,7 +11,7 @@ const CephaloCanvas = () => {
     const renderCanvas = () => {
         const ctx = canvas.current
         // set the width and height of the canvas
-        ctx.width = window.innerWidth * 0.93
+        ctx.width = window.innerWidth * 0.98
         ctx.height = window.innerHeight * 1.22
         // reference to 2d context
         let c = ctx.getContext('2d')

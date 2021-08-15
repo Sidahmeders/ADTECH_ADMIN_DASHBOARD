@@ -8,10 +8,10 @@ import { useContext } from 'react'
 // dashboard icons
 import dashBoard from '../../../asset/icons/sidebar/dashboard.svg'
 import userProfile from '../../../asset/icons/sidebar/user-solid.svg'
-import usersList from '../../../asset/icons/sidebar/users-solid.svg'
+import usersList from '../../../asset/icons/sidebar/users-list.svg'
 import addUser from '../../../asset/icons/sidebar/user-plus.svg'
 import reports from '../../../asset/icons/sidebar/charts.svg'
-import newUsers from '../../../asset/icons/sidebar/new-users.svg'
+import manageUsers from '../../../asset/icons/sidebar/manage-users.svg'
 import notification from '../../../asset/icons/sidebar/bell-solid.svg'
 import logout from '../../../asset/icons/sidebar/logout.svg'
 import projects from '../../../asset/icons/sidebar/projects.svg'
@@ -21,7 +21,7 @@ const sideBarItems = [
     { text: 'users list', route: 'users-list', icon: usersList },
     { text: 'add users', route: 'add-users', icon: addUser },
     { text: 'reports', route: 'reports', icon: reports },
-    { text: 'manage users', route: 'manage-users', icon: newUsers },
+    { text: 'manage users', route: 'manage-users', icon: manageUsers },
     { text: 'dental charts', route: 'dental-charts', icon: projects },
     { text: 'admin profile', route: 'admin-profile', icon: userProfile },
     { text: 'notifications', route: 'notifications', icon: notification, notification: 13 },
