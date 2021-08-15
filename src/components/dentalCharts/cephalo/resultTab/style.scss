@@ -1,0 +1,14 @@
+@import '../../../../styles/vars.scss';
+
+.result-tab {
+    background-color: $bg-color;
+    z-index: 99;
+    position: absolute;
+    bottom: -10%;
+    right: 1%;
+    width: 250px;
+    height: auto;
+    border: 2px solid $label-border-color;
+    border-radius: 5px;
+    padding: 4px 0;
+}

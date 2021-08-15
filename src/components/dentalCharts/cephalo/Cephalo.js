@@ -1,13 +1,15 @@
 import Canvas from './canvas/Canvas'
-import CalcHead from './calcHead/CalcHead'
 import RadioGraph from './radioGraph/RadioGraph'
+import CalcHead from './calcHead/CalcHead'
+import ResultTab from './resultTab/ResultTab'
 
 export default function Cephalo() {
     return (
         <>
             <Canvas />
-            <CalcHead />
             <RadioGraph />
+            <CalcHead />
+            <ResultTab />
         </>
     )
 }

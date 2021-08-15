@@ -166,7 +166,5 @@ export default function calculateTheDistanceAndAngle() {
         ).toFixed(2)
     }
 
-    // console.log("coordinates", coordinates.PFr, coordinates.U1U1ap)
-    console.log('angle', angles)
-    console.log('distance', distances)
+    return { angles, distances }
 }

@@ -7,15 +7,18 @@ function ContextProvider(props) {
     const [sidebarState, setSidebarState] = useState(LocalStorage.getSidebarState())
 
     const toggleSidebar = () => {
-        console.log(sidebarState)
         setSidebarState(() => LocalStorage.toggleSidebarState(sidebarState))
     }
+
+    const [cephaloResult, setCephaloResult] = useState(false)
 
     return (
         <Context.Provider
             value={{
                 sidebarState,
-                toggleSidebar
+                toggleSidebar,
+                cephaloResult,
+                setCephaloResult
             }}>
             {props.children}
         </Context.Provider>

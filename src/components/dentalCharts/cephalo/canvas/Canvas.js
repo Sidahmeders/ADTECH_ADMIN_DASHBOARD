@@ -1,9 +1,13 @@
 import './style.scss'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useContext } from 'react'
 import { cephaloPoints, chartState } from '../_state'
 import calculateTheDistanceAndAngle from '../_calculateTheDistanceAndAngle'
 
+import { ContextConsumer } from '../../../../context'
+
 const CephaloCanvas = () => {
+    const { setCephaloResult } = useContext(ContextConsumer)
+
     // reference to the canvas element
     const canvas = useRef(null)
 
@@ -107,8 +111,13 @@ const CephaloCanvas = () => {
                 })
 
                 draw()
-                calculateTheDistanceAndAngle()
-                return
+                const { angles, distances } = calculateTheDistanceAndAngle()
+                setCephaloResult(() => {
+                    return {
+                        angles,
+                        distances
+                    }
+                })
             }
             // no circle currently focused check if circle is hovered
             for (let i = 0; i < circles.length; i++) {
@@ -167,7 +176,7 @@ const CephaloCanvas = () => {
         draw()
     }
 
-    useEffect(() => renderCanvas())
+    useEffect(() => renderCanvas(), [])
 
     return (
         <div className="cephalo-canvas">
