@@ -1,11 +1,9 @@
 import './style.scss'
-import { useEffect, useRef, useContext } from 'react'
-import { ContextConsumer } from '../../../../context'
+import { useEffect, useRef } from 'react'
 import { cephaloPoints, chartState } from '../_state'
 import calculateTheDistanceAndAngle from '../_calculateTheDistanceAndAngle'
 
 const CephaloCanvas = () => {
-    const { sidebarState } = useContext(ContextConsumer)
     // reference to the canvas element
     const canvas = useRef(null)
 
@@ -13,10 +11,8 @@ const CephaloCanvas = () => {
     const renderCanvas = () => {
         const ctx = canvas.current
         // set the width and height of the canvas
-        let ctxWidth = window.innerWidth * 0.93,
-            ctxHeight = window.innerHeight * 1.22
-        ctx.width = sidebarState ? ctxWidth : ctxWidth - 160
-        ctx.height = ctxHeight
+        ctx.width = window.innerWidth * 0.93
+        ctx.height = window.innerHeight * 1.22
         // reference to 2d context
         let c = ctx.getContext('2d')
 
@@ -174,7 +170,7 @@ const CephaloCanvas = () => {
     useEffect(() => renderCanvas())
 
     return (
-        <div className="cephalo-canvas" style={{ marginLeft: sidebarState ? '60px' : '220px' }}>
+        <div className="cephalo-canvas">
             <canvas ref={canvas}></canvas>
         </div>
     )
