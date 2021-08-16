@@ -1,4 +1,4 @@
-const url = 'http://165.227.137.238' || 'http://localhost:5000'
+const url = 'http://localhost:5000' || 'http://165.227.137.238'
 
 class Fetch {
     async GET(route, limit) {

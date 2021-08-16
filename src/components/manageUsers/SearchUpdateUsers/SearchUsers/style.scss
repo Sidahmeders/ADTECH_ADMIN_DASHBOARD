@@ -1,0 +1,15 @@
+.search-users {
+    margin: 0 2vw;
+
+    .search-input-element {
+        width: 60vw;
+        margin: 0 2vw;
+    }
+    .button-element {
+        margin-bottom: 20px;
+        justify-content: start;
+        button {
+            width: 100% !important;
+        }
+    }
+}

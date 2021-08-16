@@ -1,4 +1,3 @@
-import '../styles/addUsers.scss'
 import { useEffect, useState } from 'react'
 import Fetch from '../utils/fetchData'
 

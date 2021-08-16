@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import Fetch from '../../../utils/fetchData'
-import '../../../styles/manageUsers/searchUpdateUsers.scss'
+import Fetch from '../../../../utils/fetchData'
+import './style.scss'
 
-import SearchInputElement from '../../common/form/SearchInputElement/index'
-import RadioInputElement from '../../common/form/RadioInputElement/index'
-import ButtonElement from '../../common/form/button/index'
-import AlertStatusBar from '../../common/alert/index'
+import SearchInputElement from '../../../common/form/SearchInputElement/index'
+import RadioInputElement from '../../../common/form/RadioInputElement/index'
+import ButtonElement from '../../../common/form/button/index'
+import AlertStatusBar from '../../../common/alert/index'
 
 const searchFields = ['first_name', 'last_name', 'email']
 

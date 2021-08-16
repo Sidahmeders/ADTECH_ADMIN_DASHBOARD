@@ -6,7 +6,7 @@ import calculateTheDistanceAndAngle from '../_calculateTheDistanceAndAngle'
 import { ContextConsumer } from '../../../../context'
 
 const CephaloCanvas = () => {
-    const { sidebarState, setCephaloResult } = useContext(ContextConsumer)
+    const { setCephaloResult } = useContext(ContextConsumer)
 
     // reference to the canvas element
     const canvas = useRef(null)

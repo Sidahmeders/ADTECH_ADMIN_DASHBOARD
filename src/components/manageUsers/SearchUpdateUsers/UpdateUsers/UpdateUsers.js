@@ -1,16 +1,17 @@
-import { useEffect, useState } from 'react'
-import Fetch from '../../../utils/fetchData'
-import '../../../styles/manageUsers/searchUpdateUsers.scss'
+import './style.scss'
+import { useEffect, useState, useContext } from 'react'
+import Fetch from '../../../../utils/fetchData'
+import { ContextConsumer } from '../../../../context'
 
-import TextHeader from '../../common/TextHeader/index'
-import UserRow from '../UserRow'
-import NoFile from '../../../asset/icons/EmptyFolder.png'
+import TextHeader from '../../../common/TextHeader/index'
+import UserRow from '../../UserRow'
+import NoFile from '../../../../asset/icons/EmptyFolder.png'
 
-import TextInputElement from '../../common/form/TextInputElement/index'
-import DateInputElement from '../../common/form/DateInputElement/index'
-import RadioInputElement from '../../common/form/RadioInputElement/index'
-import ButtonElement from '../../common/form/button/index'
-import AlertStatusBar from '../../common/alert/index'
+import TextInputElement from '../../../common/form/TextInputElement/index'
+import DateInputElement from '../../../common/form/DateInputElement/index'
+import RadioInputElement from '../../../common/form/RadioInputElement/index'
+import ButtonElement from '../../../common/form/button/index'
+import AlertStatusBar from '../../../common/alert/index'
 
 const handlePendingUpdate = (setAlertMessage) => {
     setAlertMessage(() => {
@@ -83,6 +84,7 @@ const insertDateInput = (userInfo) => {
 }
 
 export default function UpdateUsers({ users, setUsers }) {
+    const { sidebarState } = useContext(ContextConsumer)
     const [userInfo, setUserInfo] = useState(false)
 
     const [alertMessage, setAlertMessage] = useState({
@@ -144,7 +146,9 @@ export default function UpdateUsers({ users, setUsers }) {
         <div className="update-users">
             <TextHeader text="search result" />
             {userInfo ? (
-                <div className="selected-user-container">
+                <div
+                    style={{ left: sidebarState ? '60px' : '220px' }}
+                    className="selected-user-container">
                     <TextHeader text="user info to update" />
                     <div className="form-container">
                         <div className="row text">
