@@ -143,7 +143,7 @@ export default function UpdateUsers({ users, setUsers }) {
     }, [userInfo])
 
     return (
-        <div className="update-users">
+        <>
             <TextHeader text="search result" />
             {userInfo ? (
                 <div
@@ -268,6 +268,6 @@ export default function UpdateUsers({ users, setUsers }) {
                     <img src={NoFile} alt="notfound" />
                 </div>
             )}
-        </div>
+        </>
     )
 }
