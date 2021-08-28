@@ -7,74 +7,56 @@ import getDifferenceBetweenPoAndGo from './functions/getDifferenceBetweenPoAndGo
 
 export default function calculateTheDistanceAndAngle() {
     const coordinates = {
-        SNA: {
-            // angle between S-N-A
-            S: cephaloPoints[0].S,
-            N: cephaloPoints[3].N,
-            A: cephaloPoints[1].A
-        },
-        SNB: {
-            // angle between S-N-B
-            S: cephaloPoints[0].S,
-            N: cephaloPoints[3].N,
-            B: cephaloPoints[2].B
-        },
-        ANB: {
-            // angle between A-N-B
-            A: cephaloPoints[1].A,
-            N: cephaloPoints[3].N,
-            B: cephaloPoints[2].B
-        },
         // angle between lines (PFr-MA) = FMA
         PFr: {
             // line Po-Or
-            Po: cephaloPoints[13].Po,
-            Or: cephaloPoints[14].Or
+            Po: cephaloPoints.Po,
+            Or: cephaloPoints.Or
         },
         MA: {
             // line Go-Me
-            Go: cephaloPoints[11].Go,
-            Me: cephaloPoints[6].Me
+            Go: cephaloPoints.Go,
+            Me: cephaloPoints.Me
         },
         // angle between lines (PFr-SGn) = axe_y_de_Brodie
         SGn: {
             // line S-Gn
-            S: cephaloPoints[0].S,
-            Gn: cephaloPoints[7].Gn
+            S: cephaloPoints.S,
+            Gn: cephaloPoints.Gn
         },
         // angle between BaNa && PtGn = axe_facial_de_Rickette FIXME:
         BaNa: {
             // line Ba-Na
-            Ba: cephaloPoints[12].Ba,
-            Na: cephaloPoints[4].Na
+            Ba: cephaloPoints.Ba,
+            Na: cephaloPoints.Na
         },
         PtGn: {
             // line Pt-Gn
-            Pt: cephaloPoints[15].Pt,
-            Gn: cephaloPoints[7].Gn
+            Pt: cephaloPoints.Pt,
+            Gn: cephaloPoints.Gn
         },
         // angle between PFr && U1U1ap = I/F TODO:
         U1U1ap: {
             // line U1-U1ap
-            U1: cephaloPoints[20].U1,
-            U1ap: cephaloPoints[22].U1ap
+            U1: cephaloPoints.U1,
+            U1ap: cephaloPoints.U1ap
         },
         // angle between MA && L1L1ap = I/M TODO:
         L1L1ap: {
             // line L1-L1ap
-            L1: cephaloPoints[21].L1,
-            L1ap: cephaloPoints[23].L1ap
+            L1: cephaloPoints.L1,
+            L1ap: cephaloPoints.L1ap
         },
         // distnce bewteen A && NaPog = convenxite FIXME:
         NaPog: {
-            Na: cephaloPoints[4].Na,
-            Pog: cephaloPoints[5].Pog
+            Na: cephaloPoints.Na,
+            Pog: cephaloPoints.Pog
         },
         // distance between (Pt vertical onto PFr) and (ENA vertical onto PFr) TODO:
         // distance between (Pt vertical onto ENAENP) and A TODO:
         ENAENP: {
-            ENA: cephaloPoints[8].ENA,
-            ENP: cephaloPoints[9].ENP
+            ENA: cephaloPoints.ENA,
+            ENP: cephaloPoints.ENP
         }
     }
 
@@ -109,28 +91,28 @@ export default function calculateTheDistanceAndAngle() {
 
     const screenToCartesianCoordinates = {
         SNA: convertScreenCoordinatesToCartesianPlanePoints(
-            coordinates.SNA.N[0],
-            coordinates.SNA.N[1], // Origin (x,y)_axes
-            coordinates.SNA.S[0],
-            coordinates.SNA.S[1], // Vector-A (x,y)_axes
-            coordinates.SNA.A[0],
-            coordinates.SNA.A[1] // Vector-B (x,y)_axes
+            cephaloPoints.N[0],
+            cephaloPoints.N[1], // Origin (x,y)_axes
+            cephaloPoints.S[0],
+            cephaloPoints.S[1], // Vector-A (x,y)_axes
+            cephaloPoints.A[0],
+            cephaloPoints.A[1] // Vector-B (x,y)_axes
         ),
         SNB: convertScreenCoordinatesToCartesianPlanePoints(
-            coordinates.SNB.N[0],
-            coordinates.SNB.N[1], // Origin (x,y)_axes
-            coordinates.SNB.S[0],
-            coordinates.SNB.S[1], // Vector-A (x,y)_axes
-            coordinates.SNB.B[0],
-            coordinates.SNB.B[1] // Vector-B (x,y)_axes
+            cephaloPoints.N[0],
+            cephaloPoints.N[1], // Origin (x,y)_axes
+            cephaloPoints.S[0],
+            cephaloPoints.S[1], // Vector-A (x,y)_axes
+            cephaloPoints.B[0],
+            cephaloPoints.B[1] // Vector-B (x,y)_axes
         ),
         ANB: convertScreenCoordinatesToCartesianPlanePoints(
-            coordinates.ANB.N[0],
-            coordinates.ANB.N[1], // Origin (x,y)_axes
-            coordinates.ANB.B[0],
-            coordinates.ANB.B[1], // Vector-A (x,y)_axes
-            coordinates.ANB.A[0],
-            coordinates.ANB.A[1] // Vector-B (x,y)_axes
+            cephaloPoints.N[0],
+            cephaloPoints.N[1], // Origin (x,y)_axes
+            cephaloPoints.B[0],
+            cephaloPoints.B[1], // Vector-A (x,y)_axes
+            cephaloPoints.A[0],
+            cephaloPoints.A[1] // Vector-B (x,y)_axes
         ),
         FMA: convertScreenCoordinatesToCartesianPlanePoints(
             coordinates.PFr.Po[0],
@@ -153,16 +135,16 @@ export default function calculateTheDistanceAndAngle() {
 
     const distances = {
         convenxite_A_Na: findDistanceBetweenTwoPoints(
-            cephaloPoints[1].A[0],
-            cephaloPoints[1].A[1], // Point-A (x,y)_axes
-            cephaloPoints[4].Na[0],
-            cephaloPoints[4].Na[1] // Point-B (x,y)_axes
+            cephaloPoints.A[0],
+            cephaloPoints.A[1], // Point-A (x,y)_axes
+            cephaloPoints.Na[0],
+            cephaloPoints.Na[1] // Point-B (x,y)_axes
         ).toFixed(2),
         convenxite_A_Pog: findDistanceBetweenTwoPoints(
-            cephaloPoints[1].A[0],
-            cephaloPoints[1].A[1], // Point-A (x,y)_axes
-            cephaloPoints[5].Pog[0],
-            cephaloPoints[5].Pog[1] // Point-B (x,y)_axes
+            cephaloPoints.A[0],
+            cephaloPoints.A[1], // Point-A (x,y)_axes
+            cephaloPoints.Pog[0],
+            cephaloPoints.Pog[1] // Point-B (x,y)_axes
         ).toFixed(2)
     }
 

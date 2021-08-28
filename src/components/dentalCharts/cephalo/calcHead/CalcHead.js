@@ -24,9 +24,7 @@ export default function CalcHead() {
         // add class attribute for styling the css
         calculator.setAttribute('class', 'buttons')
 
-        cephaloPoints.forEach((point) => {
-            // get the key-entry of the objects
-            let key = Object.keys(point)[0]
+        for (let key in cephaloPoints) {
             //create a new span to be the button element
             let span = document.createElement('span')
             // set the text to be the key-entry
@@ -37,7 +35,7 @@ export default function CalcHead() {
             span.setAttribute('class', 'unSelected')
             // append the button to the div element
             calculator.appendChild(span)
-        })
+        }
         // finally replace the refrence div with our new created-div calculator
         calcHead.current.replaceWith(calculator)
     }

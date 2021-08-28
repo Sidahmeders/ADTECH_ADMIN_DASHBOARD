@@ -56,13 +56,12 @@ const CephaloCanvas = () => {
             if (chartState.isPointSelected) {
                 const { layerX, layerY } = e
 
-                cephaloPoints.forEach((point) => {
-                    let key = Object.keys(point)[0]
+                for (let key in cephaloPoints) {
                     if (key === chartState.entryPoint) {
                         circles.push(new Circle(layerX, layerY, chartState.entryPoint))
-                        point[chartState.entryPoint] = [layerX, layerY]
+                        cephaloPoints[chartState.entryPoint] = [layerX, layerY]
                     }
-                })
+                }
                 drawCircles()
                 chartState.isPointSelected = false
                 chartState.entryPoint = false
@@ -100,15 +99,17 @@ const CephaloCanvas = () => {
                 // update the x and y coordinates of the circle
                 circles[focused.key].x = xPos
                 circles[focused.key].y = yPos
-                // get the reference-chartState.entryPoint from the circle
-                const ruleRef = circles[focused.key].cirRef
+                // get the reference chartState.entryPoint from the circle
+                const selectedPoint = circles[focused.key].cirRef
                 // update the cephaloPoints (x,y) coorinates based on the reference-key
-                cephaloPoints.forEach((point) => {
-                    let key = Object.keys(point)[0]
-                    if (key === ruleRef) {
-                        point[ruleRef] = [chartState.mousePosition.x, chartState.mousePosition.y]
+                for (let key in cephaloPoints) {
+                    if (key === selectedPoint) {
+                        cephaloPoints[selectedPoint] = [
+                            chartState.mousePosition.x,
+                            chartState.mousePosition.y
+                        ]
                     }
-                })
+                }
 
                 draw()
                 const { angles, distances } = calculateTheDistanceAndAngle()
