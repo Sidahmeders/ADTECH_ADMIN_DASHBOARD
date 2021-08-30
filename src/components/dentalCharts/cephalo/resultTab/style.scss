@@ -2,26 +2,42 @@
 
 .result-tab {
     background-color: $bg-color;
-    z-index: 99;
+    z-index: 9;
     position: absolute;
-    bottom: -22%;
-    right: 1.5%;
-    width: 225px;
+    float: right;
+    margin-top: 20%;
+    right: 1%;
+    width: 365px;
+    height: 460px;
     box-sizing: border-box;
-    height: auto;
     border: 2px solid $label-border-color;
     border-radius: 5px;
     padding: 4px 15px;
+    overflow-y: scroll;
 
     h3 {
-        color: #b82828c5;
+        color: #fa0404e7;
         font-weight: 300;
+        margin: 5px 0;
     }
 
     p {
-        color: #6b6969de;
-        span {
+        border: 1px solid $label-border-color;
+        margin: 2px 0;
+        border-radius: 4px;
+        padding: 5px 8px;
+        .name {
+            color: #6b6969de;
+            margin-right: 4px;
+        }
+        .value {
+            display: block;
             color: #242494d0;
+            margin-right: 10px;
+        }
+        .interpretation {
+            display: block;
+            color: #4a4de9d8;
         }
     }
 }
