@@ -129,8 +129,15 @@ export default function calculateTheDistanceAndAngle() {
         SNB: findAngleBetweenTwoVectors(...screenToCartesianCoordinates.SNB).toFixed(2),
         ANB: findAngleBetweenTwoVectors(...screenToCartesianCoordinates.ANB).toFixed(2),
         FMA: findAngleBetweenTwoVectors(...screenToCartesianCoordinates.FMA).toFixed(2),
-        axe_Brodie: findAngleBetweenTwoVectors(...axeYDeBrodieIntersection).toFixed(2),
-        axe_Rickette: findAngleBetweenTwoVectors(...axeFacialDeRicketteIntersection).toFixed(2)
+        axe_Y_Brodie: findAngleBetweenTwoVectors(...axeYDeBrodieIntersection).toFixed(2),
+        axe_Facial: findAngleBetweenTwoVectors(...axeFacialDeRicketteIntersection).toFixed(2),
+        FMA_de_Tweed: findAngleBetweenTwoVectors(undefined),
+        ENA_Xi_Pm: findAngleBetweenTwoVectors(undefined),
+        i_M: findAngleBetweenTwoVectors(undefined),
+        i_A_pog: findAngleBetweenTwoVectors(undefined),
+        i_F: findAngleBetweenTwoVectors(undefined),
+        I_A_pog: findAngleBetweenTwoVectors(undefined),
+        I_i: findAngleBetweenTwoVectors(undefined)
     }
 
     const distances = {
