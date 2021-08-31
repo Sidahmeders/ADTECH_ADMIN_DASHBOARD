@@ -1,6 +1,6 @@
 import './style.scss'
 import { useState, useRef } from 'react'
-import emptyFile from '../../../../asset/icons/skull.gif'
+import emptyFile from '../../../../asset/images/radioGraph.bmp'
 
 export default function RadioGraph() {
     const FileInputRef = useRef()

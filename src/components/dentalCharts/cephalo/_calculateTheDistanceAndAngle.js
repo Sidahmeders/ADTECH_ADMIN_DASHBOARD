@@ -6,87 +6,11 @@ import findDistanceBetweenTwoPoints from './functions/findDistanceBetweenTwoPoin
 import getDifferenceBetweenPoAndGo from './functions/getDifferenceBetweenPoAndGo'
 
 export default function calculateTheDistanceAndAngle() {
-    const coordinates = {
-        // angle between lines (PFr-MA) = FMA
-        PFr: {
-            // line Po-Or
-            Po: cephaloPoints.Po,
-            Or: cephaloPoints.Or
-        },
-        MA: {
-            // line Go-Me
-            Go: cephaloPoints.Go,
-            Me: cephaloPoints.Me
-        },
-        // angle between lines (PFr-SGn) = axe_y_de_Brodie
-        SGn: {
-            // line S-Gn
-            S: cephaloPoints.S,
-            Gn: cephaloPoints.Gn
-        },
-        // angle between BaNa && PtGn = axe_facial_de_Rickette FIXME:
-        BaNa: {
-            // line Ba-Na
-            Ba: cephaloPoints.Ba,
-            Na: cephaloPoints.Na
-        },
-        PtGn: {
-            // line Pt-Gn
-            Pt: cephaloPoints.Pt,
-            Gn: cephaloPoints.Gn
-        },
-        // angle between PFr && U1U1ap = I/F TODO:
-        U1U1ap: {
-            // line U1-U1ap
-            U1: cephaloPoints.U1,
-            U1ap: cephaloPoints.U1ap
-        },
-        // angle between MA && L1L1ap = I/M TODO:
-        L1L1ap: {
-            // line L1-L1ap
-            L1: cephaloPoints.L1,
-            L1ap: cephaloPoints.L1ap
-        },
-        // distnce bewteen A && NaPog = convenxite FIXME:
-        NaPog: {
-            Na: cephaloPoints.Na,
-            Pog: cephaloPoints.Pog
-        },
-        // distance between (Pt vertical onto PFr) and (ENA vertical onto PFr) TODO:
-        // distance between (Pt vertical onto ENAENP) and A TODO:
-        ENAENP: {
-            ENA: cephaloPoints.ENA,
-            ENP: cephaloPoints.ENP
-        }
-    }
-
-    const FMA_Diff = getDifferenceBetweenPoAndGo(
-        coordinates.PFr.Po[0],
-        coordinates.PFr.Po[1],
-        coordinates.MA.Go[0],
-        coordinates.MA.Go[1]
-    )
-
-    const axeYDeBrodieIntersection = getIntersectionOfTwoVectors(
-        coordinates.SGn.S[0],
-        coordinates.SGn.S[1],
-        coordinates.SGn.Gn[0],
-        coordinates.SGn.Gn[1],
-        coordinates.PFr.Po[0],
-        coordinates.PFr.Po[1],
-        coordinates.PFr.Or[0],
-        coordinates.PFr.Or[1]
-    )
-
-    const axeFacialDeRicketteIntersection = getIntersectionOfTwoVectors(
-        coordinates.PtGn.Pt[0],
-        coordinates.PtGn.Pt[1],
-        coordinates.PtGn.Gn[0],
-        coordinates.PtGn.Gn[1],
-        coordinates.BaNa.Na[0],
-        coordinates.BaNa.Na[1],
-        coordinates.BaNa.Ba[0],
-        coordinates.BaNa.Ba[1]
+    const FMA_Difference = getDifferenceBetweenPoAndGo(
+        cephaloPoints.Po[0],
+        cephaloPoints.Po[1],
+        cephaloPoints.Go[0],
+        cephaloPoints.Go[1]
     )
 
     const screenToCartesianCoordinates = {
@@ -115,12 +39,85 @@ export default function calculateTheDistanceAndAngle() {
             cephaloPoints.A[1] // Vector-B (x,y)_axes
         ),
         FMA: convertScreenCoordinatesToCartesianPlanePoints(
-            coordinates.PFr.Po[0],
-            coordinates.PFr.Po[1], // Origin (x,y)_axes
-            coordinates.PFr.Or[0],
-            coordinates.PFr.Or[1], // Vector-A (x,y)_axes
-            coordinates.MA.Me[0] - FMA_Diff[0],
-            coordinates.MA.Me[1] - FMA_Diff[1] // Vector-B (x,y)_axes
+            cephaloPoints.Po[0],
+            cephaloPoints.Po[1], // Origin (x,y)_axes
+            cephaloPoints.Or[0],
+            cephaloPoints.Or[1], // Vector-A (x,y)_axes
+            cephaloPoints.Me[0] - FMA_Difference[0],
+            cephaloPoints.Me[1] - FMA_Difference[1] // Vector-B (x,y)_axes
+        )
+    }
+
+    const intersectionOfTwoVectors = {
+        axeYBrodi: getIntersectionOfTwoVectors(
+            cephaloPoints.S[0],
+            cephaloPoints.S[1],
+            cephaloPoints.Gn[0],
+            cephaloPoints.Gn[1],
+            cephaloPoints.Po[0],
+            cephaloPoints.Po[1],
+            cephaloPoints.Or[0],
+            cephaloPoints.Or[1]
+        ),
+        axeFacial: getIntersectionOfTwoVectors(
+            cephaloPoints.Pt[0],
+            cephaloPoints.Pt[1],
+            cephaloPoints.Gn[0],
+            cephaloPoints.Gn[1],
+            cephaloPoints.Na[0],
+            cephaloPoints.Na[1],
+            cephaloPoints.Ba[0],
+            cephaloPoints.Ba[1]
+        ),
+        i_M: getIntersectionOfTwoVectors(
+            cephaloPoints.L1ap[0],
+            cephaloPoints.L1ap[1],
+            cephaloPoints.L1[0],
+            cephaloPoints.L1[1],
+            cephaloPoints.Go[0],
+            cephaloPoints.Go[1],
+            cephaloPoints.Me[0],
+            cephaloPoints.Me[1]
+        ),
+        I_F: getIntersectionOfTwoVectors(
+            cephaloPoints.U1ap[0],
+            cephaloPoints.U1ap[1],
+            cephaloPoints.U1[0],
+            cephaloPoints.U1[1],
+            cephaloPoints.Po[0],
+            cephaloPoints.Po[1],
+            cephaloPoints.Or[0],
+            cephaloPoints.Or[1]
+        ),
+        i_A_pog: getIntersectionOfTwoVectors(
+            cephaloPoints.A[0],
+            cephaloPoints.A[1],
+            cephaloPoints.Pog[0],
+            cephaloPoints.Pog[1],
+            cephaloPoints.L1[0],
+            cephaloPoints.L1[1],
+            cephaloPoints.L1ap[0],
+            cephaloPoints.L1ap[1]
+        ),
+        I_A_pog: getIntersectionOfTwoVectors(
+            cephaloPoints.U1[0],
+            cephaloPoints.U1[1],
+            cephaloPoints.U1ap[0],
+            cephaloPoints.U1ap[1],
+            cephaloPoints.A[0],
+            cephaloPoints.A[1],
+            cephaloPoints.Pog[0],
+            cephaloPoints.Pog[1]
+        ),
+        I_i: getIntersectionOfTwoVectors(
+            cephaloPoints.L1[0],
+            cephaloPoints.L1[1],
+            cephaloPoints.L1ap[0],
+            cephaloPoints.L1ap[1],
+            cephaloPoints.U1[0],
+            cephaloPoints.U1[1],
+            cephaloPoints.U1ap[0],
+            cephaloPoints.U1ap[1]
         )
     }
 
@@ -128,16 +125,15 @@ export default function calculateTheDistanceAndAngle() {
         SNA: findAngleBetweenTwoVectors(...screenToCartesianCoordinates.SNA).toFixed(2),
         SNB: findAngleBetweenTwoVectors(...screenToCartesianCoordinates.SNB).toFixed(2),
         ANB: findAngleBetweenTwoVectors(...screenToCartesianCoordinates.ANB).toFixed(2),
-        FMA: findAngleBetweenTwoVectors(...screenToCartesianCoordinates.FMA).toFixed(2),
-        axe_Y_Brodie: findAngleBetweenTwoVectors(...axeYDeBrodieIntersection).toFixed(2),
-        axe_Facial: findAngleBetweenTwoVectors(...axeFacialDeRicketteIntersection).toFixed(2),
-        FMA_de_Tweed: findAngleBetweenTwoVectors(undefined),
+        FMA_de_Tweed: findAngleBetweenTwoVectors(...screenToCartesianCoordinates.FMA).toFixed(2),
+        axe_Y_Brodie: findAngleBetweenTwoVectors(...intersectionOfTwoVectors.axeYBrodi).toFixed(2),
+        axe_Facial: findAngleBetweenTwoVectors(...intersectionOfTwoVectors.axeFacial).toFixed(2),
         ENA_Xi_Pm: findAngleBetweenTwoVectors(undefined),
-        i_M: findAngleBetweenTwoVectors(undefined),
-        i_A_pog: findAngleBetweenTwoVectors(undefined),
-        i_F: findAngleBetweenTwoVectors(undefined),
-        I_A_pog: findAngleBetweenTwoVectors(undefined),
-        I_i: findAngleBetweenTwoVectors(undefined)
+        i_M: findAngleBetweenTwoVectors(...intersectionOfTwoVectors.i_M).toFixed(2),
+        i_F: findAngleBetweenTwoVectors(...intersectionOfTwoVectors.I_F).toFixed(2),
+        i_A_pog: findAngleBetweenTwoVectors(...intersectionOfTwoVectors.i_A_pog).toFixed(2),
+        I_A_pog: findAngleBetweenTwoVectors(...intersectionOfTwoVectors.I_A_pog).toFixed(2),
+        I_i: findAngleBetweenTwoVectors(...intersectionOfTwoVectors.I_i).toFixed(1)
     }
 
     const distances = {

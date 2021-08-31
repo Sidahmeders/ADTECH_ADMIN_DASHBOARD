@@ -8,11 +8,11 @@ function getInterpertations(angleValue, targetAngle) {
     console.log(angleValue)
     if (!angleValue || !targetAngle) {
         return '<-------------------------->'
-    } else if (targetAngle.min >= angleValue && angleValue <= targetAngle.max) {
+    } else if (angleValue >= targetAngle.min && angleValue <= targetAngle.max) {
         return targetAngle.average
-    } else if (targetAngle.max >= angleValue) {
+    } else if (angleValue >= targetAngle.max) {
         return targetAngle.high
-    } else if (targetAngle.min <= angleValue) {
+    } else if (angleValue <= targetAngle.min) {
         return targetAngle.low
     }
 }

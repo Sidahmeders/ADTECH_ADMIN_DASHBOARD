@@ -20,9 +20,12 @@ export default {
         high: 'Classe II squelettique selon BALLARD',
         low: 'Classe III squelettique selon BALLARD'
     },
-    FMA: {
-        max: 82.5,
-        min: 78.5
+    FMA_de_Tweed: {
+        max: 31,
+        min: 23,
+        average: 'Croissance mandibulaire moyenne',
+        high: 'Croissance mandibulaire postérieure',
+        low: 'Croissance mandibulaire antérieure'
     },
     axe_Y_Brodie: {
         max: 61,
@@ -38,13 +41,6 @@ export default {
         high: 'Croissance faciale antérieure',
         low: 'Croissance faciale postérieure'
     },
-    FMA_de_Tweed: {
-        max: 31,
-        min: 23,
-        average: 'Croissance mandibulaire moyenne',
-        high: 'Croissance mandibulaire postérieure',
-        low: 'Croissance mandibulaire antérieure'
-    },
     ENA_Xi_Pm: {
         max: 51,
         min: 43,
@@ -59,19 +55,19 @@ export default {
         high: "Position avancée  de l'incisive centrale inférieure",
         low: "Position reculée de l'incisive centrale inférieure"
     },
-    i_A_pog: {
-        max: 24,
-        min: 20,
-        average: "Position moyenne de l'incisive centrale inférieure",
-        high: "Position avancée de l'incisive centrale inférieure",
-        low: "Position reculée de l'incisive centrale inférieure"
-    },
     i_F: {
         max: 109,
         min: 105,
         average: "Position moyenne de l'incisive centrale supérieure",
         high: "Position avancée de l'incisive centrale supérieure",
         low: "Position reculée de l'incisive centrale supérieure"
+    },
+    i_A_pog: {
+        max: 24,
+        min: 20,
+        average: "Position moyenne de l'incisive centrale inférieure",
+        high: "Position avancée de l'incisive centrale inférieure",
+        low: "Position reculée de l'incisive centrale inférieure"
     },
     I_A_pog: {
         max: 130,
