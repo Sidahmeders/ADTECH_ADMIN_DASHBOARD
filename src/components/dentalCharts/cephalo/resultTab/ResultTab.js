@@ -2,46 +2,32 @@ import './style.scss'
 import { useContext } from 'react'
 import { ContextConsumer } from '../../../../context'
 import interpertations from './interpertations.js'
-
-function getInterpertations(angleValue, targetAngle) {
-    angleValue = parseInt(angleValue)
-    console.log(angleValue)
-    if (!angleValue || !targetAngle) {
-        return '<-------------------------->'
-    } else if (angleValue >= targetAngle.min && angleValue <= targetAngle.max) {
-        return targetAngle.average
-    } else if (angleValue >= targetAngle.max) {
-        return targetAngle.high
-    } else if (angleValue <= targetAngle.min) {
-        return targetAngle.low
-    }
-}
+import getInterpertations from '../functions/getInterpertations.js'
 
 export default function ResultTab() {
     const { cephaloResult } = useContext(ContextConsumer)
     const { angles, distances } = cephaloResult
 
-    const renderResult = (object) => {
+    const renderResult = (object, isAngle) => {
         const arr = []
         for (let entry in object) {
-            arr.push(`${entry}-${object[entry]}`)
+            arr.push({ pointName: entry, pointValue: object[entry] })
         }
         return arr.map((item) => {
-            const res = item.split('-')
-            const angleName = res[0]
-            const angleValue = res[1]
+            const { pointName, pointValue } = item
 
-            const targetAngle = interpertations[angleName]
-            const angleInterpertation = getInterpertations(angleValue, targetAngle)
+            const targetAngle = interpertations[pointName]
+            const angleInterpertation = getInterpertations(pointValue, targetAngle)
 
             return (
-                <>
-                    <p>
-                        <span className="name">{angleName}:</span>
-                        <span className="value">{angleValue}°</span>
-                        <span className="interpretation">{angleInterpertation}</span>
-                    </p>
-                </>
+                <div key={pointName}>
+                    <span className="name">{pointName}:</span>
+                    <span className="value">
+                        {pointValue}
+                        {isAngle ? '°' : ''}
+                    </span>
+                    <span className="interpretation">{angleInterpertation}</span>
+                </div>
             )
         })
     }
@@ -49,7 +35,7 @@ export default function ResultTab() {
     return (
         <div className="result-tab">
             <h3>angels</h3>
-            {renderResult(angles)}
+            {renderResult(angles, true)}
             <h3>distances</h3>
             {renderResult(distances)}
         </div>

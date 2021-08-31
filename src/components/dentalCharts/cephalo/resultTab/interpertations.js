@@ -41,13 +41,6 @@ export default {
         high: 'Croissance faciale antérieure',
         low: 'Croissance faciale postérieure'
     },
-    ENA_Xi_Pm: {
-        max: 51,
-        min: 43,
-        average: 'Normo divergence des deux mâchoire',
-        high: 'hyper divergence des deux mâchoire',
-        low: 'hypo divergence des deux mâchoire'
-    },
     i_M: {
         max: 92,
         min: 88,
@@ -82,5 +75,12 @@ export default {
         average: 'Position moyenne des deux incisive',
         high: 'Position postérieure des deux incisive',
         low: 'Position antérieure des deux incisive'
+    },
+    ENA_Xi_Pm: {
+        max: 51,
+        min: 43,
+        average: 'Normo divergence des deux mâchoire',
+        high: 'hyper divergence des deux mâchoire',
+        low: 'hypo divergence des deux mâchoire'
     }
 }
