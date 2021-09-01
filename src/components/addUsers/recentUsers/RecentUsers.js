@@ -8,16 +8,19 @@ function getAge(dateString) {
     return age > 1 ? age : 1
 }
 
-const formatUsersData = (users) => {
+const formatUsers = (users) => {
     const filteredUsers = []
 
     users.forEach((user) => {
+        const { first_name, last_name, birth_date, faculty, role, date_of_creation } = user
         let tempUser = {}
-        tempUser.name = user.first_name + ' ' + user.last_name
-        tempUser.age = getAge(user.birth_date)
-        tempUser.faculty = user.faculty
-        tempUser.role = user.role
-        tempUser.date = user.date_of_creation.split('T')[0]
+
+        tempUser.name = first_name + ' ' + last_name
+        tempUser.age = getAge(birth_date)
+        tempUser.faculty = faculty
+        tempUser.role = role
+        tempUser.date = date_of_creation ? date_of_creation.split('T')[0] : undefined
+
         filteredUsers.push(tempUser)
     })
 
@@ -28,17 +31,17 @@ const RecentUser = ({ user }) => {
     const { name, age, faculty, role, date } = user
     return (
         <div className="row">
-            <div className="column">{name ? name : 'name'}</div>
-            <div className="column">{age ? age : 'age'}</div>
-            <div className="column">{faculty ? faculty : 'faculty'}</div>
-            <div className="column">{role ? role : 'role'}</div>
-            <div className="column">{date ? date : 'date'}</div>
+            <div className="column">{name}</div>
+            <div className="column">{age}</div>
+            <div className="column">{faculty}</div>
+            <div className="column">{role}</div>
+            <div className="column">{date}</div>
         </div>
     )
 }
 
 export default function RecentUsers({ users }) {
-    users = formatUsersData(users)
+    users = formatUsers(users)
 
     return (
         <div>
