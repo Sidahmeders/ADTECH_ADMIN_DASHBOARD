@@ -7,10 +7,6 @@ import Age from './Age'
 import HygieneBuccal from './HygieneBuccaul'
 import MotifDeConsultation from './MotifConsultation'
 
-//FIXME: this is a fake data that shoud be removed
-import { common } from '../../../data/commonData'
-const { hygienBuccaul, motifConsultation } = common
-
 export default function CommonStat() {
     const _isMounted = useRef(true)
     const [patientsStat, setPatientStat] = useState(false)
@@ -34,21 +30,21 @@ export default function CommonStat() {
         }
     }, [])
 
-    const { specialty, sex, ages } = patientsStat
+    const { motifConsultation, hygienBuccaul, specialty, sex, age } = patientsStat
 
     return (
         <>
             {patientsStat ? (
                 <>
+                    <MotifDeConsultation motifConsultation={motifConsultation} />
+                    <HygieneBuccal hygienBuccaul={hygienBuccaul} />
                     <Specialties specialties={specialty} />
                     <Sex sex={sex} />
-                    <Age ages={ages} />
+                    <Age age={age} />
                 </>
             ) : (
                 ''
             )}
-            <HygieneBuccal hygienBuccaul={hygienBuccaul} />
-            <MotifDeConsultation motifConsultation={motifConsultation} />
         </>
     )
 }

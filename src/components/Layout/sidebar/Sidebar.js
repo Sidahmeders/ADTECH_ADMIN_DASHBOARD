@@ -58,7 +58,7 @@ function SideBar() {
                     clickHandler={handleRouteChange}
                 />
             ))}
-            <SideBarToggle sidebarState={sidebarState} toggleSidebar={toggleSidebar} />
+            <SideBarToggle toggleSidebar={toggleSidebar} />
         </div>
     )
 }

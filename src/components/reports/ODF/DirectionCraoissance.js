@@ -24,7 +24,7 @@ const getDirectionCraoiData = (data, addonLabel) => {
 
 export default function DirectionCraoissance({ directionCraoissance }) {
     const { facial, mandibulaire } = directionCraoissance
-    const facialData = getDirectionCraoiData(facial, 'faci')
+    const facialData = getDirectionCraoiData(facial, 'facial')
     const mandibulaireData = getDirectionCraoiData(mandibulaire, 'mand')
 
     const labels = [...facialData.labels, ...mandibulaireData.labels]

@@ -13,13 +13,13 @@ export const ODF = {
     },
     direction_de_craoissance: {
         facial: {
-            anter: 12,
-            poster: 17,
+            ant: 12,
+            post: 17,
             moyen: 9
         },
         mandibulaire: {
-            anter: 10,
-            poster: 13,
+            ant: 10,
+            post: 13,
             moyen: 19
         }
     }

@@ -85,10 +85,10 @@ export default function calculateTheDistanceAndAngle() {
             cephaloPoints.U1ap[1],
             cephaloPoints.U1[0],
             cephaloPoints.U1[1],
-            cephaloPoints.Po[0],
-            cephaloPoints.Po[1],
             cephaloPoints.Or[0],
-            cephaloPoints.Or[1]
+            cephaloPoints.Or[1],
+            cephaloPoints.Po[0],
+            cephaloPoints.Po[1]
         ),
         i_A_pog: getIntersectionOfTwoVectors(
             cephaloPoints.A[0],

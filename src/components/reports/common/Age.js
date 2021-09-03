@@ -22,8 +22,8 @@ const getAgeData = (data) => {
     }
 }
 
-export default function Age({ ages }) {
-    const { labels, chartData, colors, total } = getAgeData(ages)
+export default function Age({ age }) {
+    const { labels, chartData, colors, total } = getAgeData(age)
     const percentAgeLabels = labels.map((item) => item.split(' ')[0])
 
     const ageData = {
