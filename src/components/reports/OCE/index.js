@@ -1,20 +1,43 @@
+import { useEffect, useState, useRef } from 'react'
+import Fetch from '../../../utils/fetchData'
+
 import ClassBlack from './ClassBlack'
 import SitSta from './SitSta'
 import DentCousale from './DentCousale'
 import DignosticEtiologique from './DignosticEtiologique'
 import Treatment from './Treatment'
 
-//FIXME: this is a fake data that shoud be removed
-import { OCE } from '../../../data/oceData'
-const { calssification_de_black, sit_sta, dent_cousale, dignostic_etiologique, treatment } = OCE
-
 export default function OCEStat() {
+    const _isMounted = useRef(true)
+    const [oceState, setOceState] = useState(false)
+
+    async function getOCEStat(setOceState) {
+        let response = await Fetch.GET('admin/patients/statistics/oce')
+        if (_isMounted.current) {
+            if (response) {
+                const { data } = response
+                if (data) {
+                    setOceState(() => data.oceStat)
+                }
+            }
+        }
+    }
+
+    useEffect(() => {
+        getOCEStat(setOceState)
+        return () => {
+            _isMounted.current = false
+        }
+    }, [])
+
+    const { classBlack, dignosticEtiologique, classSitSta, dentCousale, treatment } = oceState
+
     return (
         <>
-            <ClassBlack calssification_de_black={calssification_de_black} />
-            <DignosticEtiologique dignostic_etiologique={dignostic_etiologique} />
-            <DentCousale dent_cousale={dent_cousale} />
-            <SitSta sit_sta={sit_sta} />
+            <ClassBlack classBlack={classBlack} />
+            <DignosticEtiologique dignosticEtiologique={dignosticEtiologique} />
+            <DentCousale dentCousale={dentCousale} />
+            <SitSta classSitSta={classSitSta} />
             <Treatment treatment={treatment} />
         </>
     )

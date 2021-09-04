@@ -22,8 +22,8 @@ const getDignosticEtioData = (data) => {
     }
 }
 
-export default function DignosticEtiologique({ dignostic_etiologique }) {
-    const { labels, chartData, colors, total } = getDignosticEtioData(dignostic_etiologique)
+export default function DignosticEtiologique({ dignosticEtiologique }) {
+    const { labels, chartData, colors, total } = getDignosticEtioData(dignosticEtiologique)
 
     const dignosticEtioData = {
         labels: [...labels],

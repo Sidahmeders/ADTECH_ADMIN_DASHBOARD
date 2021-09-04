@@ -24,7 +24,7 @@ const styles = {
 }
 
 export default function Percentage({ labels, data, colors }) {
-    const totalPrecent = data.reduce((a, b) => a + b)
+    const totalPrecent = data.length ? data.reduce((a, b) => a + b) : 0
 
     const calcPercentage = (whole, fraction) => {
         const precent = fraction / whole

@@ -9,32 +9,32 @@ import MotifDeConsultation from './MotifConsultation'
 
 export default function CommonStat() {
     const _isMounted = useRef(true)
-    const [patientsStat, setPatientStat] = useState(false)
+    const [commonState, setCommonState] = useState(false)
 
-    async function getPatientsStat(setPatientStat) {
+    async function getCommonStat(setCommonState) {
         let response = await Fetch.GET('admin/patients/statistics/common')
         if (_isMounted.current) {
             if (response) {
                 const { data } = response
                 if (data) {
-                    setPatientStat(() => data.commonStat)
+                    setCommonState(() => data.commonStat)
                 }
             }
         }
     }
 
     useEffect(() => {
-        getPatientsStat(setPatientStat)
+        getCommonStat(setCommonState)
         return () => {
             _isMounted.current = false
         }
     }, [])
 
-    const { motifConsultation, hygienBuccaul, specialty, sex, age } = patientsStat
+    const { motifConsultation, hygienBuccaul, specialty, sex, age } = commonState
 
     return (
         <>
-            {patientsStat ? (
+            {commonState ? (
                 <>
                     <MotifDeConsultation motifConsultation={motifConsultation} />
                     <HygieneBuccal hygienBuccaul={hygienBuccaul} />

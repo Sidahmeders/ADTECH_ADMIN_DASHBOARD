@@ -21,8 +21,8 @@ const getDentCousaleData = (data) => {
     }
 }
 
-export default function DentCousale({ dent_cousale }) {
-    const { labels, chartData, colors, total } = getDentCousaleData(dent_cousale)
+export default function DentCousale({ dentCousale }) {
+    const { labels, chartData, colors, total } = getDentCousaleData(dentCousale)
 
     const dentCousaleData = {
         labels: [...labels],

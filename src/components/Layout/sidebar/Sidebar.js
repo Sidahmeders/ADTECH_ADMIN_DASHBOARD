@@ -7,11 +7,11 @@ import { useContext } from 'react'
 
 // dashboard icons
 import dashBoard from '../../../asset/icons/sidebar/dashboard.svg'
-import userProfile from '../../../asset/icons/sidebar/user-solid.svg'
 import usersList from '../../../asset/icons/sidebar/users-list.svg'
 import addUser from '../../../asset/icons/sidebar/user-plus.svg'
 import reports from '../../../asset/icons/sidebar/charts.svg'
 import manageUsers from '../../../asset/icons/sidebar/manage-users.svg'
+import userProfile from '../../../asset/icons/sidebar/user-solid.svg'
 import notification from '../../../asset/icons/sidebar/bell-solid.svg'
 import logout from '../../../asset/icons/sidebar/logout.svg'
 import projects from '../../../asset/icons/sidebar/projects.svg'

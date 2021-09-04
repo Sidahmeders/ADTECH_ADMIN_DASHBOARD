@@ -22,8 +22,8 @@ const getClassBlackData = (data) => {
     }
 }
 
-export default function ClassBlack({ calssification_de_black }) {
-    const { labels, chartData, colors, total } = getClassBlackData(calssification_de_black)
+export default function ClassBlack({ classBlack }) {
+    const { labels, chartData, colors, total } = getClassBlackData(classBlack)
 
     const classBlackData = {
         labels: [...labels],

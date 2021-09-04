@@ -22,8 +22,8 @@ const getSitStaData = (data) => {
     }
 }
 
-export default function SitSta({ sit_sta }) {
-    const { labels, chartData, colors, total } = getSitStaData(sit_sta)
+export default function SitSta({ classSitSta }) {
+    const { labels, chartData, colors, total } = getSitStaData(classSitSta)
 
     const sitStaData = {
         labels: [...labels],
