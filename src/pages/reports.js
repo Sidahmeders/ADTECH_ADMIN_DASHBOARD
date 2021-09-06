@@ -17,35 +17,35 @@ export default function PatientsList() {
                     navLinks={[
                         {
                             text: 'common',
-                            href: 'reports/common'
+                            href: '/reports/common'
                         },
                         {
                             text: 'odf',
-                            href: 'reports/odf'
+                            href: '/reports/odf'
                         },
                         {
                             text: 'oce',
-                            href: 'reports/oce'
+                            href: '/reports/oce'
                         },
                         {
                             text: 'paro',
-                            href: 'reports/paro'
+                            href: '/reports/paro'
                         },
                         {
                             text: 'proth',
-                            href: 'reports/proth'
+                            href: '/reports/proth'
                         },
                         {
                             text: 'pcb',
-                            href: 'reports/pcb'
+                            href: '/reports/pcb'
                         }
                     ]}
                 />
                 <Switch>
-                    <Route path="/home/reports/common" component={CommonStat} />
-                    <Route path="/home/reports/odf" component={ODFStat} />
-                    <Route path="/home/reports/oce" component={OCEStat} />
-                    <Route path="/home/reports/proth" component={ProtheseStat} />
+                    <Route path="/reports/common" component={CommonStat} />
+                    <Route path="/reports/odf" component={ODFStat} />
+                    <Route path="/reports/oce" component={OCEStat} />
+                    <Route path="/reports/proth" component={ProtheseStat} />
                 </Switch>
             </div>
         </>

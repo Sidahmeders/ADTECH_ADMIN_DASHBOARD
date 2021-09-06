@@ -21,13 +21,13 @@ function App() {
                     <Route exact path="/" component={LoginPage} />
                     <Layout>
                         <Route exact path="/home" component={HomePage} />
-                        <Route path="/home/dashboard" component={DashBoard} />
-                        <Route path="/home/users-list" component={UsersList} />
-                        <Route path="/home/add-users" component={AddUsers} />
-                        <Route path="/home/reports" component={Reports} />
-                        <Route path="/home/manage-users" component={ManageUsers} />
-                        <Route path="/home/dental-charts" component={DentalCharts} />
-                        <Route path="/home/admin-profile" component={AdminProfile} />
+                        <Route path="/dashboard" component={DashBoard} />
+                        <Route path="/users-list" component={UsersList} />
+                        <Route path="/add-users" component={AddUsers} />
+                        <Route path="/reports" component={Reports} />
+                        <Route path="/manage-users" component={ManageUsers} />
+                        <Route path="/dental-charts" component={DentalCharts} />
+                        <Route path="/admin-profile" component={AdminProfile} />
                     </Layout>
                 </Switch>
             </Router>

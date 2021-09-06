@@ -14,17 +14,17 @@ const DentalCharts = () => {
                     navLinks={[
                         {
                             text: 'cephalo metric',
-                            href: 'dental-charts/cephalo-metric'
+                            href: '/dental-charts/cephalo-metric'
                         },
                         {
                             text: 'odf chart',
-                            href: 'dental-charts/odf-chart'
+                            href: '/dental-charts/odf-chart'
                         }
                     ]}
                 />
                 <Switch>
-                    <Route path="/home/dental-charts/cephalo-metric" component={Cephalo} />
-                    <Route path="/home/dental-charts/odf-chart" component={ODFChart} />
+                    <Route path="/dental-charts/cephalo-metric" component={Cephalo} />
+                    <Route path="/dental-charts/odf-chart" component={ODFChart} />
                 </Switch>
             </div>
         </>

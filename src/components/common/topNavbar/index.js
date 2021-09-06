@@ -4,7 +4,7 @@ import './style.scss'
 const NavbarElement = ({ clickHandler, href, text, isChecked }) => {
     return (
         <div onClick={clickHandler} className={`navbar-element ${isChecked ? 'checked' : ''}`}>
-            <Link to={`/home/${href}`}>{text}</Link>
+            <Link to={href}>{text}</Link>
         </div>
     )
 }

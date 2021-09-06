@@ -15,25 +15,22 @@ export default function ManageUsersPage() {
                     navLinks={[
                         {
                             text: 'validate users',
-                            href: 'manage-users/validate-users'
+                            href: '/manage-users/validate-users'
                         },
                         {
                             text: 'search & update users',
-                            href: 'manage-users/search-update-users'
+                            href: '/manage-users/search-update-users'
                         },
                         {
                             text: 'additinal settings',
-                            href: 'manage-users/3'
+                            href: '/manage-users/3'
                         }
                     ]}
                 />
             </div>
             <Switch>
-                <Route path="/home/manage-users/validate-users" component={ValidateUsers} />
-                <Route
-                    path="/home/manage-users/search-update-users"
-                    component={SearchUpdateUsers}
-                />
+                <Route path="/manage-users/validate-users" component={ValidateUsers} />
+                <Route path="/manage-users/search-update-users" component={SearchUpdateUsers} />
             </Switch>
         </>
     )

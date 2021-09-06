@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export default function SideBarElement({ clickHandler, id, route, text, icon, notification }) {
     return (
         <Link
-            to={`/home/${route}`}
+            to={`/${route}`}
             onClick={() => clickHandler(id)}
             id={id}
             className={`sidebar-element ${route}-btn`}>
