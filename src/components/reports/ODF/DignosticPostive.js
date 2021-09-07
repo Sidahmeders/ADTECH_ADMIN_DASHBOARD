@@ -22,8 +22,8 @@ const getDignosticPostiveData = (data) => {
     }
 }
 
-export default function DignosticPostive({ dignostic_postive }) {
-    const { class_squelitique, typologie_facial } = dignostic_postive
+export default function DignosticPostive({ dignosticPostive }) {
+    const { class_squelitique, typologie_facial } = dignosticPostive
     const classSquelitiqueData = getDignosticPostiveData(class_squelitique)
     const typologieFacialData = getDignosticPostiveData(typologie_facial)
 

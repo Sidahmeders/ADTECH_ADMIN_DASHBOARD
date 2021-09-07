@@ -34,11 +34,17 @@ export default function OCEStat() {
 
     return (
         <>
-            <ClassBlack classBlack={classBlack} />
-            <DignosticEtiologique dignosticEtiologique={dignosticEtiologique} />
-            <DentCousale dentCousale={dentCousale} />
-            <SitSta classSitSta={classSitSta} />
-            <Treatment treatment={treatment} />
+            {oceState ? (
+                <>
+                    <ClassBlack classBlack={classBlack} />
+                    <DignosticEtiologique dignosticEtiologique={dignosticEtiologique} />
+                    <DentCousale dentCousale={dentCousale} />
+                    <SitSta classSitSta={classSitSta} />
+                    <Treatment treatment={treatment} />
+                </>
+            ) : (
+                ''
+            )}
         </>
     )
 }
