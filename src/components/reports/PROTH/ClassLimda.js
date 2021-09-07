@@ -22,10 +22,10 @@ const getClassLimdaData = (data, addonLabel) => {
     }
 }
 
-export default function ClassLimda({ classLimda }) {
-    const { mandibule, maxillaire } = classLimda
-    const mandibuleData = getClassLimdaData(mandibule, 'mandi')
-    const maxillaireData = getClassLimdaData(maxillaire, 'maxil')
+export default function ClassLimda({ calssificationLimda }) {
+    const { mandibule, maxillaire } = calssificationLimda
+    const mandibuleData = getClassLimdaData(mandibule, 'mand')
+    const maxillaireData = getClassLimdaData(maxillaire, 'maxi')
 
     const colors = [...mandibuleData.colors, ...maxillaireData.colors]
     const lables = [...mandibuleData.labels, ...maxillaireData.labels]

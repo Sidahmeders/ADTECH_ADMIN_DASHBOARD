@@ -2,15 +2,15 @@ import RadarChart from '../../charts/RadarChart'
 import Title from '../../charts/addons/Title'
 import Percentage from '../../charts/addons/Percentage'
 
-const getClassKinedyAplegateData = (data) => {
+const getClassKinedyAplegateData = (data, addonLabel) => {
     const labels = []
     const chartData = []
     const colors = []
     let total = 0
     for (let entry in data) {
-        labels.push(entry)
+        labels.push(`${addonLabel} cl${entry.substr(5, 5)}`)
         chartData.push(data[entry])
-        colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}66`)
+        colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}`)
         total += data[entry]
     }
 
@@ -22,23 +22,38 @@ const getClassKinedyAplegateData = (data) => {
     }
 }
 
-export default function ClassKinedyAplegate({ classKinedyAplegate }) {
-    const { labels, chartData, colors, total } = getClassKinedyAplegateData(classKinedyAplegate)
+export default function ClassKinedyAplegate({ classificationKinedyAplegate }) {
+    const { mandibule, maxillaire } = classificationKinedyAplegate
+    const mandibuleData = getClassKinedyAplegateData(mandibule, 'mand')
+    const maxillaireData = getClassKinedyAplegateData(maxillaire, 'maxi')
+
+    const colors = [...mandibuleData.colors, ...maxillaireData.colors]
+    const lables = [...mandibuleData.labels, ...maxillaireData.labels]
+    const data = [...mandibuleData.chartData, ...maxillaireData.chartData]
+    const Filler = [0, 0, 0, 0, 0, 0]
 
     const classKinedyAplegateData = {
-        labels: [...labels],
+        labels: lables,
         datasets: [
             {
-                label: 'class kinedy aplegate',
+                label: 'mandibule',
                 backgroundColor: colors,
-                data: [...chartData]
+                data: [...mandibuleData.chartData, ...Filler]
+            },
+            {
+                label: 'maxillaire',
+                backgroundColor: colors,
+                data: [...Filler, ...maxillaireData.chartData]
             }
         ]
     }
     return (
         <div>
-            <Title label="class kinedy aplegate" total={total} />
-            <Percentage labels={labels} data={chartData} colors={colors} />
+            <Title
+                label="class kinedy aplegate"
+                total={mandibuleData.total + maxillaireData.total}
+            />
+            <Percentage labels={lables} data={data} colors={colors} />
             <RadarChart chartData={classKinedyAplegateData} />
         </div>
     )
