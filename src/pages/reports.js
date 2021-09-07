@@ -7,6 +7,7 @@ import CommonStat from '../components/reports/common/index'
 import ODFStat from '../components/reports/ODF/index'
 import OCEStat from '../components/reports/OCE/index'
 import ProtheseStat from '../components/reports/PROTH/index'
+import ParoStat from '../components/reports/paro/index'
 
 export default function PatientsList() {
     return (
@@ -46,6 +47,7 @@ export default function PatientsList() {
                     <Route path="/reports/odf" component={ODFStat} />
                     <Route path="/reports/oce" component={OCEStat} />
                     <Route path="/reports/proth" component={ProtheseStat} />
+                    <ParoStat path="/reports/paro" component={ParoStat} />
                 </Switch>
             </div>
         </>

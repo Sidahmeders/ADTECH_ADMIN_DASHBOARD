@@ -34,6 +34,7 @@ export default function DignosticEtiologique({ dignosticEtiologique }) {
             }
         ]
     }
+
     return (
         <div>
             <Title label="dignostic etiologique" total={total} />
