@@ -30,9 +30,6 @@ export default function ODFStat() {
 
     const { dignosticPostive, dignosticEtiologique, directionCraoissance } = odfState
 
-    console.log(odfState)
-    console.log(directionCraoissance)
-
     return (
         <>
             {odfState ? (
