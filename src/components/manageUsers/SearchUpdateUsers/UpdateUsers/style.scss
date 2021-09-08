@@ -3,18 +3,13 @@
 .card {
     margin: 0 4vw;
     padding: 20px;
-    border: 2px solid $label-border-color;
+    border: 1px solid $label-border-color;
     border-radius: 5px;
     margin-bottom: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 350px;
+    background: #deecf385;
 
     .row {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-
         span {
             color: blue;
             margin-right: 6px;
@@ -26,48 +21,42 @@
             margin: 0 10px;
             margin-top: 6px;
         }
-        .images {
+        .image {
             display: flex;
-            justify-content: space-evenly;
-            width: 100%;
-            margin-top: 10px;
+            flex-direction: column;
+            padding: 10px;
+            width: 200px;
 
-            .image {
-                display: flex;
-                flex-direction: column;
-                padding: 10px;
+            img {
+                margin-top: 10px;
+                margin-left: 20px;
+                width: 260px;
+                height: 180px;
+                border: 2px solid #9446;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+            &.zoomed-in {
+                z-index: 9;
+
+                &:before {
+                    content: '';
+                    position: fixed;
+                    left: 0;
+                    top: 0;
+                    width: 100vw;
+                    height: 100vh;
+                    background: #6668;
+                }
 
                 img {
-                    margin-top: 10px;
-                    margin-left: 20px;
-                    width: 260px;
-                    height: 180px;
-                    border: 2px solid #9446;
-
-                    &:hover {
-                        cursor: pointer;
-                    }
-                }
-                &.zoomed-in {
-                    z-index: 9;
-
-                    &:before {
-                        content: '';
-                        position: fixed;
-                        left: 0;
-                        top: 0;
-                        width: 100vw;
-                        height: 100vh;
-                        background: #6668;
-                    }
-
-                    img {
-                        position: fixed;
-                        top: 5%;
-                        left: 220px;
-                        width: 75vw;
-                        height: 90vh;
-                    }
+                    position: fixed;
+                    top: 5%;
+                    left: 220px;
+                    width: 75vw;
+                    height: 90vh;
                 }
             }
         }
@@ -95,6 +84,7 @@
         max-width: 650px;
     }
 }
+
 .selected-user-container {
     height: fit-content;
     background: white;
