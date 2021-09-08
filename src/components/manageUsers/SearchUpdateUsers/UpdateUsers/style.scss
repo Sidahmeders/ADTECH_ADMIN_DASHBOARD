@@ -54,10 +54,20 @@
             color: #053d6b;
             text-transform: capitalize;
         }
-        .birth-date {
+        .birth-date,
+        .email,
+        .phone {
             text-align: right;
             padding: 0 10px;
-            margin-bottom: 15px;
+            margin-bottom: 7px;
+        }
+
+        .email {
+            font-size: 19px;
+            color: #4a2bf5;
+        }
+        .phone {
+            color: green;
         }
 
         .image {
@@ -101,16 +111,16 @@
             }
         }
 
-        // .button-element {
-        //     button {
-        //         font-size: 13px;
-        //         margin: 0;
-        //         background: orange;
-        //         &:hover {
-        //             background: #ffb732;
-        //         }
-        //     }
-        // }
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 8px;
+            margin-top: 12px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
     }
     .empty-search {
         margin: 0 4vw;
@@ -150,6 +160,8 @@
         }
         .buttons {
             margin-top: 20px;
+            justify-content: center;
+
             button {
                 font-size: 17px;
             }

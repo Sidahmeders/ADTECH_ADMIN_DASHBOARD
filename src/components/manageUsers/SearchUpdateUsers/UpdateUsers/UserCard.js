@@ -7,8 +7,6 @@ export default function UserRow({ user }) {
         last_name,
         birth_date,
         email,
-        role,
-        gender,
         grade,
         specialty,
         year_of_study,
@@ -36,6 +34,8 @@ export default function UserRow({ user }) {
 
             <p className="name">{first_name + ' ' + last_name}</p>
             <p className="birth-date">{birthDate}</p>
+            <p className="email">{email}</p>
+            <p className="phone">+{phone_number}</p>
         </>
     )
 }

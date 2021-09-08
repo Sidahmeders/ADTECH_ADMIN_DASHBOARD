@@ -6,8 +6,10 @@ import { ContextConsumer } from '../../../../context'
 import TextHeader from '../../../common/TextHeader/index'
 import UserCard from './UserCard'
 import UpdateForm from './UpdateForm'
-import NoFile from '../../../../asset/icons/EmptyFolder.png'
-// import ButtonElement from '../../../common/form/button/index'
+
+import NoFileIcon from '../../../../asset/icons/EmptyFolder.png'
+import EditIcon from '../../../../asset/icons/form/edit.svg'
+import DeleteIcon from '../../../../asset/icons/form/minus.svg'
 
 const handlePendingUpdate = (setAlertMessage) => {
     setAlertMessage(() => {
@@ -133,6 +135,10 @@ export default function UpdateUsers({ users, setUsers }) {
         }
     }
 
+    const deleteUserPermanently = (userId) => {
+        const response = Fetch.Delete('admin/users', userId)
+    }
+
     useEffect(() => {
         checkSelectedRadioElement(userInfo)
         insertDateInput(userInfo)
@@ -159,16 +165,27 @@ export default function UpdateUsers({ users, setUsers }) {
                         return (
                             <div key={index} className={`card ${user.role}`}>
                                 <UserCard user={user} />
-                                {/* <ButtonElement
-                                    label="update user info"
-                                    clickHandler={() => updateUserInfo(user._id)}
-                                /> */}
+
+                                <div className="buttons">
+                                    <img
+                                        width="30px"
+                                        src={EditIcon}
+                                        alt="edit"
+                                        onClick={() => updateUserInfo(user._id)}
+                                    />
+                                    <img
+                                        width="25px"
+                                        src={DeleteIcon}
+                                        alt="delete"
+                                        onClick={() => deleteUserPermanently(user._id)}
+                                    />
+                                </div>
                             </div>
                         )
                     })
                 ) : (
                     <div className="empty-search">
-                        <img src={NoFile} alt="notfound" />
+                        <img src={NoFileIcon} alt="notfound" />
                     </div>
                 )}
             </div>
