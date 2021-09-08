@@ -1,6 +1,5 @@
 import RadarChart from '../../charts/RadarChart'
 import Title from '../../charts/addons/Title'
-import Percentage from '../../charts/addons/Percentage'
 
 const getClassKinedyAplegateData = (data, addonLabel) => {
     const labels = []
@@ -29,7 +28,6 @@ export default function ClassKinedyAplegate({ classificationKinedyAplegate }) {
 
     const colors = [...mandibuleData.colors, ...maxillaireData.colors]
     const lables = [...mandibuleData.labels, ...maxillaireData.labels]
-    const data = [...mandibuleData.chartData, ...maxillaireData.chartData]
     const Filler = [0, 0, 0, 0, 0, 0]
 
     const classKinedyAplegateData = {
@@ -53,7 +51,6 @@ export default function ClassKinedyAplegate({ classificationKinedyAplegate }) {
                 label="class kinedy aplegate"
                 total={mandibuleData.total + maxillaireData.total}
             />
-            <Percentage labels={lables} data={data} colors={colors} />
             <RadarChart chartData={classKinedyAplegateData} />
         </div>
     )

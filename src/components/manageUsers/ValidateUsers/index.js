@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import '../../../styles/manageUsers/validateUsers.scss'
+import './style.scss'
 import Fetch from '../../../utils/fetchData'
 
 import Spinner from '../../../asset/icons/spinner.gif'
