@@ -4,6 +4,7 @@ import Fetch from '../../../../utils/fetchData'
 import { ContextConsumer } from '../../../../context'
 
 import TextHeader from '../../../common/TextHeader/index'
+import AlertStatusBar from '../../../common/alert/index'
 import UserCard from './UserCard'
 import UpdateForm from './UpdateForm'
 
@@ -82,6 +83,7 @@ const insertDateInput = (userInfo) => {
 export default function UpdateUsers({ users, setUsers }) {
     const { sidebarState } = useContext(ContextConsumer)
     const [userInfo, setUserInfo] = useState(false)
+    const [deletedUser, setDeletedUser] = useState(false)
 
     const [alertMessage, setAlertMessage] = useState({
         pending: '',
@@ -133,8 +135,20 @@ export default function UpdateUsers({ users, setUsers }) {
         }
     }
 
-    const deleteUserPermanently = (userId) => {
-        const response = Fetch.Delete('admin/users', userId)
+    const removeDeletedUser = (users, id, setUsers) => {
+        users = users.filter((user) => user._id !== id)
+        setUsers(() => users)
+    }
+
+    const deleteUserPermanently = async (userId) => {
+        const response = await Fetch.Delete('admin/users/dropUser', userId)
+        if (response) {
+            const { data } = response
+            if (data) {
+                setDeletedUser(() => data)
+                removeDeletedUser(users, data.user_id, setUsers)
+            }
+        }
     }
 
     useEffect(() => {
@@ -145,6 +159,17 @@ export default function UpdateUsers({ users, setUsers }) {
     return (
         <>
             <TextHeader text="search result" />
+            {deletedUser ? (
+                <div style={{ margin: '0 2vw 3vh 2vw' }}>
+                    <AlertStatusBar
+                        message={{
+                            error: `${deletedUser.name} has been deleted, you can't undo this operation now`
+                        }}
+                    />
+                </div>
+            ) : (
+                ''
+            )}
             <div className="update-users">
                 {userInfo ? (
                     <UpdateForm
