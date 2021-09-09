@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import SearchUsers from './SearchUsers/SearchUsers'
+import SearchUsers from './SearchUsers/index'
 import UpdateUsers from './UpdateUsers/index'
 
 export default function SearchUpdateUsers() {

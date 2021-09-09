@@ -5,7 +5,7 @@ import TextHeader from '../components/common/TextHeader/index'
 import TopNavbar from '../components/common/topNavbar/index'
 import ValidateUsers from '../components/manageUsers/ValidateUsers/index'
 import SearchUpdateUsers from '../components/manageUsers/SearchUpdateUsers/index'
-import SearchUserPatients from '../components/manageUsers/searchUserPatients/index'
+import SearchUserPatients from '../components/manageUsers/SearchUserPatients/index'
 
 export default function ManageUsersPage() {
     return (

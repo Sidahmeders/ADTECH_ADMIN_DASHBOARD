@@ -1,104 +1,25 @@
 import { useState } from 'react'
-import Fetch from '../../../utils/fetchData'
-import './style.scss'
 
-import SearchInputElement from '../../common/form/SearchInputElement/index'
-import RadioInputElement from '../../common/form/RadioInputElement/index'
-import ButtonElement from '../../common/form/button/index'
-import AlertStatusBar from '../../common/alert/index'
+import SearchUsers from './SearchUserPatients/index'
+import UserPatients from './UserPatients/index'
 
-const handlePendingSearch = (setAlertMessage) => {
-    setAlertMessage(() => {
-        return {
-            pending: 'please wait a moment...',
-            success: '',
-            error: ''
-        }
+export default function SearchUpdateUsers() {
+    const [users, setUsers] = useState([])
+
+    const [alertMessage, setAlertMessage] = useState({
+        success: '',
+        pending: '',
+        error: ''
     })
-}
-
-const handleSuccesfulSearch = (setAlertMessage, setPatients, data) => {
-    setPatients(() => data.patients)
-    setAlertMessage(() => {
-        return {
-            pending: '',
-            success: `${data.patients.length} patients has been found`,
-            error: ''
-        }
-    })
-}
-
-const handleFailedSearch = (setAlertMessage, error) => {
-    const errorMessage = error
-        ? error.message
-        : 'something unexpected happend, please check the dev console'
-    setAlertMessage(() => {
-        return {
-            pending: '',
-            success: '',
-            error: errorMessage
-        }
-    })
-}
-
-export default function SearchUserPatients() {
-    const handleSearchQueryChange = () => {}
-    const searchUsers = () => {}
-    const searchQuery = ['hello']
-    const searchFields = ['']
-    const alertMessage = 'no no'
 
     return (
         <div className="search-user-patients">
-            <RadioInputElement
-                label="select a serach field"
-                options={['first name', 'last name', 'age', 'phone number', 'specialty access']}
-                changeHandler={handleSearchQueryChange}
+            <SearchUsers
+                setUsers={setUsers}
+                alertMessage={alertMessage}
+                setAlertMessage={setAlertMessage}
             />
-
-            <form id="searchUpdateForm">
-                {searchFields.includes(searchQuery.queryKey) ? (
-                    <SearchInputElement
-                        label="enter your search query"
-                        changeHandler={handleSearchQueryChange}
-                    />
-                ) : searchQuery.queryKey === 'specialty' ? (
-                    <RadioInputElement
-                        label="select a specialty"
-                        options={['OCE', 'ODF', 'PARO', 'PROTHESE', 'PCB']}
-                        changeHandler={handleSearchQueryChange}
-                        sub={true}
-                    />
-                ) : searchQuery.queryKey === 'year_of_study' ? (
-                    <RadioInputElement
-                        label="select a year"
-                        options={['1st', '2nd', '3rd', '4th', '5th', '6th']}
-                        changeHandler={handleSearchQueryChange}
-                        sub={true}
-                    />
-                ) : searchQuery.queryKey === 'grade' ? (
-                    <RadioInputElement
-                        label="select a grade"
-                        options={[
-                            'student',
-                            'resident',
-                            'assistant',
-                            'master_assistant',
-                            'professor'
-                        ]}
-                        changeHandler={handleSearchQueryChange}
-                        sub={true}
-                    />
-                ) : (
-                    ''
-                )}
-                <AlertStatusBar message={alertMessage} />
-                {alertMessage.pending ? (
-                    <ButtonElement disable={true} />
-                ) : (
-                    <ButtonElement label="search now" clickHandler={searchUsers} />
-                )}
-            </form>
+            <UserPatients users={users} setUsers={setUsers} />
         </div>
     )
 }
