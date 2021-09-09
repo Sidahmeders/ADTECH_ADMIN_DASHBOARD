@@ -116,9 +116,69 @@
             justify-content: space-around;
             padding: 15px 8px;
             margin-top: 12px;
+            position: relative;
 
             &:hover {
                 cursor: pointer;
+            }
+            .confirm-tab {
+                display: none;
+                &.active {
+                    display: block;
+                    z-index: 99;
+                    background: #e6e9e1;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100vw;
+                    height: 100vh;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    h3 {
+                        color: rgb(216, 38, 38);
+                        font-size: 25px;
+                        padding: 20px;
+                        font-family: 'Montserrat';
+                    }
+                    .username {
+                        color: red;
+                        font-size: 18px;
+                        padding: 0 6px;
+                        text-transform: capitalize;
+                    }
+                    .buttons {
+                        flex-direction: column;
+                        transform: translateX(-20px);
+                        .cancel,
+                        .delete {
+                            text-transform: capitalize;
+                            padding: 8px 40px;
+                            background: white;
+                            margin: 15px;
+                            text-align: center;
+                            border-radius: 2px;
+                            font-weight: bold;
+                            transition: 1s ease;
+                        }
+                        .cancel {
+                            color: #45d382;
+                            &:hover {
+                                background: #45d382;
+                                color: white;
+                            }
+                        }
+                        .delete {
+                            color: red;
+
+                            &:hover {
+                                color: white;
+                                background: red;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

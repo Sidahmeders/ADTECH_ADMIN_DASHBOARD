@@ -1,4 +1,5 @@
 import transformDate from '../../../../utils/transformDate'
+import { useState } from 'react'
 
 import PreviewImage from '../../PreviewImage'
 import EditIcon from '../../../../asset/icons/form/edit.svg'
@@ -20,7 +21,20 @@ export default function UserRow({ user, updateUserInfo, deleteUserPermanently })
         identity_card //FIXME:
     } = user
 
-    const birthDate = transformDate(birth_date)
+    const [userToDelete, setUserToDelete] = useState(false)
+    const deleteUserRequest = (user) => {
+        setUserToDelete(user)
+    }
+
+    const cancelDelete = () => {
+        setUserToDelete(() => false)
+    }
+
+    const confirmDelete = () => {
+        const userId = userToDelete._id
+        deleteUserPermanently(userId)
+        setUserToDelete(false)
+    }
 
     return (
         <div className={`card ${role}`}>
@@ -37,9 +51,10 @@ export default function UserRow({ user, updateUserInfo, deleteUserPermanently })
             </div>
 
             <p className="name">{first_name + ' ' + last_name}</p>
-            <p className="birth-date">{birthDate}</p>
+            <p className="birth-date">{transformDate(birth_date)}</p>
             <p className="email">{email}</p>
             <p className="phone">+{phone_number}</p>
+
             <div className="buttons">
                 <img
                     width="30px"
@@ -51,8 +66,24 @@ export default function UserRow({ user, updateUserInfo, deleteUserPermanently })
                     width="25px"
                     src={DeleteIcon}
                     alt="delete"
-                    onClick={() => deleteUserPermanently(user._id)}
+                    onClick={() => deleteUserRequest(user)}
                 />
+                <div className={`confirm-tab ${userToDelete ? 'active' : ''}`}>
+                    <h3>Warning: deleting any user can not be reversed. </h3>
+                    <p>
+                        if you are sure to delete
+                        <span className="username">{`${user.first_name}  ${user.last_name}`}</span>
+                        click on confirm
+                    </p>
+                    <div className="buttons">
+                        <div className="cancel" onClick={cancelDelete}>
+                            cancel
+                        </div>
+                        <div className="delete" onClick={confirmDelete}>
+                            confirm
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )
