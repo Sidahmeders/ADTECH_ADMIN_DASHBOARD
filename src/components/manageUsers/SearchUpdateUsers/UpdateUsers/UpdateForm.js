@@ -6,6 +6,7 @@ import ButtonElement from '../../../common/form/button/index'
 import AlertStatusBar from '../../../common/alert/index'
 
 export default function UpdateForm({
+    sidebarState,
     userInfo,
     hadnleUserInfoChange,
     alertMessage,
@@ -13,7 +14,7 @@ export default function UpdateForm({
     cancelUpdate
 }) {
     return (
-        <>
+        <div style={{ left: sidebarState ? '60px' : '220px' }} className="selected-user-container">
             <TextHeader text="user info to update" />
             <div className="form-container">
                 <div className="row text">
@@ -109,6 +110,6 @@ export default function UpdateForm({
                     <ButtonElement clickHandler={cancelUpdate} label="cancel the update" />
                 </div>
             </div>
-        </>
+        </div>
     )
 }

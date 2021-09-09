@@ -12,24 +12,25 @@
             padding: 0 15px;
             padding-bottom: 30px;
             overflow: hidden;
+            margin: 20px 0;
 
             &:nth-child(1) {
-                background: rgb(236, 243, 255);
-                border: 2px solid #4566;
+                background: rgb(244, 248, 255);
+                border: 2px solid #b2c7dd66;
             }
             &:nth-child(2) {
-                background: rgb(255, 244, 244);
-                border: 2px solid #4566;
+                background: rgb(255, 249, 249);
+                border: 2px solid #b2c7dd66;
             }
         }
     }
     .left {
         .card {
             width: 28vw;
-            height: 532px;
-            background: rgb(243, 255, 248);
+            height: 510px;
+            background: rgb(246, 255, 250);
             padding: 40px;
-            border: 2px solid #4566;
+            border: 2px solid #b2c7dd66;
         }
     }
 }

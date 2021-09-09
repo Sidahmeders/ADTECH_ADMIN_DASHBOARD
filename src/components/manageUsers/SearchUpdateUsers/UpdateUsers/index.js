@@ -8,8 +8,6 @@ import UserCard from './UserCard'
 import UpdateForm from './UpdateForm'
 
 import NoFileIcon from '../../../../asset/icons/EmptyFolder.png'
-import EditIcon from '../../../../asset/icons/form/edit.svg'
-import DeleteIcon from '../../../../asset/icons/form/minus.svg'
 
 const handlePendingUpdate = (setAlertMessage) => {
     setAlertMessage(() => {
@@ -149,38 +147,23 @@ export default function UpdateUsers({ users, setUsers }) {
             <TextHeader text="search result" />
             <div className="update-users">
                 {userInfo ? (
-                    <div
-                        style={{ left: sidebarState ? '60px' : '220px' }}
-                        className="selected-user-container">
-                        <UpdateForm
-                            userInfo={userInfo}
-                            hadnleUserInfoChange={hadnleUserInfoChange}
-                            alertMessage={alertMessage}
-                            submitUpdate={submitUpdate}
-                            cancelUpdate={cancelUpdate}
-                        />
-                    </div>
+                    <UpdateForm
+                        sidebarState={sidebarState}
+                        userInfo={userInfo}
+                        hadnleUserInfoChange={hadnleUserInfoChange}
+                        alertMessage={alertMessage}
+                        submitUpdate={submitUpdate}
+                        cancelUpdate={cancelUpdate}
+                    />
                 ) : users.length ? (
                     users.map((user, index) => {
                         return (
-                            <div key={index} className={`card ${user.role}`}>
-                                <UserCard user={user} />
-
-                                <div className="buttons">
-                                    <img
-                                        width="30px"
-                                        src={EditIcon}
-                                        alt="edit"
-                                        onClick={() => updateUserInfo(user._id)}
-                                    />
-                                    <img
-                                        width="25px"
-                                        src={DeleteIcon}
-                                        alt="delete"
-                                        onClick={() => deleteUserPermanently(user._id)}
-                                    />
-                                </div>
-                            </div>
+                            <UserCard
+                                key={index}
+                                user={user}
+                                updateUserInfo={updateUserInfo}
+                                deleteUserPermanently={deleteUserPermanently}
+                            />
                         )
                     })
                 ) : (
