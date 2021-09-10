@@ -8,7 +8,7 @@ import AlertStatusBar from '../../../common/alert/index'
 import UserCard from './UserCard'
 import UpdateForm from './UpdateForm'
 
-import NoFileIcon from '../../../../asset/icons/EmptyFolder.png'
+import NoFileIcon from '../../../../asset/icons/scan.gif'
 
 const handlePendingUpdate = (setAlertMessage) => {
     setAlertMessage(() => {

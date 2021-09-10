@@ -1,5 +1,5 @@
 .search-user-patients {
-    margin: 0 1vw;
+    margin: 0 2vw;
 
     .search-input-element {
         width: 60vw;
@@ -17,6 +17,9 @@
         button {
             width: 100% !important;
             background: seagreen;
+            &:hover {
+                background: #3caa6c;
+            }
         }
     }
 }

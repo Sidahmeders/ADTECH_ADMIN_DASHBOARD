@@ -13,7 +13,7 @@ export default function SearchUpdateUsers() {
     })
 
     return (
-        <div className="search-update-users">
+        <div>
             <SearchUsers
                 setUsers={setUsers}
                 alertMessage={alertMessage}

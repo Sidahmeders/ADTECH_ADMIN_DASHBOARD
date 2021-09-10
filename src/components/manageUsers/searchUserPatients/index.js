@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import SearchUsers from './SearchUserPatients/index'
-import UserPatients from './UserPatients/index'
+import SearchUserPatients from './SearchUserPatients/index'
+import UserPatientsList from './UserPatientsList/index'
 
 export default function SearchUpdateUsers() {
     const [users, setUsers] = useState([])
@@ -13,13 +13,13 @@ export default function SearchUpdateUsers() {
     })
 
     return (
-        <div className="search-user-patients">
-            <SearchUsers
+        <div>
+            <SearchUserPatients
                 setUsers={setUsers}
                 alertMessage={alertMessage}
                 setAlertMessage={setAlertMessage}
             />
-            <UserPatients users={users} setUsers={setUsers} />
+            <UserPatientsList users={users} setUsers={setUsers} />
         </div>
     )
 }
