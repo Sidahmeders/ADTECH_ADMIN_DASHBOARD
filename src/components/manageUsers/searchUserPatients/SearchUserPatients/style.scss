@@ -1,0 +1,22 @@
+.search-user-patients {
+    margin: 0 1vw;
+
+    .search-input-element {
+        width: 60vw;
+        margin: 0 2vw;
+    }
+
+    input[type='radio']:checked + label {
+        background: seagreen !important;
+        border-color: seagreen !important;
+    }
+
+    .button-element {
+        margin-bottom: 20px;
+        justify-content: start;
+        button {
+            width: 100% !important;
+            background: seagreen;
+        }
+    }
+}

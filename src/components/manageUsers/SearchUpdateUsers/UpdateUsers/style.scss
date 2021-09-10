@@ -111,16 +111,17 @@
             }
         }
 
-        .buttons {
+        .card-buttons {
             display: flex;
             justify-content: space-around;
             padding: 15px 8px;
             margin-top: 12px;
             position: relative;
 
-            &:hover {
+            img:hover {
                 cursor: pointer;
             }
+
             .confirm-tab {
                 display: none;
                 &.active {
@@ -148,7 +149,7 @@
                         padding: 0 6px;
                         text-transform: capitalize;
                     }
-                    .buttons {
+                    .tab-buttons {
                         flex-direction: column;
                         transform: translateX(-20px);
                         .cancel,

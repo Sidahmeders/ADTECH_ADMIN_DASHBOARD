@@ -17,8 +17,7 @@ export default function UserRow({ user, updateUserInfo, deleteUserPermanently })
         faculty,
         phone_number,
         profile_image,
-        role,
-        identity_card //FIXME:
+        role
     } = user
 
     const [userToDelete, setUserToDelete] = useState(false)
@@ -55,7 +54,7 @@ export default function UserRow({ user, updateUserInfo, deleteUserPermanently })
             <p className="email">{email}</p>
             <p className="phone">+{phone_number}</p>
 
-            <div className="buttons">
+            <div className="card-buttons">
                 <img
                     width="30px"
                     src={EditIcon}
@@ -75,7 +74,7 @@ export default function UserRow({ user, updateUserInfo, deleteUserPermanently })
                         <span className="username">{`${user.first_name}  ${user.last_name}`}</span>
                         click on confirm
                     </p>
-                    <div className="buttons">
+                    <div className="tab-buttons">
                         <div className="cancel" onClick={cancelDelete}>
                             cancel
                         </div>
