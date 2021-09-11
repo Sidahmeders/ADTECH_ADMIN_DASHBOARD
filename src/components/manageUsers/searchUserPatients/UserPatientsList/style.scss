@@ -10,23 +10,29 @@
         width: 100%;
         display: flex;
         flex-direction: column;
+        margin: 20px 10px 50px 10px;
 
         .user {
             position: relative;
             border: 2px solid $label-border-color;
             border-radius: 2px;
-            padding: 0 20px;
-            padding-top: 15px;
+            padding: 10px 20px;
             margin: 2px;
+            transition: 0.4s ease;
+            color: #757575;
+
+            &:hover {
+                background: #2e8b561a;
+            }
 
             img {
                 position: absolute;
-                bottom: 5%;
+                bottom: 10%;
                 left: 96%;
             }
 
             .patients {
-                // display: none;
+                display: none;
                 margin-left: 70px;
                 padding: 10px;
 
@@ -35,6 +41,7 @@
 
                     p {
                         padding: 3px;
+                        text-transform: capitalize;
                     }
                 }
             }
