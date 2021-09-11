@@ -7,7 +7,7 @@ import { useContext } from 'react'
 
 // dashboard icons
 import dashBoard from '../../../asset/icons/sidebar/dashboard.svg'
-import usersList from '../../../asset/icons/sidebar/users-list.svg'
+import managePatients from '../../../asset/icons/sidebar/manage-patients.svg'
 import addUser from '../../../asset/icons/sidebar/user-plus.svg'
 import reports from '../../../asset/icons/sidebar/charts.svg'
 import manageUsers from '../../../asset/icons/sidebar/manage-users.svg'
@@ -18,7 +18,7 @@ import projects from '../../../asset/icons/sidebar/projects.svg'
 
 const sideBarItems = [
     { text: 'dashboard', route: 'dashboard', icon: dashBoard },
-    { text: 'users list', route: 'users-list', icon: usersList },
+    { text: 'manage patients', route: 'manage-patients', icon: managePatients },
     { text: 'add users', route: 'add-users', icon: addUser },
     { text: 'reports', route: 'reports', icon: reports },
     { text: 'manage users', route: 'manage-users', icon: manageUsers },

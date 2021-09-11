@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import LoginPage from './pages/login/index'
 import HomePage from './pages/home'
 import DashBoard from './pages/dashboard'
-import UsersList from './pages/usersList'
+import ManagePatients from './pages/managePatients'
 import AddUsers from './pages/addUsers'
 import Reports from './pages/reports'
 import ManageUsers from './pages/manageUsers'
@@ -22,7 +22,7 @@ function App() {
                     <Layout>
                         <Route exact path="/home" component={HomePage} />
                         <Route path="/dashboard" component={DashBoard} />
-                        <Route path="/users-list" component={UsersList} />
+                        <Route path="/manage-patients" component={ManagePatients} />
                         <Route path="/add-users" component={AddUsers} />
                         <Route path="/reports" component={Reports} />
                         <Route path="/manage-users" component={ManageUsers} />

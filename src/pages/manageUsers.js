@@ -1,5 +1,4 @@
 import { Switch, Route } from 'react-router-dom'
-import '../styles/manageUsers.scss'
 
 import TextHeader from '../components/common/TextHeader/index'
 import TopNavbar from '../components/common/topNavbar/index'
@@ -11,7 +10,7 @@ export default function ManageUsersPage() {
     return (
         <>
             <TextHeader text="manage users" />
-            <div className="manage-users">
+            <div style={{ margin: '0 2vw' }}>
                 <TopNavbar
                     navLinks={[
                         {
