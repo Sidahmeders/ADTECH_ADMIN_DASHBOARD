@@ -8,7 +8,7 @@ export default function ParoStat() {
     const [paroState, setParoState] = useState(false)
 
     async function getParoStat(setParoState) {
-        let response = await Fetch.GET('admin/patients/statistics/paro')
+        let response = await Fetch.GET('admin/statistics/patients/paro')
         if (_isMounted.current) {
             if (response) {
                 const { data } = response

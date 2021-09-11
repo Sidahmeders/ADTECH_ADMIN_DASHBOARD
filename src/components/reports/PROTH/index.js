@@ -9,7 +9,7 @@ export default function ProtheseStat() {
     const [protheseState, setProtheseState] = useState(false)
 
     async function getODFStat(setProtheseState) {
-        let response = await Fetch.GET('admin/patients/statistics/prothese')
+        let response = await Fetch.GET('admin/statistics/patients/prothese')
         if (_isMounted.current) {
             if (response) {
                 const { data } = response

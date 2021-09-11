@@ -12,7 +12,7 @@ export default function OCEStat() {
     const [oceState, setOceState] = useState(false)
 
     async function getOCEStat(setOceState) {
-        let response = await Fetch.GET('admin/patients/statistics/oce')
+        let response = await Fetch.GET('admin/statistics/patients/oce')
         if (_isMounted.current) {
             if (response) {
                 const { data } = response

@@ -10,7 +10,7 @@ export default function ODFStat() {
     const [odfState, setOdfState] = useState(false)
 
     async function getODFStat(setOdfState) {
-        let response = await Fetch.GET('admin/patients/statistics/odf')
+        let response = await Fetch.GET('admin/statistics/patients/odf')
         if (_isMounted.current) {
             if (response) {
                 const { data } = response
