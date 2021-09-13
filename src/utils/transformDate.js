@@ -16,7 +16,7 @@ const months = [
 export default function getMonth(birthDate) {
     birthDate = birthDate ? birthDate.split('T')[0] : []
     const dateList = birthDate.split('-')
-    const monthNumber = parseInt(dateList[1])
+    const monthNumber = parseInt(dateList[1]) - 1
 
     const transformedDate = `${dateList[2]} ${months[monthNumber]} ${dateList[0]}`
     return transformedDate

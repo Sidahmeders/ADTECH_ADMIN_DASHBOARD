@@ -1,5 +1,6 @@
-import transformDate from '../../../../utils/transformDate'
 import { useState } from 'react'
+import transformDate from '../../../../utils/transformDate'
+import formatLogActivity from '../../../../utils/formatLogActivity'
 
 import PreviewImage from '../../PreviewImage'
 import EditIcon from '../../../../asset/icons/form/edit.svg'
@@ -17,7 +18,8 @@ export default function UserRow({ user, updateUserInfo, deleteUserPermanently })
         faculty,
         phone_number,
         profile_image,
-        role
+        role,
+        activity_logs
     } = user
 
     const [userToDelete, setUserToDelete] = useState(false)
@@ -40,7 +42,7 @@ export default function UserRow({ user, updateUserInfo, deleteUserPermanently })
             <div className="head">
                 <PreviewImage binaryImageSrc={profile_image} />
                 <div className="text">
-                    <p className="grade">{grade.replace(/_/g, ' ')}</p>
+                    <p className="grade">{grade ? grade.replace(/_/g, ' ') : ''}</p>
                     <p className="year-of-study">
                         {year_of_study ? year_of_study + ' ' + 'year' : '####'}
                     </p>
@@ -50,9 +52,14 @@ export default function UserRow({ user, updateUserInfo, deleteUserPermanently })
             </div>
 
             <p className="name">{first_name + ' ' + last_name}</p>
-            <p className="birth-date">{transformDate(birth_date)}</p>
+            <p className="birth-date">Born In {transformDate(birth_date)}</p>
             <p className="email">{email}</p>
             <p className="phone">+{phone_number}</p>
+
+            <p className="last-activity">
+                <span>latest activity:</span>
+                {formatLogActivity(activity_logs)}
+            </p>
 
             <div className="card-buttons">
                 <img
