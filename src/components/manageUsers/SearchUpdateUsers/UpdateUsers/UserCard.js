@@ -6,7 +6,7 @@ import PreviewImage from '../../PreviewImage'
 import EditIcon from '../../../../asset/icons/form/edit.svg'
 import DeleteIcon from '../../../../asset/icons/form/minus.svg'
 
-export default function UserRow({ user, updateUserInfo, deleteUserPermanently }) {
+export default function UserRow({ user, setUserToUpdate, deleteUserPermanently }) {
     const {
         first_name,
         last_name,
@@ -39,7 +39,7 @@ export default function UserRow({ user, updateUserInfo, deleteUserPermanently })
 
     return (
         <div className={`card ${role}`}>
-            <div className="head">
+            <div className="header">
                 <PreviewImage binaryImageSrc={profile_image} />
                 <div className="text">
                     <p className="grade">{grade ? grade.replace(/_/g, ' ') : ''}</p>
@@ -54,7 +54,7 @@ export default function UserRow({ user, updateUserInfo, deleteUserPermanently })
             <p className="name">{first_name + ' ' + last_name}</p>
             <p className="birth-date">Born In {transformDate(birth_date)}</p>
             <p className="email">{email}</p>
-            <p className="phone">+{phone_number}</p>
+            <p className="phone">{phone_number ? `+${phone_number}` : '####'}</p>
 
             <p className="last-activity">
                 <span>latest activity:</span>
@@ -66,7 +66,7 @@ export default function UserRow({ user, updateUserInfo, deleteUserPermanently })
                     width="30px"
                     src={EditIcon}
                     alt="edit"
-                    onClick={() => updateUserInfo(user._id)}
+                    onClick={() => setUserToUpdate(user._id)}
                 />
                 <img
                     width="25px"

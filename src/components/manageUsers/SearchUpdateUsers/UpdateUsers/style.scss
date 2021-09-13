@@ -17,15 +17,13 @@
             border-color: #ffa1a171;
         }
 
-        .head {
+        .header {
             display: flex;
 
             .text {
                 padding: 20px 0;
-                color: #3a6fd1;
                 font-size: 17px;
                 transform: translateX(-5px);
-
                 .grade {
                     color: green;
                     font-size: 18px;
@@ -44,6 +42,7 @@
                 }
                 .specialty {
                     margin-left: 5px;
+                    color: blue;
                 }
             }
         }
@@ -63,14 +62,15 @@
         }
         .email {
             font-size: 19px;
-            color: #4a2bf5;
+            color: #5403bd;
         }
         .phone {
             color: green;
         }
         .last-activity {
+            color: blue;
             span {
-                color: blue;
+                color: black;
                 font-size: 17px;
                 padding: 0 5px;
             }

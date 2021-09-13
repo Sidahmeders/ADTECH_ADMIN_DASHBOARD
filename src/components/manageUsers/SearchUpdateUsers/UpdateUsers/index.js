@@ -102,13 +102,11 @@ export default function UpdateUsers({ users, setUsers }) {
         })
     }
 
-    const updateUserInfo = async (userId) => {
-        const response = await Fetch.POSTJson('admin/users', { id: userId }, 'PUT')
-
-        if (response) {
-            const { data } = response
-            if (data) {
-                setUserInfo(() => data.user)
+    const setUserToUpdate = async (userId) => {
+        for (let user of users) {
+            if (user._id === userId) {
+                setUserInfo(() => user)
+                break
             }
         }
     }
@@ -119,6 +117,8 @@ export default function UpdateUsers({ users, setUsers }) {
 
     const submitUpdate = async () => {
         userInfo.id = userInfo._id
+        delete userInfo.profile_image
+
         handlePendingUpdate(setAlertMessage)
         const response = await Fetch.POSTJson('admin/users', userInfo, 'PUT')
 
@@ -186,7 +186,7 @@ export default function UpdateUsers({ users, setUsers }) {
                             <UserCard
                                 key={index}
                                 user={user}
-                                updateUserInfo={updateUserInfo}
+                                setUserToUpdate={setUserToUpdate}
                                 deleteUserPermanently={deleteUserPermanently}
                             />
                         )
