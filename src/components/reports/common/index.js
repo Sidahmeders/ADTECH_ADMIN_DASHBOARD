@@ -17,7 +17,8 @@ export default function CommonStat() {
             if (response) {
                 const { data } = response
                 if (data) {
-                    setCommonState(() => data.commonStat)
+                    const { commonStat } = data
+                    setCommonState(() => (commonStat ? commonStat : false))
                 }
             }
         }

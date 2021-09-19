@@ -17,7 +17,8 @@ export default function OCEStat() {
             if (response) {
                 const { data } = response
                 if (data) {
-                    setOceState(() => data.oceStat)
+                    const { oceStat } = data
+                    setOceState(() => (oceStat ? oceStat : false))
                 }
             }
         }
@@ -30,17 +31,25 @@ export default function OCEStat() {
         }
     }, [])
 
-    const { classBlack, dignosticEtiologique, classSitSta, dentCousale, treatment } = oceState
+    const {
+        motifConsultation,
+        decisionTherapeutique,
+        diagnosticPositive,
+        diagnosticEtiologique,
+        classSitSta,
+        classBlack,
+        dentCousale
+    } = oceState
 
     return (
         <>
             {oceState ? (
                 <>
                     <ClassBlack classBlack={classBlack} />
-                    <DignosticEtiologique dignosticEtiologique={dignosticEtiologique} />
+                    {/* <DignosticEtiologique dignosticEtiologique={dignosticEtiologique} /> */}
                     <DentCousale dentCousale={dentCousale} />
                     <SitSta classSitSta={classSitSta} />
-                    <Treatment treatment={treatment} />
+                    {/* <Treatment treatment={treatment} /> */}
                 </>
             ) : (
                 ''

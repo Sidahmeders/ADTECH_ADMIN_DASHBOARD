@@ -1,4 +1,4 @@
-export default {
+const interpretations = {
     SNA: {
         max: 82.5,
         min: 78.5,
@@ -84,3 +84,5 @@ export default {
         low: 'hypo divergence des deux mâchoire'
     }
 }
+
+export default interpretations

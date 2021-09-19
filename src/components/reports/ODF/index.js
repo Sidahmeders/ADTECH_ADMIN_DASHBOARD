@@ -15,7 +15,8 @@ export default function ODFStat() {
             if (response) {
                 const { data } = response
                 if (data) {
-                    setOdfState(() => data.odfStat)
+                    const { odfStat } = data
+                    setOdfState(() => (odfStat ? odfStat : false))
                 }
             }
         }
@@ -28,15 +29,24 @@ export default function ODFStat() {
         }
     }, [])
 
-    const { dignosticPostive, dignosticEtiologique, directionCraoissance } = odfState
+    const {
+        motifConsultation,
+        hygieneBuccaul,
+        classSquelitique,
+        typologieFacial,
+        directionCraoissanceFacial,
+        directionCraoissanceMandibulaire,
+        decisionTherapeutique,
+        formeClinique
+    } = odfState
 
     return (
         <>
             {odfState ? (
                 <>
-                    <DignosticPostive dignosticPostive={dignosticPostive} />
-                    <DignosticEtiologique dignosticEtiologique={dignosticEtiologique} />
-                    <DirectionCraoissance directionCraoissance={directionCraoissance} />
+                    {/* <DignosticPostive dignosticPostive={dignosticPostive} /> */}
+                    {/* <DignosticEtiologique dignosticEtiologique={dignosticEtiologique} /> */}
+                    {/* <DirectionCraoissance directionCraoissance={directionCraoissance} /> */}
                 </>
             ) : (
                 ''

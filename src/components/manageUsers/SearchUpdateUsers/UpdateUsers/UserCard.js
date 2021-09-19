@@ -44,7 +44,7 @@ export default function UserRow({ user, setUserToUpdate, deleteUserPermanently }
                 <div className="text">
                     <p className="grade">{grade ? grade.replace(/_/g, ' ') : ''}</p>
                     <p className="year-of-study">
-                        {year_of_study ? year_of_study + ' ' + 'year' : '####'}
+                        {year_of_study ? `${year_of_study} year` : '####'}
                     </p>
                     <p className="faculty">{faculty}</p>
                     <p className="specialty">{specialty ? specialty : '####'}</p>

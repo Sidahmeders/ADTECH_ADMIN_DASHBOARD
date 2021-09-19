@@ -14,7 +14,8 @@ export default function ProtheseStat() {
             if (response) {
                 const { data } = response
                 if (data) {
-                    setProtheseState(() => data.prothStat)
+                    const { protheseStat } = data
+                    setProtheseState(() => (protheseStat ? protheseStat : false))
                 }
             }
         }
@@ -27,16 +28,24 @@ export default function ProtheseStat() {
         }
     }, [])
 
-    const { calssificationLimda, classificationKinedyAplegate } = protheseState
+    const {
+        motifConsultation,
+        decisionTherapeutiquePartielle,
+        decisionTherapeutiqueTotal,
+        classificationKinedyAplegateMandibule,
+        classificationKinedyAplegateMaxillaire,
+        calssificationLimdaMandibule,
+        calssificationLimdaMaxillaire
+    } = protheseState
 
     return (
         <>
             {protheseState ? (
                 <>
-                    <ClassLimda calssificationLimda={calssificationLimda} />
+                    {/* <ClassLimda calssificationLimda={calssificationLimda} />
                     <ClassKinedyAplegate
                         classificationKinedyAplegate={classificationKinedyAplegate}
-                    />
+                    /> */}
                 </>
             ) : (
                 ''

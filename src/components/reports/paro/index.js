@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import Fetch from '../../../utils/fetchData'
 
-import DignosticEtiologique from '../OCE/DignosticEtiologique'
+import DignosticEtiologique from './DignosticEtiologique'
 
 export default function ParoStat() {
     const _isMounted = useRef(true)
@@ -13,7 +13,8 @@ export default function ParoStat() {
             if (response) {
                 const { data } = response
                 if (data) {
-                    setParoState(() => data.paroStat)
+                    const { paroStat } = data
+                    setParoState(() => (paroStat ? paroStat : false))
                 }
             }
         }
@@ -26,13 +27,25 @@ export default function ParoStat() {
         }
     }, [])
 
-    const { dignosticEtiologique } = paroState
+    const {
+        decisionTherapeutique,
+        diagnosticPositive,
+        diagnosticEtiologiqueDirecteDeclenchant,
+        diagnosticEtiologiqueDirecteFavorisant,
+        diagnosticEtiologiqueIndirecte
+    } = paroState
 
     return (
         <>
             {paroState ? (
                 <>
-                    <DignosticEtiologique dignosticEtiologique={dignosticEtiologique} />
+                    <DignosticEtiologique
+                        dignosticEtiologique={diagnosticEtiologiqueDirecteDeclenchant}
+                    />
+                    <DignosticEtiologique
+                        dignosticEtiologique={diagnosticEtiologiqueDirecteFavorisant}
+                    />
+                    <DignosticEtiologique dignosticEtiologique={diagnosticEtiologiqueIndirecte} />
                 </>
             ) : (
                 ''
