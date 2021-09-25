@@ -4,6 +4,12 @@ import Percentage from '../../charts/addons/Percentage'
 import simpleHandler from './_handlers/simple_handler'
 
 export default function HygieneBuccaul({ hygienBuccaul }) {
+    hygienBuccaul = {
+        bon: 24,
+        moyenne: 12,
+        mauvais: 17
+    }
+
     const { labels, chartData, colors, total } = simpleHandler(hygienBuccaul)
 
     const hygieneBuccalData = {

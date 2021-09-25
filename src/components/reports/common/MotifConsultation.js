@@ -4,6 +4,13 @@ import Percentage from '../../charts/addons/Percentage'
 import simpleHandler from './_handlers/simple_handler'
 
 export default function MotifDeConsultation({ motifConsultation }) {
+    motifConsultation = {
+        fonctionnele: 4,
+        esthetique: 7,
+        douleure: 16,
+        autre: 12
+    }
+
     const { labels, chartData, colors, total } = simpleHandler(motifConsultation)
 
     const motifDeConsultationData = {
