@@ -1,32 +1,15 @@
 import DoughChart from '../../charts/DoughChart'
 import Title from '../../charts/addons/Title'
-import Percentage from '../../charts/addons/Percentage'
-
-const getDignosticEtioData = (data) => {
-    const labels = []
-    const chartData = []
-    const colors = []
-    let total = 0
-    for (let entry in data) {
-        labels.push(entry)
-        chartData.push(data[entry])
-        colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}`)
-        total += data[entry]
-    }
-
-    return {
-        labels,
-        chartData,
-        colors,
-        total
-    }
-}
+// import Percentage from '../../charts/addons/Percentage'
+import simpleHandler from '../_handlers/simple_handler'
 
 export default function DignosticEtiologique({ dignosticEtiologique }) {
-    const { labels, chartData, colors, total } = getDignosticEtioData(dignosticEtiologique)
+    const { labels, chartData, colors, total } = simpleHandler(dignosticEtiologique)
+
+    let labelsShort = labels.map((label) => label.slice(0, 8))
 
     const dignosticEtioData = {
-        labels: [...labels],
+        labels: [...labelsShort],
         datasets: [
             {
                 backgroundColor: colors,
@@ -38,7 +21,7 @@ export default function DignosticEtiologique({ dignosticEtiologique }) {
     return (
         <div>
             <Title label="dignostic etiologique" total={total} />
-            <Percentage labels={labels} data={chartData} colors={colors} />
+            {/* <Percentage labels={labels} data={chartData} colors={colors} /> */}
             <DoughChart chartData={dignosticEtioData} />
         </div>
     )

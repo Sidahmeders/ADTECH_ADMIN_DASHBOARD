@@ -32,10 +32,10 @@ export default function OCEStat() {
     }, [])
 
     const {
-        motifConsultation,
-        decisionTherapeutique,
-        diagnosticPositive,
-        diagnosticEtiologique,
+        // motifConsultation,
+        // decisionTherapeutique,
+        // diagnosticPositive,
+        // diagnosticEtiologique,
         classSitSta,
         classBlack,
         dentCousale
@@ -46,10 +46,10 @@ export default function OCEStat() {
             {oceState ? (
                 <>
                     <ClassBlack classBlack={classBlack} />
-                    {/* <DignosticEtiologique dignosticEtiologique={dignosticEtiologique} /> */}
+                    <DignosticEtiologique dignosticEtiologique={undefined} />
                     <DentCousale dentCousale={dentCousale} />
                     <SitSta classSitSta={classSitSta} />
-                    {/* <Treatment treatment={treatment} /> */}
+                    <Treatment treatment={undefined} />
                 </>
             ) : (
                 ''

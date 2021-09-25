@@ -1,29 +1,18 @@
 import PolarAreaChart from '../../charts/PolarAreaChart'
 import Title from '../../charts/addons/Title'
 import Percentage from '../../charts/addons/Percentage'
-
-const getClassBlackData = (data) => {
-    const labels = []
-    const chartData = []
-    const colors = []
-    let total = 0
-    for (let entry in data) {
-        labels.push(entry)
-        chartData.push(data[entry])
-        colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}`)
-        total += data[entry]
-    }
-
-    return {
-        labels,
-        chartData,
-        colors,
-        total
-    }
-}
+import simpleHandler from '../_handlers/simple_handler'
 
 export default function ClassBlack({ classBlack }) {
-    const { labels, chartData, colors, total } = getClassBlackData(classBlack)
+    classBlack = {
+        class1: 8,
+        class2: 8,
+        class3: 14,
+        class4: 11,
+        class5: 12
+    }
+
+    const { labels, chartData, colors, total } = simpleHandler(classBlack)
 
     const classBlackData = {
         labels: [...labels],

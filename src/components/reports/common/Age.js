@@ -1,7 +1,7 @@
 import PolarAreaChart from '../../charts/PolarAreaChart'
 import Title from '../../charts/addons/Title'
 import Percentage from '../../charts/addons/Percentage'
-import simpleHandler from './_handlers/simple_handler'
+import simpleHandler from '../_handlers/simple_handler'
 
 export default function Age({ age }) {
     const { labels, chartData, colors, total } = simpleHandler(age)

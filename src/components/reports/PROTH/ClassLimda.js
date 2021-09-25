@@ -1,35 +1,21 @@
 import DoughChart from '../../charts/DoughChart'
 import Title from '../../charts/addons/Title'
-import Percentage from '../../charts/addons/Percentage'
-
-const getClassLimdaData = (data, addonLabel) => {
-    const labels = []
-    const chartData = []
-    const colors = []
-    let total = 0
-    for (let entry in data) {
-        labels.push(`${addonLabel} cl${entry.substr(5, 5)}`)
-        chartData.push(data[entry])
-        colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}`)
-        total += data[entry]
-    }
-
-    return {
-        labels,
-        chartData,
-        colors,
-        total
-    }
-}
+// import Percentage from '../../charts/addons/Percentage'
+import simpleHandler from '../_handlers/simple_handler'
 
 export default function ClassLimda({ calssificationLimda }) {
-    const { mandibule, maxillaire } = calssificationLimda
-    const mandibuleData = getClassLimdaData(mandibule, 'mand')
-    const maxillaireData = getClassLimdaData(maxillaire, 'maxi')
+    // const { mandibule, maxillaire } = calssificationLimda
+    let mandibule = { class1: 11, class2: 1, class3: 12, class4: 7, class5: 3, class6: 19 }
+    let maxillaire = { class1: 16, class2: 11, class3: 2, class4: 7, class5: 8, class6: 11 }
+
+    const mandibuleData = simpleHandler(mandibule)
+    const maxillaireData = simpleHandler(maxillaire)
+
+    let mand = mandibuleData.labels.map((label) => label + '_mand')
+    let maxi = maxillaireData.labels.map((lable) => lable + '_maxi')
 
     const colors = [...mandibuleData.colors, ...maxillaireData.colors]
-    const lables = [...mandibuleData.labels, ...maxillaireData.labels]
-    const data = [...mandibuleData.chartData, ...maxillaireData.chartData]
+    const lables = [...mand, ...maxi]
     const MandFiller = [0, 0, 0]
     const MaxiFiller = [0, 0, 0, 0]
 
@@ -52,7 +38,7 @@ export default function ClassLimda({ calssificationLimda }) {
     return (
         <div>
             <Title label="class limda" total={mandibuleData.total + maxillaireData.total} />
-            <Percentage labels={lables} data={data} colors={colors} />
+            {/* <Percentage labels={lables} data={data} colors={colors} /> */}
             <DoughChart chartData={classLimdaData} />
         </div>
     )

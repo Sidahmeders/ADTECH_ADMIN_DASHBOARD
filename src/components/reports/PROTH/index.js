@@ -28,24 +28,22 @@ export default function ProtheseStat() {
         }
     }, [])
 
-    const {
-        motifConsultation,
-        decisionTherapeutiquePartielle,
-        decisionTherapeutiqueTotal,
-        classificationKinedyAplegateMandibule,
-        classificationKinedyAplegateMaxillaire,
-        calssificationLimdaMandibule,
-        calssificationLimdaMaxillaire
-    } = protheseState
+    // const {
+    //     motifConsultation,
+    //     decisionTherapeutiquePartielle,
+    //     decisionTherapeutiqueTotal,
+    //     classificationKinedyAplegateMandibule,
+    //     classificationKinedyAplegateMaxillaire,
+    //     calssificationLimdaMandibule,
+    //     calssificationLimdaMaxillaire
+    // } = protheseState
 
     return (
         <>
             {protheseState ? (
                 <>
-                    {/* <ClassLimda calssificationLimda={calssificationLimda} />
-                    <ClassKinedyAplegate
-                        classificationKinedyAplegate={classificationKinedyAplegate}
-                    /> */}
+                    <ClassLimda calssificationLimda={undefined} />
+                    <ClassKinedyAplegate classificationKinedyAplegate={undefined} />
                 </>
             ) : (
                 ''

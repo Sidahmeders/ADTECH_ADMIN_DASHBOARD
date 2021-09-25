@@ -1,31 +1,24 @@
 import PieChart from '../../charts/PieChart'
 import Title from '../../charts/addons/Title'
 import Percentage from '../../charts/addons/Percentage'
-
-const getDirectionCraoiData = (data, addonLabel) => {
-    const labels = []
-    const chartData = []
-    const colors = []
-    let total = 0
-    for (let entry in data) {
-        labels.push(`${addonLabel}_${entry}`)
-        chartData.push(data[entry])
-        colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}`)
-        total += data[entry]
-    }
-
-    return {
-        labels,
-        chartData,
-        colors,
-        total
-    }
-}
+import simpleHandler from '../_handlers/simple_handler'
 
 export default function DirectionCraoissance({ directionCraoissance }) {
-    const { facial, mandibulaire } = directionCraoissance
-    const facialData = getDirectionCraoiData(facial, 'facial')
-    const mandibulaireData = getDirectionCraoiData(mandibulaire, 'mand')
+    // const { facial, mandibulaire } = directionCraoissance
+
+    let facial = {
+        ant: 19,
+        post: 14,
+        moyen: 12
+    }
+    let mandibulaire = {
+        ant: 6,
+        post: 8,
+        moyen: 15
+    }
+
+    const facialData = simpleHandler(facial, 'facial')
+    const mandibulaireData = simpleHandler(mandibulaire, 'mand')
 
     const labels = [...facialData.labels, ...mandibulaireData.labels]
     const colors = [...facialData.colors, ...mandibulaireData.colors]
