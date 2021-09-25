@@ -31,7 +31,7 @@ export default function CommonStat() {
         }
     }, [])
 
-    const { motifConsultation, hygienBuccaul, specialty, sex, age } = commonState
+    const { motifConsultation, hygienBuccaul, specialties, sex, age } = commonState
 
     return (
         <>
@@ -39,7 +39,7 @@ export default function CommonStat() {
                 <>
                     <MotifDeConsultation motifConsultation={motifConsultation} />
                     <HygieneBuccal hygienBuccaul={hygienBuccaul} />
-                    <Specialties specialties={specialty} />
+                    <Specialties specialties={specialties} />
                     <Sex sex={sex} />
                     <Age age={age} />
                 </>
