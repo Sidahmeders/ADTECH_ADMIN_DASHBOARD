@@ -1,4 +1,4 @@
-import DoughChart from '../../charts/DoughChart'
+import BarChart from '../../charts/BarChart'
 import Title from '../../charts/addons/Title'
 // import Percentage from '../../charts/addons/Percentage'
 import simpleHandler from '../_handlers/simple_handler'
@@ -6,12 +6,13 @@ import simpleHandler from '../_handlers/simple_handler'
 export default function DignosticEtiologique({ dignosticEtiologique }) {
     const { labels, chartData, colors, total } = simpleHandler(dignosticEtiologique)
 
-    let labelsShort = labels.map((label) => label.slice(0, 8))
+    let altLabels = labels.map((label) => label.replace(/_/g, ' '))
 
     const dignosticEtioData = {
-        labels: [...labelsShort],
+        labels: [...altLabels],
         datasets: [
             {
+                label: 'dignosticEtiologique',
                 backgroundColor: colors,
                 data: [...chartData]
             }
@@ -19,10 +20,10 @@ export default function DignosticEtiologique({ dignosticEtiologique }) {
     }
 
     return (
-        <div>
+        <div style={{ width: '60vw' }}>
             <Title label="dignostic etiologique" total={total} />
             {/* <Percentage labels={labels} data={chartData} colors={colors} /> */}
-            <DoughChart chartData={dignosticEtioData} />
+            <BarChart chartData={dignosticEtioData} />
         </div>
     )
 }

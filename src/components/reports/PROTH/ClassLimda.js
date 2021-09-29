@@ -1,4 +1,4 @@
-import DoughChart from '../../charts/DoughChart'
+import PieChart from '../../charts/DoughChart'
 import Title from '../../charts/addons/Title'
 // import Percentage from '../../charts/addons/Percentage'
 import simpleHandler from '../_handlers/simple_handler'
@@ -36,10 +36,10 @@ export default function ClassLimda({ calssificationLimda }) {
     }
 
     return (
-        <div>
+        <div style={{ width: '40vw' }}>
             <Title label="class limda" total={mandibuleData.total + maxillaireData.total} />
             {/* <Percentage labels={lables} data={data} colors={colors} /> */}
-            <DoughChart chartData={classLimdaData} />
+            <PieChart chartData={classLimdaData} />
         </div>
     )
 }
