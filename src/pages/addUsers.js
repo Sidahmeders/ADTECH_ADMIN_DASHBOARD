@@ -15,7 +15,7 @@ export default function AddUsers() {
     const [latestUsers, setLatestUsers] = useState([])
 
     const getLatestUsers = async () => {
-        const response = await Fetch.GET('admin/users', 12)
+        const response = await Fetch.GET('admin/users', 12, localStorage.Token)
         if (response) {
             const { data } = response
             if (data) {

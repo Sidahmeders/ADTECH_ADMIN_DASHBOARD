@@ -32,13 +32,14 @@ export default function LoginPage() {
 
     const handleLogin = async (event) => {
         event.preventDefault()
-        let userData = await Fetch.POSTJson('admin/users/login', adminUserInfo)
+        let userData = await Fetch.POSTJson('admin/login', adminUserInfo)
 
         if (userData) {
-            const { data, error } = userData
+            const { token, data, error } = userData
             if (data) {
                 const adminUserInfo = data.user
                 handleSuccessfulLogin(setAlertMessage, adminUserInfo)
+                localStorage.setItem('Token', token)
             } else if (error) {
                 handleFailedLogin(setAlertMessage, error)
             } else {

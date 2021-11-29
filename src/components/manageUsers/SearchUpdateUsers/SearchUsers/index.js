@@ -87,7 +87,7 @@ export default function SearchUpdateUsers({ setUsers, alertMessage, setAlertMess
         const searchQueryParam = JSON.stringify({ [queryKey]: queryValue })
 
         handlePendingSearch(setAlertMessage)
-        const response = await Fetch.Search('admin/users/search', searchQueryParam)
+        const response = await Fetch.Search('admin/users/search', searchQueryParam, localStorage.Token)
         if (response) {
             const { data, error } = response
             if (data) {

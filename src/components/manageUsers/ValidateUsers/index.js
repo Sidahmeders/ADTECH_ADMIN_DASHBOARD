@@ -59,7 +59,7 @@ export default function ValidateUsers() {
 
     const fetchUnAuthorizedUsers = async () => {
         handlePendingSubmition(setAlertMessage)
-        const response = await Fetch.GET('admin/users/unAuthorized', 15)
+        const response = await Fetch.GET('admin/users/unAuthorized', 15, localStorage.Token)
 
         if (_isMounted.current) {
             if (response) {
@@ -94,7 +94,7 @@ export default function ValidateUsers() {
 
     const handleAccessGranted = async (user) => {
         const body = { id: user._id, grade: user.grade }
-        const response = await Fetch.POSTJson('admin/users/grantAccess', body, 'PUT')
+        const response = await Fetch.POSTJson('admin/users/grantAccess', body, 'PUT', localStorage.Token)
         if (response) {
             const { data } = response
             if (data) {
@@ -105,7 +105,7 @@ export default function ValidateUsers() {
     }
 
     const handleDropingUser = async (userId) => {
-        const response = await Fetch.Delete('admin/users/dropUser', userId)
+        const response = await Fetch.Delete('admin/users/dropUser', userId, localStorage.Token)
         if (response) {
             const { data } = response
             if (data) {

@@ -110,7 +110,7 @@ export default function CreateUserForm({ alertMessage, setAlertMessage }) {
         const formData = createFormData(userInfo)
 
         handlePendingSubmition(setAlertMessage, alertMessage)
-        const response = await Fetch.POSTMultiForm('admin/users', formData)
+        const response = await Fetch.POSTMultiForm('admin/users', formData, localStorage.Token)
 
         if (response) {
             const { data, error } = response

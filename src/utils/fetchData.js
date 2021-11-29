@@ -1,9 +1,9 @@
-const url = 'http://localhost:5000' || 'https://www.absdtech.com'
+const url = 'https://www.absdtech.com' || 'http://localhost:5000'
 
 class Fetch {
-    async GET(route, limit) {
+    async GET(route, limit, Token) {
         try {
-            let response = await fetch(`${url}/${route}?limit=${limit}`, {
+            let response = await fetch(`${url}/${route}?limit=${limit}&authToken=${Token}`, {
                 credentials: 'include'
             })
             response = await response.json()
@@ -14,9 +14,9 @@ class Fetch {
         }
     }
 
-    async Search(route, query) {
+    async Search(route, query, Token) {
         try {
-            let response = await fetch(`${url}/${route}?query=${query}`, {
+            let response = await fetch(`${url}/${route}?query=${query}&authToken=${Token}`, {
                 credentials: 'include'
             })
             response = await response.json()
@@ -27,9 +27,9 @@ class Fetch {
         }
     }
 
-    async POSTJson(route, body, method) {
+    async POSTJson(route, body, method, Token) {
         try {
-            let response = await fetch(`${url}/${route}`, {
+            let response = await fetch(`${url}/${route}?authToken=${Token}`, {
                 method: method || 'POST',
                 body: JSON.stringify(body),
                 credentials: 'include',
@@ -45,9 +45,9 @@ class Fetch {
         }
     }
 
-    async POSTMultiForm(route, body) {
+    async POSTMultiForm(route, body, Token) {
         try {
-            let response = await fetch(`${url}/${route}`, {
+            let response = await fetch(`${url}/${route}?authToken=${Token}`, {
                 method: 'POST',
                 body: body,
                 credentials: 'include'
@@ -60,9 +60,9 @@ class Fetch {
         }
     }
 
-    async Delete(route, id) {
+    async Delete(route, id, Token) {
         try {
-            let response = await fetch(`${url}/${route}?id=${id}`, {
+            let response = await fetch(`${url}/${route}?id=${id}?authToken=${Token}`, {
                 method: 'DELETE',
                 credentials: 'include'
             })

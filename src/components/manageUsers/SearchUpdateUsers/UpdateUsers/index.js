@@ -120,7 +120,7 @@ export default function UpdateUsers({ users, setUsers }) {
         delete userInfo.profile_image
 
         handlePendingUpdate(setAlertMessage)
-        const response = await Fetch.POSTJson('admin/users', userInfo, 'PUT')
+        const response = await Fetch.POSTJson('admin/users', userInfo, 'PUT', localStorage.Token)
 
         if (response) {
             const { data, error } = response
@@ -141,7 +141,7 @@ export default function UpdateUsers({ users, setUsers }) {
     }
 
     const deleteUserPermanently = async (userId) => {
-        const response = await Fetch.Delete('admin/users/dropUser', userId)
+        const response = await Fetch.Delete('admin/users/dropUser', userId, localStorage.Token)
         if (response) {
             const { data } = response
             if (data) {
