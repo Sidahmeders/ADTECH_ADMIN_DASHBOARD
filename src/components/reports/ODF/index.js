@@ -3,7 +3,7 @@ import Fetch from '../../../utils/fetchData'
 
 import DignosticPostive from './DignosticPostive'
 import DirectionCraoissance from './DirectionCraoissance'
-import DignosticEtiologique from '../OCE/DignosticEtiologique'
+import DignosticEtiologique from './DignosticEtiologique'
 
 export default function ODFStat() {
     const _isMounted = useRef(true)
@@ -29,24 +29,24 @@ export default function ODFStat() {
         }
     }, [])
 
-    const {
-        motifConsultation,
-        hygieneBuccaul,
-        classSquelitique,
-        typologieFacial,
-        directionCraoissanceFacial,
-        directionCraoissanceMandibulaire,
-        decisionTherapeutique,
-        formeClinique
-    } = odfState
+    // const {
+    //     motifConsultation,
+    //     hygieneBuccaul,
+    //     classSquelitique,
+    //     typologieFacial,
+    //     directionCraoissanceFacial,
+    //     directionCraoissanceMandibulaire,
+    //     decisionTherapeutique,
+    //     formeClinique
+    // } = odfState
 
     return (
         <>
             {odfState ? (
                 <>
-                    {/* <DignosticPostive dignosticPostive={dignosticPostive} /> */}
-                    {/* <DignosticEtiologique dignosticEtiologique={dignosticEtiologique} /> */}
-                    {/* <DirectionCraoissance directionCraoissance={directionCraoissance} /> */}
+                    <DignosticPostive dignosticPostive={undefined} />
+                    <DignosticEtiologique dignosticEtiologique={undefined} />
+                    <DirectionCraoissance directionCraoissance={undefined} />
                 </>
             ) : (
                 ''

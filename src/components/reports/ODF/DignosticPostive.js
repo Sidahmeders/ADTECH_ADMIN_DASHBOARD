@@ -1,31 +1,20 @@
 import RadarChart from '../../charts/RadarChart'
 import Title from '../../charts/addons/Title'
 import Percentage from '../../charts/addons/Percentage'
-
-const getDignosticPostiveData = (data) => {
-    const labels = []
-    const chartData = []
-    const colors = []
-    let total = 0
-    for (let entry in data) {
-        labels.push(entry)
-        chartData.push(data[entry])
-        colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}66`)
-        total += data[entry]
-    }
-
-    return {
-        labels,
-        chartData,
-        colors,
-        total
-    }
-}
+import simpleHandler from '../_handlers/simple_handler'
 
 export default function DignosticPostive({ dignosticPostive }) {
-    const { class_squelitique, typologie_facial } = dignosticPostive
-    const classSquelitiqueData = getDignosticPostiveData(class_squelitique)
-    const typologieFacialData = getDignosticPostiveData(typologie_facial)
+    // const { class_squelitique, typologie_facial } = dignosticPostive
+
+    let class_squelitique = { class1: 9, class2: 14, class3: 12 }
+    let typologie_facial = {
+        open_bite: 7,
+        normo_bite: 15,
+        deep_bite: 9
+    }
+
+    const classSquelitiqueData = simpleHandler(class_squelitique)
+    const typologieFacialData = simpleHandler(typologie_facial)
 
     const labels = [...classSquelitiqueData.labels, ...typologieFacialData.labels]
     const filler = [0, 0, 0]

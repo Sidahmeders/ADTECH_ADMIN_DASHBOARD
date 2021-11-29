@@ -1,29 +1,16 @@
 import PieChart from '../../charts/PieChart'
 import Title from '../../charts/addons/Title'
 import Percentage from '../../charts/addons/Percentage'
-
-const getHygineBuccaulData = (data) => {
-    const labels = []
-    const chartData = []
-    const colors = []
-    let total = 0
-    for (let entry in data) {
-        labels.push(entry)
-        chartData.push(data[entry])
-        colors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}`)
-        total += data[entry]
-    }
-
-    return {
-        labels,
-        chartData,
-        colors,
-        total
-    }
-}
+import simpleHandler from '../_handlers/simple_handler'
 
 export default function HygieneBuccaul({ hygienBuccaul }) {
-    const { labels, chartData, colors, total } = getHygineBuccaulData(hygienBuccaul)
+    hygienBuccaul = {
+        bon: 24,
+        moyenne: 12,
+        mauvais: 17
+    }
+
+    const { labels, chartData, colors, total } = simpleHandler(hygienBuccaul)
 
     const hygieneBuccalData = {
         labels: [...labels],
