@@ -1,10 +1,10 @@
 import { Switch, Route } from 'react-router-dom'
 
-import TextHeader from '../components/common/TextHeader/index'
-import TopNavbar from '../components/common/topNavbar/index'
-import ValidateUsers from '../components/manageUsers/ValidateUsers/index'
-import SearchUpdateUsers from '../components/manageUsers/SearchUpdateUsers/index'
-import SearchUserPatients from '../components/manageUsers/searchUserPatients/index'
+import TextHeader from '../components/common/TextHeader'
+import TopNavbar from '../components/common/topNavbar'
+import ValidateUsers from '../components/manageUsers/ValidateUsers'
+import SearchUpdateUsers from '../components/manageUsers/SearchUpdateUsers'
+import SearchUserPatients from '../components/manageUsers/SearchUserPatients'
 
 export default function ManageUsersPage() {
     return (

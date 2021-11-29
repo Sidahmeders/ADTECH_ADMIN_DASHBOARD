@@ -12,7 +12,7 @@ export default function CommonStat() {
     const [commonState, setCommonState] = useState(false)
 
     async function getCommonStat(setCommonState) {
-        let response = await Fetch.GET('admin/statistics/patients/common', localStorage.Token)
+        let response = await Fetch.GET('admin/statistics/patients/common', undefined, localStorage.Token)
         if (_isMounted.current) {
             if (response) {
                 const { data } = response
