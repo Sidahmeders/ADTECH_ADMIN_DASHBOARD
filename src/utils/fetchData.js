@@ -1,4 +1,4 @@
-const url = 'https://www.absdtech.com' || 'http://localhost:5000'
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'https://www.absdtech.com'
 
 class Fetch {
     async GET(route, limit, Token) {
@@ -62,7 +62,7 @@ class Fetch {
 
     async Delete(route, id, Token) {
         try {
-            let response = await fetch(`${url}/${route}?id=${id}?authToken=${Token}`, {
+            let response = await fetch(`${url}/${route}?id=${id}&authToken=${Token}`, {
                 method: 'DELETE',
                 credentials: 'include'
             })
