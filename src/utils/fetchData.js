@@ -1,4 +1,5 @@
-const url = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'https://www.absdtech.com'
+const url = 'http://138.68.92.203'
+//process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'http://138.68.92.203'
 
 class Fetch {
     async GET(route, limit, Token) {
