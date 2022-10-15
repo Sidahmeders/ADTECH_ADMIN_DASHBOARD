@@ -33,7 +33,7 @@ class Fetch {
             let response = await fetch(`${url}/${route}?authToken=${Token}`, {
                 method: method || 'POST',
                 body: JSON.stringify(body),
-                credentials: 'include',
+                // credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json'
                 }
